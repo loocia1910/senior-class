@@ -1,0 +1,7 @@
+.package-lock.json
+*.pem
+
+/node_modules
+
+.env
+config/config.json
