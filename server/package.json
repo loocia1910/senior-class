@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "author": "kim yanghyeon",
-  "license":"ISC",
+  "license": "ISC",
   "scripts": {
     "start": "nodemon app"
   },
