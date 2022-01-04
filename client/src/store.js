@@ -1,5 +1,5 @@
-import { configureStore } from '@reduxjs/toolit'; // store setup 과정을 단순하게 만듬
-import persistedReducer from './reducers/index';
+import { configureStore } from '@reduxjs/toolkit'; // store setup 과정을 단순하게 만듬
+import { persistedReducer } from './reducers/index';
 
 export default configureStore({
   reducer: persistedReducer, // root reducer 만들기

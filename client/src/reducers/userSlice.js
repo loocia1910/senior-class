@@ -15,7 +15,14 @@ const userSlice = createSlice({
         return state
     }
   },
+  extraReducers: (builder) => {
+    builder
+      .addCase(signIn.fulfilled, (state, action) => {
+        state = action.payload;
+        return state;
+      })
+  }
 })
 
-export const { logOutForce } = counterSlice.actions
+export const { logOutForce } = userSlice.actions
 export default userSlice.reducer

@@ -1,7 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import customAxios from '../../utils/customAxios';
 
-// createAsynThunk 더 깊이 공부하기
 export const signIn = createAsyncThunk(
     'user/signIn',
     async (data, { dispatch, rejectWithValue }) => {
