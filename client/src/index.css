@@ -7,13 +7,17 @@
     padding: 0;
 }
 
-body {
-    background-color: aqua;
+h1, h2, h3, p, span, li, div, button, input, nav, header {
+    color: #333;
 }
 
 a {
     color: inherit;
     text-decoration: none;
+}
+
+li {
+    list-style: none;
 }
 
 /* 어떤 변화가 있는지 확인하기 */

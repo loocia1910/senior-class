@@ -1,0 +1,176 @@
+@value FontColorBright from '../../../commonCss/index.css';
+@value FontColorMid from '../../../commonCss/index.css';
+@value FontWeightLight from '../../../commonCss/index.css';
+@value FontWeightMid from '../../../commonCss/index.css';
+@value FontWeightBold from '../../../commonCss/index.css';
+@value WrapperSize from '../../../commonCss/index.css';
+@value BrandColor from '../../../commonCss/index.css';
+@value HoverColor from '../../../commonCss/index.css';
+
+
+.flex {
+  display: flex;
+}
+
+.flexCenterAlign {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ---------------------------------- */
+/* 개발자 contact */
+header {
+  width: WrapperSize;
+  margin: 0 auto;
+}
+
+.developer {
+  text-align: right;
+}
+
+.developer > span {
+  font-size: 13px;
+}
+
+.developer > span:last-child {
+  display: inline-block;
+  padding: .2rem .6rem;
+  margin: 0 1.4rem 0 1rem;
+  background-color: #ddd;
+}
+
+/* ---------------------------------- */
+/* Logo Row (로고, 검색창, 회원가입, 로그인) */
+.logoRow {
+  margin: 2rem 0 1.8rem;
+}
+
+.logoBox {
+  background-color: bisque;
+  padding: .8rem;
+}
+
+.searchFormBox {
+  position: relative;
+}
+
+.searchForm {
+  padding: .8rem 1rem;
+  width: 500px;
+  font-size: 16px;
+  color: FontColorBright;
+  background-color: #f8f8f9;
+  border: 1px solid #ddd;
+  border-radius: 2rem;
+}
+
+.searchBtn {
+ position: absolute;
+ display: block;
+ top: 10px;
+ right: 14px;
+ border:none;
+ background-color: transparent;
+}
+
+.searchIcon {
+  width: 26px;
+  height: 26px;
+  /* padding: .4rem; */
+  /* box-sizing: unset;
+  background-color: BrandColor; */
+  /* border-radius: 50%; */
+}
+
+.myIcon {
+  margin: 0 0 0 3rem;
+  width: 36px;
+  height: 36px;
+  color: FontColorMid;
+}
+
+
+.userIconGnb {
+  position: relative;
+  z-index: 100;
+} 
+
+
+.userIconGnb > ul {
+  display: block;
+  top:32px;
+  left:14px;
+  width: 100px;
+  text-align: center;
+  box-shadow: 0px 6px 24px -8px rgb(0 0 0 / 12%), 0px 0px 1px 0px rgb(0 0 0 / 36%);
+  padding: .4rem 0;
+}
+
+.userIconGnb ul li {
+  padding: .1rem .3rem;
+}
+
+.userIconGnb ul li:hover {
+ color:BrandColor;
+ background-color: HoverColor;
+}
+/* ---------------------------------- */
+/* Nav 메뉴 */
+nav {
+  position: relative;
+}
+nav ul.classMenuBox {
+  display: flex;
+  width: WrapperSize;
+  font-weight: FontWeightBold;
+}
+
+nav .classMenuBox .classMenu {
+  margin: 0 1.8rem 0 1.8rem;
+}
+
+nav .classMenuBox .classMenu:nth-child(1) {
+  margin-left: 0;  /* 첫번째 마진 속성 없애서 정렬하기 */
+}
+
+nav .classMenuBox .classMenu::after,
+nav .classMenuBox .applyTeacher:after {
+  display: block;
+  content: '';
+  padding: .6rem 0 0 0;
+  border-bottom: 2px solid #ff7b30;
+  transform: scaleX(0);
+  transition: transform 300ms ease-in-out;
+}
+
+nav .classMenuBox .classMenu:hover::after,
+nav .classMenuBox .applyTeacher:hover::after {
+  transform: scaleX(1);
+}
+
+/* 메뉴들 사이에 '|' */
+nav .classMenuBox span {
+  margin: 0 1rem 0 0;
+  color: FontColorBright;
+  font-weight: FontWeightLight;
+}
+
+nav .applyTeacher {
+  padding: 0 0 .6rem 0;
+  color: FontColorBright;
+  font-weight: FontWeightMid;
+}
+
+nav .joinBox {
+  display: block;
+  top:4px;
+  right:0;
+  font-size: 14px;
+  position: absolute;
+}
+
+/* 로그인, 회원가입 버튼 */
+nav .joinBox span:nth-child(1) {
+  margin: 0 2rem 0 0;
+}

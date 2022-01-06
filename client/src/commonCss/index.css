@@ -1,0 +1,16 @@
+/* Container Size */
+@value WrapperSize: 1170px;
+
+/* Color */
+@value BrandColor: #ff7b30;
+@value HoverColor: #fafafa;
+
+/* Font */
+@value FontColorDark: #333;
+@value FontColorMid: #555;
+@value FontColorBright: #777;
+
+@value FontWeightLight: 300;
+@value FontWeightMid: 500;
+@value FontWeightBold: 700;
+
