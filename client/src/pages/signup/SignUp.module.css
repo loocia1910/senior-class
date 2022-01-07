@@ -1,0 +1,90 @@
+@value FontColorLight from '../../commonCss/index.css';
+@value FontColorMid from '../../commonCss/index.css';
+@value BrandColor from '../../commonCss/index.css';
+
+.wd_460 {
+    width: 460px;
+}
+
+.wrapper {
+    border-top: 1px solid #ddd;
+    margin: 0 0 6rem;
+}
+
+.wrapper > div {
+    margin: 0 auto;
+    /* border: 1px solid green; */
+}
+
+.title {
+    color: #555;
+    margin: 6rem 0 4rem;
+}
+
+label {
+    display: block;
+    font-weight:FontWeightMid;
+}
+
+.msg {
+    display: none;
+}
+
+.inputBox {
+    margin: 0 0 2rem;
+}
+
+.input {
+    padding: .6rem;
+    margin: .3rem 0 0;
+    background-color: #fafafa;
+    border: 1px solid #ddd;
+}
+
+.birthBox {
+    display: flex;
+}
+
+.birthBox > div {
+  width: 140px;
+}
+
+.birthBox > div > span input {
+    width: 100%;
+}
+
+.birthBox > div > span select{
+    width: 100%;
+    height: 95%;
+    margin: .2rem 0 .2rem;
+    background-color: #fafafa;
+    border: 1px solid #ddd;
+}
+
+.birthBox div:nth-child(2){
+    margin: 0 20px 0 20px;
+}
+
+.genderBox > select {
+    width: 100%;
+    padding: .6rem;
+    margin: .3rem 0 2rem;
+    background-color: #fafafa;
+    border: 1px solid #ddd;
+}
+
+.signupBtn {
+    background-color: BrandColor;
+    border: none;
+    padding: .8rem;
+    font-size: 20px;
+    transition: 250ms ease-in-out;
+    color: #fff;
+}
+
+.signupBtn:hover {
+    color: FontColorMid;
+    border: 1px solid BrandColor;
+    background-color: #fff;
+    box-sizing: border-box;
+}

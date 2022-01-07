@@ -5,6 +5,7 @@ const teacherCtrl = require('./teacher');
 const classCtrl = require('./class');
 const generalMypageCtrl = require('./generalMypage');
 const teacherMypageCtrl = require('./teacherMypage');
+const validationCtrl = require('./validation');
 
 // user
 router.post('/signin', userCtrl.signIn);
@@ -53,5 +54,10 @@ router.get('/:teacherId/product', teacherMypageCtrl.getMyOpendClassList);
 router.get('/:teacherId/product/:classId', teacherMypageCtrl.getClassCourseList);
 router.post('/:teacherId/product/:classId/video', teacherMypageCtrl.UpdateClassVideo);
 router.delete('/:teacherId/product/:classId/video', teacherMypageCtrl.DeleteClassVideo);
+
+// validation
+router.post('/validation/loginId', validationCtrl.validateLoginId);
+router.post('/validation/nickname', validationCtrl.validateNickname);
+
 
 module.exports = router;

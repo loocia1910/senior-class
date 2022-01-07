@@ -9,31 +9,42 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       login_id: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       password: {
+        allowNull: false,
         type: Sequelize.STRING
       },
-      nick_name: {
+      nickname: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       name: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       birth: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       gender: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       profile_url: {
+        allowNull: false,
         type: Sequelize.STRING
       },
-      admin: {
-        type: Sequelize.STRING
+      is_teacher: {
+        allowNull: false,
+        type: Sequelize.STRING,
+        defaultValue: false
       },
       info: {
-        type: Sequelize.STRING
+        allowNull: true,
+        type: Sequelize.STRING,
+        defaultValue: null
       },
       createdAt: {
         allowNull: false,

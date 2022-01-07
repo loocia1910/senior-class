@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       this.belongsTo(models.User);
       this.hasMany(models.Class_course);
-      this.hasMany(models.Reviews);
+      this.hasMany(models.Review);
       this.belongsToMany(models.User, { through: 'like_classes'})
       this.belongsToMany(models.User, { through: 'ordered_classes'})
       this.belongsTo(models.User, { through: 'opened_classes'})

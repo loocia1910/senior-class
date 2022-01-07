@@ -93,12 +93,11 @@ header {
 
 .userIconGnb {
   position: relative;
-  z-index: 100;
 } 
 
 
 .userIconGnb > ul {
-  display: block;
+  position:absolute;
   top:32px;
   left:14px;
   width: 100px;
@@ -162,15 +161,19 @@ nav .applyTeacher {
   font-weight: FontWeightMid;
 }
 
+/* 로그인, 회원가입 버튼 */
 nav .joinBox {
   display: block;
+  position: absolute;
   top:4px;
   right:0;
   font-size: 14px;
-  position: absolute;
 }
 
-/* 로그인, 회원가입 버튼 */
+nav .joinLink:hover {
+  text-decoration: underline;
+}
+
 nav .joinBox span:nth-child(1) {
   margin: 0 2rem 0 0;
 }

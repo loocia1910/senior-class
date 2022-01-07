@@ -27,28 +27,21 @@ export default function Header () {
                         </button>
                     </form>
                 </div>
-                <ul
-                className={`${styles.userIconBox} ${styles.flex}`}>
+                <ul className={`${styles.userIconBox} ${styles.flex}`}>
                     <li 
                         className={styles.userIconGnb}
                         onMouseEnter={ e => {
-                            setStlye({ display: 'block', position: 'absolute', zIndex: 10000 } )
+                            setStlye({ display: 'block' } )
                         }}
                         onMouseLeave={ e => {
                             setStlye({display: 'none'})
                         }}
                     >
-                        <AiOutlineUser className={`${styles.myIcon} ${styles.userIcon}`}/>
-                        <ul 
-                        style={style}
-                        >
-                            <li>
-                              마이페이지
-                            </li>
-                            <li>
-                            회원정보
-                            </li>
-                        </ul>
+                    <AiOutlineUser className={`${styles.myIcon} ${styles.userIcon}`}/>
+                    <ul style={style}>
+                      <li>마이페이지</li>
+                      <li>회원정보</li>
+                    </ul>
                     </li>
                     <li><BsPlayBtn className={styles.myIcon}/></li>{/* 내 강의 */}
                     <li><AiOutlineHeart className={styles.myIcon}/></li>{/* 강의 찜 */}
@@ -63,8 +56,8 @@ export default function Header () {
                     <li className={styles.applyTeacher}>강사지원하기</li>
                 </ul>
                 <div className={styles.joinBox}>
-                    <span>로그인</span>
-                    <span>회원가입</span>
+                    <span><Link className={styles.joinLink} to='signin'>로그인</Link></span>
+                    <span><Link className={styles.joinLink} to='signup'>회원가입</Link></span>
                 </div>
             </nav>
         </header>
