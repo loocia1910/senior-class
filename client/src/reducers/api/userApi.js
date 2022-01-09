@@ -3,7 +3,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import customAxios from '../../utils/customAxios';
 
 
-export const signUp = createAsyncThunk(
+export const signUpThunk = createAsyncThunk(
     'user/signUp',
     async ({ data }, { dispatch, rejectWithValue }) => {
         try {
@@ -21,11 +21,12 @@ export const signUp = createAsyncThunk(
         } catch (err) {
             // rejectWithValue : 거절된 액션 페이로드에 거절된 반응을 리턴
             return rejectWithValue(err);
+            // 위에서 성공 응답을 못 받은 경우 .unwrap()은 rejected action에 rejectWithValue에서 생성된 페이로드를 dispatch 할때 리턴한다
         }
     }
 );
 
-export const signIn = createAsyncThunk(
+export const signInThunk = createAsyncThunk(
     'user/signIn',
     async (data, { dispatch, rejectWithValue }) => {
         try {
@@ -46,12 +47,14 @@ export const signIn = createAsyncThunk(
     }
 );
 
-export const validateNickname = async (nickname) => {
-    const res = await customAxios.post('/validation/nickname', nickname);
+export const serverValidateNickname = async (data) => {
+    console.log('닉네임', data)
+    const res = await customAxios.post('/validation/nickname', data);
+
     return res;
 }
 
-export const validateLoginId = async (login_id) => {
-    const res = await customAxios.post('/valication/loginId', login_id);
+export const serverValidateLoginId = async (data) => {
+    const res = await customAxios.post('/validation/loginId', data);
     return res;
 }

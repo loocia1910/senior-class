@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'; // reducer 로직과 action을 단순화 시킴
 
 import {
-    signUp,
-    signIn
+  signInThunk,
+  signUpThunk
 } from './api/userApi'
 
 let initialState = {
@@ -23,7 +23,7 @@ const userSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(signUp.fulfilled, (state, action) => {
+      .addCase(signUpThunk.fulfilled, (state, action) => {
         // 유저 정보를 저장하고,
         // signup_sucess 페이지에서 회원가입 완료 상태를 알려준다
 
@@ -32,7 +32,7 @@ const userSlice = createSlice({
         initialState.info = action.payload;
         return state;
       }) 
-      .addCase(signIn.fulfilled, (state, action) => {
+      .addCase(signInThunk.fulfilled, (state, action) => {
         state = action.payload;
         return state;
       })

@@ -15,11 +15,11 @@ module.exports = {
         
           // 이미 존재하는 닉네임인 경우
           const db_nickname = await User.findOne({ where : { nickname } });
-          if(db_nickname) return res.status(409).send(`The ${nickname} already exists.`);
+          if(db_nickname) res.status(409).send(`The ${nickname} already exists.`);
 
           // 인풋 창이 모두 입력되지 않은 경우
           if( !login_id || !password || !nickname || !name || !birth || !gender) {
-              return res.status(422).send('All inputs need to be fully filled.');
+              res.status(422).send('All inputs need to be fully filled.');
           }
 
           // 회원가입 승인
@@ -40,7 +40,7 @@ module.exports = {
 
           });
 
-          return res.sendStatus(201);
+          res.sendStatus(201);
 
         } catch (err) {
           console.log(err);
