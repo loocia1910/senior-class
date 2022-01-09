@@ -1,4 +1,4 @@
-const { user } = require('../../models');
+const { User } = require('../../models');
 
 
 module.exports = {
@@ -10,10 +10,11 @@ module.exports = {
         * 3. hash와 유저 정보를 DB에 저장
         **/
         try {
+          console.log('req.body--------', req.body)
           const { login_id, password, nickname, name, birth, gender } = req.body;
         
           // 이미 존재하는 닉네임인 경우
-          const db_nickname = await user.findOne({ where : { nickname } });
+          const db_nickname = await User.findOne({ where : { nickname } });
           if(db_nickname) return res.status(409).send(`The ${nickname} already exists.`);
 
           // 인풋 창이 모두 입력되지 않은 경우
@@ -28,7 +29,7 @@ module.exports = {
             
             // DB에 hash된 비밀번호를 포함 새로운 유저 정보 저장
             // ====> ??? admin과 info 필드는 처음에 값을 안 주었는데 넣어줘야하나?
-            const new_user = await user.create({
+            const new_user = await User.create({
               login_id,
               password: hash,
               nick_name,

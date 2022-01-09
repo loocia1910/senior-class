@@ -4,6 +4,8 @@
 /* Color */
 @value BrandColor: #ff7b30;
 @value HoverColor: #fafafa;
+@value SuccessColor: #08a600;
+@value FailColor: #ff0000;
 
 /* Font */
 @value FontColorDark: #333;

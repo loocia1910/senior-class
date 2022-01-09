@@ -6,28 +6,73 @@ import { validateNickname, validateLoginId } from '../../reducers/api/userApi'
 import styles from './SignUp.module.css';
 
 
-export default function SignUp(){
+const SignUp = () => {
     const dispatch = useDispatch();
     const [ validLoginId, setValidLoginId ] = useState(false);
     const [ validPwd, setValidPwd ] = useState(false);
     const [ validRePwd, setValidRePwd ] = useState(false);
     const [ validNickname, setValidNickname ] = useState(false);
+    const [ validBirthMsg, setValidBirthMsg ] = userState(null);
     const [ userState, setUserState ] = useState({
         login_id: '',
         password: '',
         repassword: '',
-        nick_name: '',
+        nickname: '',
         name: '',
-        birth: '',
+        birth: {yy: '', mm: '', dd: ''},
         gender: ''
     });
     
     const { login_id, password, repassword, nickname, name, birth, gender} = userState;
+    const { yy, mm, dd } = birth;
 
+    // 전체 입력값 관리 핸들러
     const onChangUpdateState = (e) => {
       const { name, value } = e.target; // ????? 잘 찍히는지 확인!!!
-      setUserState({...userState, [name]: value});
+
+      // 이벤트 타겟이 birth(yy, mm, dd)인 경우 따로 관리 
+      if ( name === 'yy' || name === 'mm' || name === 'dd') {
+         return;
+      } else {
+          setUserState({...userState, [name]: value});
+      }
     }
+
+    // birth onBlur 핸들러
+    const onBlurBirth = (e) => {
+        const { name, value } = e.target;
+
+        let val = Number(value);
+
+        if( typeof val !== 'number' ||  // 입력값이 숫자가 아닌 경우: 저장X, 에러msg
+            val === 0 ||  // 입력값이 0인 경우
+            ( name === 'dd' && val >= 32 )  // 태어난 일이 32이상일 경우
+        ) {
+            setValidBirthMsg('생년월일을 다시 확인해주세요.');
+            return;
+        }
+
+        if(name === 'yy') {
+            // 태어난 년도가 4자리가 아닐 경우
+            if(String(val).length !== 4) {
+                setValidBirthMsg('태어난 년도 4자리를 정확하게 입력해주세요.');
+                return;
+            } else if (val < 1910 ) {
+                // 태어난 년도가 1910년 이전일 경우
+                setValidBirthMsg('정말이세요?');
+                return;
+            }
+            birth.yy = value;
+            return;
+        } else if(name === 'mm') {
+            birth.mm = value;
+            return;
+        } else if(name === 'dd') {
+            birth.dd = value;
+            return;
+        }
+    }
+
     
     // login_id 유효성 검사
     const onBlurLoginId = async (e) => {
@@ -98,7 +143,6 @@ export default function SignUp(){
                 <h1 className={styles.title}> 회원가입</h1>
                 <form className={styles.signupForm} onSubmit={onClickSignup}>
                     <div>
-                        {/* 아이디 */}
                         <div className={styles.inputBox}>
                             <label htmlFor="login_id">아이디</label>
                             <input 
@@ -108,17 +152,15 @@ export default function SignUp(){
                               name='login_id'
                               value={login_id || ''}
                               onBlur={(e) => onBlurLoginId(e)}
-                              required
                             />
                             { 
                               login_id === '' ?
                               null :
                               validLoginId ?
-                              <p className={`${styles.msg} ${style.successMsg}`}>성공메시지</p> :
-                              <p className={`${styles.msg} ${style.failMsg}`}>실패메시지</p> 
+                              <p className={`${styles.msg} ${styles.successMsg}`}>성공메시지</p> :
+                              <p className={`${styles.msg} ${styles.failMsg}`}>실패메시지</p> 
                             }
                         </div>
-                        {/* 비밀번호 */}
                         <div className={styles.inputBox}>
                             <label htmlFor="password">비밀번호</label>
                             <input 
@@ -128,17 +170,15 @@ export default function SignUp(){
                               name='password'
                               value={password || ''}
                               onBlur={(e) => onBlurPassword(e)}
-                              required
                             />
                             {
                               password === '' ?
                               null :
                               validPwd ?
-                              <p className={`${styles.msg} ${style.successMsg}`}>성공메시지</p> :
-                              <p className={`${styles.msg} ${style.failMsg}`}>실패메시지</p>
+                              <p className={`${styles.msg} ${styles.successMsg}`}>성공메시지</p> :
+                              <p className={`${styles.msg} ${styles.failMsg}`}>실패메시지</p>
                             }
                         </div>
-                        {/* 비밀번호 재입력 */}
                         <div className={styles.inputBox}>
                             <label htmlFor="repassword">비밀번호 재입력</label>
                             <input 
@@ -148,19 +188,17 @@ export default function SignUp(){
                               name='repassword'
                               value={repassword || ''}
                               onBlur={(e) => onBlurRePassword(e)}
-                              required
                             />
                             {
                               repassword === '' ?
                               null :
                               validRePwd ?
-                              <p className={`${styles.msg} ${style.successMsg}`}>성공메시지</p> :
-                              <p className={`${styles.msg} ${style.failMsg}`}>실패메시지</p>
-                            }
+                              <p className={`${styles.msg} ${styles.successMsg}`}>성공메시지</p> :
+                              <p className={`${styles.msg} ${styles.failMsg}`}>실패메시지</p>
+                            } 
                         </div>
                     </div>
                     <div>
-                        {/* 닉네임 */}
                         <div className={styles.inputBox}>
                             <label htmlFor="nickname">닉네임</label>
                             <input 
@@ -170,29 +208,50 @@ export default function SignUp(){
                               name="nickname"
                               value={nickname || ''}
                               onBlur={(e) => onBlurNickname(e)}
-                              required
                             />
-                            {
-                              email === '' ? 
+                             {
+                              nickname === '' ? 
                               null : 
                               validNickname ? 
-                              <p className={`${styles.msg} ${style.successMsg}`}>성공메시지</p> :
-                              <p className={`${styles.msg} ${style.failMsg}`}>실패메시지</p>
-                            }
+                              <p className={`${styles.msg} ${styles.successMsg}`}>성공메시지</p> :
+                              <p className={`${styles.msg} ${styles.failMsg}`}>실패메시지</p>
+                            } 
                         </div>
                     </div>
                     <div>
                         <div className={styles.inputBox}>
-                            <label htmlFor="">이름</label>
-                            <input className={`${styles.input} ${styles.wd_460}`} type="text" />
+                            <label htmlFor="name">이름</label>
+                            <input 
+                              className={`${styles.input} ${styles.wd_460}`} 
+                              type="text"
+                              onChange={onChangUpdateState}
+                              name="name"
+                              value={name || ''}
+                            />
                         </div>
                         <div className={`${styles.inputBox}`}>
-                            <label htmlFor="">생년월일</label>
+                            <label htmlFor="birth">생년월일</label>
                             <div className={`${styles.birthBox} ${styles.wd_460}`}>
-                                <div><span><input className={styles.input} type="text" id="yy" placeholder="년(4자)" maxLength="4"/></span></div>
+                                <div>
+                                    <span>
+                                        <input
+                                          className={styles.input}
+                                          name="yy"
+                                          vlaue={yy || ''}
+                                          type="text"
+                                          placeholder="년(4자)"
+                                          maxLength="4"
+                                          onBlur={(e) => onBlurBirth(e)}
+                                        />
+                                    </span>
+                                </div>
                                 <div>
                                   <span>
-                                    <select name="mm" id="mm">
+                                    <select 
+                                      name="mm"
+                                      value={mm || ''}
+                                      onBlur={(e) => onBlurBirth(e)}
+                                    >
                                         <option value selected>월</option>
                                         <option value="01">1</option>
                                         <option value="02">2</option>
@@ -209,15 +268,30 @@ export default function SignUp(){
                                     </select>
                                   </span>
                                 </div>
-                                <div><span><input className={styles.input} type="text" id="dd" placeholder="일" maxLength="2"/></span></div>
+                                <div>
+                                    <span>
+                                        <input
+                                          className={styles.input}
+                                          type="text"
+                                          name="dd"
+                                          value={dd || ''}
+                                          onBlur={(e) => onBlurBirth(e)}
+                                          placeholder="일"
+                                          maxLength="2"
+                                        />
+                                    </span>
+                                </div>
                             </div>
-                            <p className={`${styles.msg} ${style.failMsg}`}>실패메시지</p>
-                            <p className={`${styles.msg} ${style.successMsg}`}>성공메시지</p>
+                            <p className={`${styles.msg} ${styles.failMsg}`}>{validBirthMsg}</p>
                         </div>
                         <div className={styles.inputBox}>
-                            <label htmlFor="">성별</label>
+                            <label htmlFor="gender">성별</label>
                             <span className={`${styles.wd_460} ${styles.genderBox}`}>
-                                <select  name="gender" id="gender">
+                                <select 
+                                  name="gender"
+                                  vlaue={gender || ''}
+                                  onChange={onChangUpdateState}
+                                >
                                     <option value selected>성별</option>
                                     <option value="M">남자</option>
                                     <option value="F">여자</option>
@@ -226,10 +300,12 @@ export default function SignUp(){
                             </span>
                         </div>
                     </div>
-                    <p className={`${styles.msg} ${style.failMsg}`}>실패메시지</p>
+                    <p className={`${styles.msg} ${styles.failMsg}`}>실패메시지</p>
                     <button type="submit" className={`${styles.signupBtn} ${styles.wd_460}`}>회원가입</button>
                 </form>
             </div>
         </div>
     )
 }
+
+export default SignUp;
