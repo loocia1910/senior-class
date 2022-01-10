@@ -6,10 +6,12 @@ import {
 } from './api/userApi'
 
 let initialState = {
-  info: {},
-  loading: 'idle',
-  currentRequestId: undefined,
-  error: null
+  login_id: '',
+  nickname: '',
+  is_login: false,
+  is_teacher: false,
+  error: null,
+  status: ''
 }
 
 const userSlice = createSlice({
@@ -24,16 +26,18 @@ const userSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(signUpThunk.fulfilled, (state, action) => {
-        // 유저 정보를 저장하고,
-        // signup_sucess 페이지에서 회원가입 완료 상태를 알려준다
-
-        // ??액션에 어떤 내용이 올까?? 찍어보기
-        // ?? state는 어떤 내용이 올까??
-        initialState.info = action.payload;
+        state.status = 'fulfilled';
+        state.login_id = action.payload.data.login_id;
         return state;
       }) 
+      .addCase(signUpThunk.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error.message
+        console.log('state.error', state.error)
+        return state;
+      })
       .addCase(signInThunk.fulfilled, (state, action) => {
-        state = action.payload;
+        // state.login_id = action.payload;
         return state;
       })
   }

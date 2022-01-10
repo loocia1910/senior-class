@@ -25,19 +25,19 @@ module.exports = {
         type: Sequelize.STRING
       },
       birth: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.STRING
       },
       gender: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.STRING
       },
       profile_url: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.STRING
       },
       is_teacher: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.STRING,
         defaultValue: false
       },
