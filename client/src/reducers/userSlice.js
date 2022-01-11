@@ -6,6 +6,7 @@ import {
 } from './api/userApi'
 
 let initialState = {
+  name: '',
   login_id: '',
   nickname: '',
   is_login: false,
@@ -27,6 +28,7 @@ const userSlice = createSlice({
     builder
       .addCase(signUpThunk.fulfilled, (state, action) => {
         state.status = 'fulfilled';
+        state.name = action.payload.data.name;
         state.login_id = action.payload.data.login_id;
         return state;
       }) 

@@ -36,8 +36,7 @@ module.exports = {
                 gender,
               })
               .then((respose) => {
-                console.log('respose--------------',respose)
-                return res.status(201).send({login_id});
+                return res.status(201).send({login_id, name});
                 return;
               })
               .catch(err => console.log(err));

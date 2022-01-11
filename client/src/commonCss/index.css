@@ -3,6 +3,7 @@
 
 /* Color */
 @value BrandColor: #ff7b30;
+@value BrandBrightColor: #fff2e3;
 @value HoverColor: #fafafa;
 @value SuccessColor: #08a600;
 @value FailColor: #ff0000;
