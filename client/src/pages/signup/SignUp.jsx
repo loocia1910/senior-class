@@ -269,7 +269,7 @@ const SignUp = () => {
                             name='login_id'
                             value={login_id || ''}
                             onBlur={(e) => onBlurLoginId(e)}
-                            autocomplete='off'
+                            autoComplete='off'
                           />
                           <p className={
                               isLoginIdAccepted ?
@@ -308,7 +308,7 @@ const SignUp = () => {
                             name='repassword'
                             value={repassword || ''}
                             onBlur={(e) => onBlurRePassword(e)}
-                            autocomplete='off'
+                            autoComplete='off'
                           />
                           <p className={
                               isRePwdAccepted ?
@@ -330,7 +330,7 @@ const SignUp = () => {
                             name="nickname"
                             value={nickname || ''}
                             onBlur={(e) => onBlurNickname(e)}
-                            autocomplete='off'
+                            autoComplete='off'
                           />
                           <p className={
                             isNnameAccepted ?
@@ -353,7 +353,7 @@ const SignUp = () => {
                             name="name"
                             value={name || ''}
                             onBlur={(e) => onBlurname(e)}
-                            autocomplete='off'
+                            autoComplete='off'
                           />
                           <p className={styles.failMsg}>{nameMsg}</p>
                       </div>
@@ -372,7 +372,7 @@ const SignUp = () => {
                                           onChange={onChangUpdateState}
                                           onBlur={onBlurBirth}
                                           placeholder="년(4자)"
-                                          autocomplete='off'
+                                          autoComplete='off'
                                           maxLength="4"
                                       />
                                   </span>
@@ -404,7 +404,7 @@ const SignUp = () => {
                                           onChange={onChangUpdateState}
                                           onBlur={onBlurBirth}
                                           placeholder="일"
-                                          autocomplete='off'
+                                          autoComplete='off'
                                           maxLength="2"
                                       />
                                   </span>

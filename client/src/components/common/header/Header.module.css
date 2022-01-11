@@ -45,9 +45,13 @@ header {
 
 .developer > span:last-child {
   display: inline-block;
-  padding: .2rem .6rem;
+  padding: .3rem .6rem;
   margin: 0 1.4rem 0 1rem;
   background-color: #ddd;
+}
+
+.developer > span:hover {
+  text-decoration: underline;
 }
 
 /* ---------------------------------- */

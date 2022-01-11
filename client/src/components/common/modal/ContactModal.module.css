@@ -1,0 +1,83 @@
+@value WrapperSize from '../../../commonCss/index.css';
+
+.wrapper {
+    background-color: rgba(0, 0, 0, 0.7);
+    position:fixed;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+}
+
+.container {
+  position:relative;
+  display: flex;
+  justify-content: center;
+}
+
+.containerInner {
+    position: absolute;
+    margin: 6rem 0 0;
+    padding: 4rem 3rem 4rem;
+    display: block;
+    width:700px;
+    background-color: #fdffff;
+    text-align: left;
+    border-radius: 1rem;
+}
+
+.closeBtn {
+    position: relative;
+    margin: 3rem 0 0 38rem;
+    width: 40px;
+    height: 40px;
+}
+
+.closeBtn::before ,
+.closeBtn:after {
+    position: absolute;
+    width: 48px;
+    height: 1px;
+    left: 50%;
+    top: 50%;
+    content:'';
+    background-color: #fff;
+}
+
+.closeBtn::before{
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.closeBtn:after {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.inputBox {
+    padding: 0 0 1.6rem;
+}
+
+.label {
+    font-weight: 700;
+    margin: 0 0 .3rem;
+}
+
+.input {
+    width: 100%;
+    text-align: left;
+    padding: 1rem;
+    background-color: #fafafa;
+    border: 1px solid #ddd;
+}
+
+textarea.input {
+  height: 200px;
+}
+
+.btn {
+  border: none;
+  display: block;
+  margin: 1rem auto 0;
+  padding: .8rem 4rem;
+  border-radius: .6rem;
+  background-color: #bedce3;
+}

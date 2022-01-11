@@ -1,0 +1,41 @@
+@value WrapperSize from '../../../commonCss/index.css';
+@value FontColorBright from '../../../commonCss/index.css';
+
+.wrapper {
+    width: WrapperSize;
+    margin: 0 auto;
+    padding:  6rem 0;
+    text-align: center;
+    font-size: 14px;
+}
+
+.wrapper p {
+    color: FontColorBright;
+    line-height: 1.4rem;
+}
+
+
+.iconBox {
+    display: flex;
+    justify-content: center;
+    margin: 1.4rem 0;
+}
+
+.iconBox li:nth-child(2) {
+    padding: 0 1rem;
+}
+
+.icon {
+    width: 30px;
+    height: 30px;
+}
+
+.btn {
+    padding: .3rem .6rem;
+    background-color: #ddd;
+    border: none;
+}
+
+.btn:hover {
+    text-decoration: underline;
+}

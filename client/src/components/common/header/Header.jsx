@@ -4,17 +4,23 @@ import { BsSearch } from 'react-icons/bs';
 import { BsPlayBtn } from 'react-icons/bs';
 import { AiOutlineUser } from 'react-icons/ai';
 import { AiOutlineHeart } from 'react-icons/ai';
+import ContactModal from '../modal/ContactModal';
 import styles from './Header.module.css';
 
 export default function Header () {
     const [ style, setStlye ]  = useState({display: 'none'});
+
+    const [ isOpen, setIsOpen ] = useState(true);
+    const isOpenHandler = () => {
+        setIsOpen(!isOpen);
+    }
 
     return (
         <div className={styles.wrapper}>
             <header>
                 <div className={styles.developer}>
                     <span>개발자 : 김양현</span>
-                    <span>담당 개발자에게 연락하기</span>
+                    <span onClick={isOpenHandler}>담당 개발자에게 연락하기</span>
                 </div>
                 <div className={`${styles.flexCenterAlign} ${styles.logoRow}`}>
                     <div className={styles.logoBox}>
@@ -62,6 +68,7 @@ export default function Header () {
                     </div>
                 </nav>
             </header>
+            {isOpen ? <ContactModal isOpenHandler={isOpenHandler}/>: null}
         </div>
     )
 }

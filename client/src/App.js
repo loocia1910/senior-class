@@ -1,5 +1,6 @@
 import { Routes, Route} from 'react-router-dom';
 import Header from './components/common/header/Header';
+import Footer from './components/common/footer/Footer';
 import Landing from './pages/landing/Landing';
 import SignIn from './pages/signin/SignIn';
 import SignUp from './pages/signup/SignUp';
@@ -12,11 +13,12 @@ function App() {
     <>
       <Header />
       <Routes >
-        <Route path="/" element={<Landing />} />
-        <Route path="signin" element={<SignIn />} />
-        <Route path="signup" element={<SignUp />} />
-        <Route path="signup_ok" element={<SignUpOk/>}/>
+        <Route path='/' element={<Landing />} />
+        <Route path='signin' element={<SignIn />} />
+        <Route path='signup' element={<SignUp />} />
+        <Route path='signup_ok' element={<SignUpOk/>}/>
       </Routes>
+      <Footer/>
     </>
   );
 }
