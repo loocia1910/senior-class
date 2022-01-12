@@ -4,10 +4,6 @@
 @value SuccessColor from '../../commonCss/index.css';
 @value FailColor from '../../commonCss/index.css';
 
-.wrapper {
-    /* margin: 0 0 6rem; */
-}
-
 .wd_460 {
     width: 460px;
 }

@@ -6,11 +6,12 @@ import ContactModal from '../modal/ContactModal';
 import styles from './Footer.module.css';
 
 const Footer = () => {
-    const [ isOpen, setIsOpen ] = useState(true);
+    const [ isOpen, setIsOpen ] = useState(false);
 
-    const isOpenHandler = () => {
-        setIsOpen(!isOpen);
+    const isOpenHandler = (val) => {
+        setIsOpen(val);
     }
+    console.log('isOpen', isOpen)
 
     return (
         <div className={styles.wrapper}>
@@ -21,8 +22,8 @@ const Footer = () => {
                 <li><a title='깃허브' href='https://github.com/loocia1910' rel="noopener noreferrer" target="_blank"><AiOutlineGithub className={styles.icon} /></a></li>
                 <li><a title='블로그' href='https://velog.io/@loocia1910' rel="noopener noreferrer" target="_blank"><AiOutlineHome className={styles.icon} /></a></li> 
             </ul>
-            <button className={styles.btn} onClick={isOpenHandler} type='button'>담당 개발자에게 연락하기</button>
-            {isOpen ? < ContactModal isOpenHandler={isOpenHandler}/> : null}
+            <button className={styles.btn} onClick={() =>  isOpenHandler(true)} type='button'>담당 개발자에게 연락하기</button>
+            {isOpen ? < ContactModal isOpenHandler={isOpenHandler} isOpen={isOpen}/> : null}
         </div>
     )
 }
