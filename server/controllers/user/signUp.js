@@ -26,7 +26,6 @@ module.exports = {
               if (err) return console.log('signup bcrypt hash 생성 오류 :', err);
               
               // DB에 hash된 비밀번호를 포함 새로운 유저 정보 저장
-              // ====> ??? admin과 info 필드는 처음에 값을 안 주었는데 넣어줘야하나?
               await User.create({
                 login_id,
                 password: hash,
@@ -37,7 +36,6 @@ module.exports = {
               })
               .then((respose) => {
                 return res.status(201).send({login_id, name});
-                return;
               })
               .catch(err => console.log(err));
             

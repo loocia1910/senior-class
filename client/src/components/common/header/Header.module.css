@@ -97,8 +97,18 @@ header {
   color: FontColorMid;
 }
 
+.logoutBtn {
+  cursor: pointer
+}
 
+.userIconBox {
+  border: 1px solid red;
+}
+.userIconGnb {
+  border: 1px solid blue;
+}
 .userIconGnb > ul {
+  border: 1px solid green;
   position:absolute;
   top:32px;
   left:14px;
@@ -173,4 +183,22 @@ header {
 
 .joinBox span:nth-child(1) {
   margin: 0 2rem 0 0;
+}
+
+.joinUser {
+  display: flex;
+  position: relative;
+}
+.userImgBox {
+  width: 46px;
+  height: 46px;
+  margin: 0 0 0 .6rem;
+}
+.userImg {
+  width: 48px;
+  height: 48px;
+  position:absolute;
+  top: -18px;
+  border-radius: 50%;
+  background-color: blanchedalmond;
 }

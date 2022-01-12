@@ -263,7 +263,7 @@ const SignUp = () => {
                       <div className={styles.inputBox}>
                           <label htmlFor="login_id">아이디 <span className={styles.requiredSym}>*</span></label>
                           <input 
-                            className={`${styles.input} ${styles.wd_460}`}
+                            className={`${styles.input}`}
                             type="text"
                             onChange={onChangUpdateState}
                             name='login_id'
@@ -283,12 +283,13 @@ const SignUp = () => {
                       <div className={styles.inputBox}>
                           <label htmlFor="password">비밀번호 <span className={styles.requiredSym}>*</span></label>
                           <input 
-                            className={`${styles.input} ${styles.wd_460}`}
+                            className={`${styles.input}`}
                             type="password"
                             onChange={onChangUpdateState}
                             name='password'
                             value={password || ''}
                             onBlur={(e) => onBlurPassword(e)}
+                            autoComplete='off'
                           />
                             <p className={
                                 isPwdAccepted ?
@@ -302,7 +303,7 @@ const SignUp = () => {
                       <div className={styles.inputBox}>
                           <label htmlFor="repassword">비밀번호 재입력 <span className={styles.requiredSym}>*</span></label>
                           <input 
-                            className={`${styles.input} ${styles.wd_460}`}
+                            className={`${styles.input}`}
                             type="password"
                             onChange={onChangUpdateState}
                             name='repassword'
@@ -324,7 +325,7 @@ const SignUp = () => {
                       <div className={styles.inputBox}>
                           <label htmlFor="nickname">닉네임 <span className={styles.requiredSym}>*</span></label>
                           <input 
-                            className={`${styles.input} ${styles.wd_460} `}
+                            className={`${styles.input}`}
                             type="text"
                             onChange={onChangUpdateState}
                             name="nickname"
@@ -347,7 +348,7 @@ const SignUp = () => {
                       <div className={styles.inputBox}>
                           <label htmlFor="name">이름 <span className={styles.requiredSym}>*</span></label>
                           <input 
-                            className={`${styles.input} ${styles.wd_460}`} 
+                            className={`${styles.input}`} 
                             type="text"
                             onChange={onChangUpdateState}
                             name="name"

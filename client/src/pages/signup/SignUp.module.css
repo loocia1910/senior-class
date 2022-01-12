@@ -6,11 +6,7 @@
 
 .wd_460 {
     width: 460px;
-}
-
-.wrapper > div {
     margin: 0 auto;
-    /* border: 1px solid green; */
 }
 
 .title {
@@ -28,6 +24,7 @@ label {
 }
 
 .input {
+    width: 100%;
     padding: .6rem;
     margin: .3rem 0 0;
     background-color: #fafafa;
