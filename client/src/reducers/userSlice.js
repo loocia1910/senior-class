@@ -3,7 +3,8 @@ import { createSlice } from '@reduxjs/toolkit'; // reducer 로직과 action을 �
 import {
   signUpThunk,
   signInThunk,
-  signOutThunk,  
+  signOutThunk,
+  signInRefreshThunk  
 } from './api/userApi'
 
 let initialState = {
@@ -23,8 +24,14 @@ const userSlice = createSlice({
   reducers: {
     // thunk에서 err를 만나면 강제로 로그아웃 시키기 위한 리듀서
     logOutForce(state) {
-        state = null;
-        return state
+      state.name = '';
+      state.login_id = '';
+      state.nickname = '';
+      state.profile_url = '';
+      state.is_teacher = false;
+      state.info = '';
+      state.is_login = false;
+      return state;
     }
   },
   extraReducers: (builder) => {
@@ -40,7 +47,6 @@ const userSlice = createSlice({
       })
       .addCase(signInThunk.fulfilled, (state, action) => {
         const {name, login_id, nickname, profile_url, is_teacher, info} = action.payload.data.userInfo
-        console.log('userslice에 action.payload--->', action.payload)
         state.name = name;
         state.login_id = login_id;
         state.nickname = nickname;
@@ -62,10 +68,27 @@ const userSlice = createSlice({
         state.is_teacher = false;
         state.info = '';
         state.is_login = false;
+        console.log('signout 상태========', state)
+        return state;
+      })
+      .addCase(signInRefreshThunk.fulfilled, (state, action) => {
+        const {name, login_id, nickname, profile_url, is_teacher, info} = action.payload.data.userInfo
+        console.log('userslice에 signInRefreshThunk action.payload--->', action.payload)
+        state.name = name;
+        state.login_id = login_id;
+        state.nickname = nickname;
+        state.profile_url = profile_url;
+        state.is_teacher = is_teacher;
+        state.info = info;
+        state.is_login = true;
+        return state;
+      })
+      .addCase(signInRefreshThunk.rejected, (state, action) => {
+        state.error = action.error.message
         return state;
       })
   }
 })
 
-export const { logOutForce } = userSlice.actions // 로그아웃 force는 어디서 사용하는 것 인가?
+export const { logOutForce } = userSlice.actions;
 export default userSlice.reducer

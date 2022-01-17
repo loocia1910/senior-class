@@ -101,14 +101,7 @@ header {
   cursor: pointer
 }
 
-.userIconBox {
-  border: 1px solid red;
-}
-.userIconGnb {
-  border: 1px solid blue;
-}
 .userIconGnb > ul {
-  border: 1px solid green;
   position:absolute;
   top:32px;
   left:14px;

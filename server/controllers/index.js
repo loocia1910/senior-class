@@ -9,13 +9,14 @@ const validationCtrl = require('./validation');
 
 // user
 router.post('/signin', userCtrl.signIn);
-router.post('/signout', userCtrl.signOut);
+router.delete('/signout', userCtrl.signOut);
 router.post('/signup', userCtrl.signUp);
 router.delete('/withdrawal', userCtrl.withdrawal);
 router.get('/auth/google', userCtrl.googleLogin);
 router.get('/auth/googleCallback', userCtrl.googleLogin);
 router.get('/auth/kakao', userCtrl.kakaoLogin);
 router.get('/auth/kakoCallback', userCtrl.kakaoLogin);
+router.get('/silentRefresh', userCtrl.silentRefresh);
 
 // teacher
 router.post('/teacher/apply', teacherCtrl.teacherApply);

@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { signUpThunk } from '../../reducers/api/userApi';
 import { 
     regExpPassword, 
     isMatchPassword,
@@ -9,7 +8,10 @@ import {
     regExpNickname,
     regExpName
 } from '../../utils/validations';
-import { serverValidateNickname, serverValidateLoginId } from '../../reducers/api/userApi'
+import { signUpThunk, 
+         serverValidateNickname,
+         serverValidateLoginId 
+} from '../../reducers/api/userApi'
 
 import styles from './SignUp.module.css';
 
@@ -45,7 +47,7 @@ const SignUp = () => {
         nickname: '',
         name: '',
         birth: '',
-        gender: ''
+        gender: '성별'
     });
     const { login_id, password, repassword, nickname, name, birth, gender} = userState;
     const { yy, mm, dd } = birthState;
@@ -387,7 +389,7 @@ const SignUp = () => {
                                           onChange={onChangUpdateState}
                                           onBlur={onBlurBirth}
                                           >
-                                          <option value selected>월</option>
+                                          <option value="">월</option>
                                           {months.map((m, idx) => 
                                             <option key={idx} value={m}>{m}</option>
                                             )}
@@ -421,7 +423,7 @@ const SignUp = () => {
                                 vlaue={gender || ''}
                                 onChange={onChangUpdateState}
                               >
-                                  <option value selected>성별</option>
+                                  <option value="성별" >성별</option>
                                   <option value="M">남자</option>
                                   <option value="F">여자</option>
                                   <option value="U">선택안함</option>

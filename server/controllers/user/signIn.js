@@ -1,6 +1,11 @@
 const { User } = require('../../models');
 const bcrypt = require('bcrypt');
-const { generateAccessToken, sendAccessToken } = require('../tokenFunctions')
+const { 
+        generateRefreshToken,
+        generateAccessToken,
+        sendRefreshToken,
+        sendAccessToken
+    } = require('../tokenFunctions')
 
 module.exports = {
     signIn:  async (req, res) => {
@@ -10,7 +15,8 @@ module.exports = {
          * 해당 아이디의 비밀번호를 복호화한다 (bcrypt) 
          * 비밀번호 불일치시  => 401 응답
          * 비밀번호 일치시
-         * jwt 토큰을 쿠키로 전달한다
+         * refreshToken을 쿠키로 전달
+         * accessToken을 응답 바디에 담아 전달
          * 201 유저네임, login_id, nickname, profile_path, is_teacher을 보낸다
         **/
         try {
@@ -30,11 +36,14 @@ module.exports = {
               }
              
               delete db_user.dataValues.password;
-              console.log('db_user.dataValues.', db_user.dataValues);
 
+              const refreshToken = await generateRefreshToken(db_user.dataValues);
               const accessToken = await generateAccessToken(db_user.dataValues);
-              await sendAccessToken(res, accessToken);
-              return res.status(201).send({ userInfo: db_user.dataValues });
+              console.log('signin/refreshToken----', refreshToken)
+              // refreshToken을 쿠키에 담아 전달
+              sendRefreshToken(res, refreshToken);
+              // accessToken을 응답 바디에 담아 전달
+              sendAccessToken(res, accessToken, db_user.dataValues)
             });
 
         } catch (err) {
