@@ -2,13 +2,13 @@
   
 require("dotenv").config();
 
-const fs = require("fs");
-const https = require("https");
-const cors = require("cors");
-const cookieParser = require("cookie-parser");
-const express = require("express");
+const fs = require('fs');
+const https = require('https');
+const cors = require('cors');
+const cookieParser = require('cookie-parser');
+const express = require('express');
 const app = express();
-const controllers = require("./controllers");
+const controllers = require('./controllers');
 
 // json payload로 들어온 요청을 읽어줌
 app.use(express.json());
@@ -18,17 +18,15 @@ app.use(express.urlencoded({ extended: false }));
 
 // cors 설정
 // !mission eco 도메인 생성시 origin에 추가해야함
+app.use(cookieParser());
 app.use(
   cors({
-    origin: [
-      "https://localhost:3000",
-      "http://localhost:3000",
-    ],
-    credentials: true, // true설정은 header를 전달해줌
-    methods: ["GET", "POST", "OPTIONS", "DELETE", "PATCH"],
+    origin: true,
+    credentials: true,
+    methods: ['GET', 'POST', 'DELETE', 'PATCH', 'OPTIONS'],
+    Headers: { 'content-type': 'application/json' },
   })
 );
-app.use(cookieParser());
 
 // 라우팅
 app.use(controllers);

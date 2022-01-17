@@ -6,5 +6,6 @@ module.exports = {
     googleLogin: require('./socialSignIn').googleLogin,   
     googleCallback: require('./socialSignIn').googleCallback,   
     kakaoLogin: require('./socialSignIn').kakaoLogin,   
-    kakaoCallback: require('./socialSignIn').kakaoCallback,   
+    kakaoCallback: require('./socialSignIn').kakaoCallback,
+    silentRefresh: require('./silentRefresh').silentRefresh, 
 }

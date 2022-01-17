@@ -8,8 +8,7 @@ import { AiOutlineHeart } from 'react-icons/ai';
 import { signOutThunk } from '../../../reducers/api/userApi'
 import ContactModal from '../modal/ContactModal';
 import styles from './Header.module.css';
-
-export default function Header () {
+export default function Header ({ handleLogoutBtn }) {
     const [ style, setStlye ]  = useState({display: 'none'});
     const [ isOpen, setIsOpen ] = useState(false);
     const isOpenHandler = () => {
@@ -17,19 +16,19 @@ export default function Header () {
     }
     const userInfo = useSelector((state) => state.user);
     const { name, is_login } = userInfo;
-    console.log('리덕스 is_login', is_login);
-    console.log('리덕스 login_id', name);
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const onClickSignOut = async (e) => {
         try {
-            setStlye({display: 'none'})
-            await dispatch(signOutThunk({navigate})).unwrap();
+            setStlye({display: 'none'});
+            handleLogoutBtn();
+            await dispatch(signOutThunk({ navigate })).unwrap();
         } catch (err) {
             throw err;
         }
     };
+    
 
     return (
         <div className={styles.wrapper}>
