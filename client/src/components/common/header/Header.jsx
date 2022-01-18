@@ -8,7 +8,9 @@ import { AiOutlineHeart } from 'react-icons/ai';
 import { signOutThunk } from '../../../reducers/api/userApi'
 import ContactModal from '../modal/ContactModal';
 import styles from './Header.module.css';
-export default function Header ({ handleLogoutBtn }) {
+
+
+const Header = () => {
     const [ style, setStlye ]  = useState({display: 'none'});
     const [ isOpen, setIsOpen ] = useState(false);
     const isOpenHandler = () => {
@@ -22,7 +24,6 @@ export default function Header ({ handleLogoutBtn }) {
     const onClickSignOut = async (e) => {
         try {
             setStlye({display: 'none'});
-            handleLogoutBtn();
             await dispatch(signOutThunk({ navigate })).unwrap();
         } catch (err) {
             throw err;
@@ -102,3 +103,5 @@ export default function Header ({ handleLogoutBtn }) {
         </div>
     )
 }
+
+export default Header;

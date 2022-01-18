@@ -3,7 +3,7 @@ module.exports = {
         try {
             // refreshToken 재정의 통해 쿠키 삭제
             res.cookie('refreshToken', '', {
-                sameSite: 'None',
+                sameSite: 'Strict',
                 secure: true,
                 httpOnly: true,
                 expires: new Date(Date.now() - 10000) // 지금으로부터 1분 전

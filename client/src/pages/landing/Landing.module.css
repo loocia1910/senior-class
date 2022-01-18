@@ -1,0 +1,7 @@
+@value WrapperSize from '../../commonCss/index.css';
+
+.wrapper {
+    width: WrapperSize;
+    border: 1px solid gray;
+    margin: 0 auto;
+}

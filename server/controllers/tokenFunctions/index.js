@@ -13,7 +13,7 @@ module.exports = {
     },
     sendRefreshToken: async (res, refreshToken) => {
       res.cookie('refreshToken', refreshToken, {
-        sameSite: 'None',
+        sameSite: 'Strict',
         secure: true,
         httpOnly: true,
       });
