@@ -19,17 +19,17 @@ const Section1 = () => {
 
   // 배너 재생
   const [ isBnPlay, setBnPlay ] = useState(true);
-  const autoplaRef = useRef( null)
+  const autoplayRef = useRef( null)
   const navigationPrevRef = useRef('<div></div>'|| null)
   const navigationNextRef = useRef('<div></div>'|| null)
 
-  const onMouseEnter =() => autoplaRef.current.swiper.autoplay.stop()
-  const onMouseLeave =() => autoplaRef.current.swiper.autoplay.start()
+  const atuoplayStop =() => autoplayRef.current.swiper.autoplay.stop()
+  const atuoplayStart =() => autoplayRef.current.swiper.autoplay.start()
   return (
             <section>
               <div className={styles.slider} style={{ background: `${bgColors[bgIdx]}` }}>
                 <Swiper
-                ref={autoplaRef}
+                ref={autoplayRef}
                 modules={[Navigation, Pagination, EffectFade, Autoplay]}
                 className={styles.slidesBox}
                 slidesPerView={1}
@@ -61,33 +61,36 @@ const Section1 = () => {
                     </SwiperSlide>
                   )}
                   {/* 전후 네비게이션 */}
-                  <div className={`${styles.slideNav1} ${styles.zIndex_10}`}  ref={navigationPrevRef}>prev</div>
-                  <div className={`${styles.slideNav2} ${styles.zIndex_10}`} ref={navigationNextRef}>next</div>
+                  <div className={styles.slidesNav} >
+                    <div className={`${styles.slideBefore} ${styles.zIndex_10}`} ref={navigationPrevRef}></div>
+                    <div className={`${styles.slideAfter} ${styles.zIndex_10}`} ref={navigationNextRef}></div>
+                  </div>
                   {/* 재생 버튼 */}
                   { 
                     isBnPlay ? 
                     <div 
-                      ref={autoplaRef}
+                      // ref={autoplayRef}
                       className={`${styles.slidePause} ${styles.zIndex_10}`}
                       onClick={() => {
-                        onMouseEnter()
+                        atuoplayStop()
                         setBnPlay(false)
-                      }}>일시정지
-                    </div> :
+                      }}>
+                    </div> 
+                    :
                     <div
-                      ref={autoplaRef}
+                      // ref={autoplayRef}
                       className={`${styles.slidePlay} ${styles.zIndex_10}`}
                       onClick={() => {
-                        onMouseLeave()
+                        atuoplayStart()
                         setBnPlay(true)
                       }}
-                      >재생</div>
+                      >
+                    </div>
                   }
                   {/* 페이지 카운트 */}
                   <div className={`${styles.pageNum} ${styles.zIndex_10}`}>
-                    <span>{bgIdx+1}</span>
-                    /
-                    <span>{bgColors.length}</span>
+                    <span className={styles.BoldNum}>{bgIdx+1}</span>
+                    <span className={styles.lightNum}> / {bgColors.length}</span>
                   </div>
                 </Swiper>
               </div>

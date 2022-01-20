@@ -17,34 +17,117 @@
     height: 100%;
 }
 
-.slideNav1,
-.slideNav2,
+.slideBefore,
+.slideAfter,
 .slidePause,
 .slidePlay,
 .pageNum  {
     position: absolute;
-    top:0;
-    padding: 1rem;
-    background-color: aquamarine;
+    background-color: rgba(0, 0, 0, .2);
+    bottom: 30px;
+    height: 45px;
+    text-align: center;
+    line-height: 45px;
 }
 
 /* 전후 네비게이션 */
-.slideNav1 {
-    left:0;
+.slidesNav {
+    position: relative;
+}
+.slideBefore,
+.slideAfter {
+    width: 45px;
+    height: 45px;
+}
+.slideBefore {
+    right: 45px;
+    border-radius: 50px 0 0 50px;
 }
 
-.slideNav2 {
-    left:100px;
+.slideAfter {
+    right: 0;
+    border-radius: 0 50px 50px 0;
+
 }
+/* <, > 버튼 CSS */
+.slideBefore::before,
+.slideAfter::before {
+    position: absolute;
+    top: 16px;
+    width: 12px;
+    height: 12px;
+    content: '';
+    display: block;
+    border-top: 2px solid #eee;
+    border-right: 2px solid #eee;
+}
+
+.slideBefore::before {
+    left: 24px;
+    transform: rotate(225deg);
+}
+
+.slideAfter::before {
+    right: 24px;
+    transform: rotate(45deg);
+}
+
 
 /* 재생 버튼 */
 .slidePause,
 .slidePlay {
-    left: 200px;
+    right: 210px;
+    width: 45px;
+    border-radius: 50px;
+    /* position: relative; */
+}
+
+/* 재생버튼 || CSS */
+.slidePause::after,
+.slidePlay::after,
+.slidePlay::before {
+    position: absolute;
+    display: block;
+    content: '';
+}
+
+.slidePlay::after,
+.slidePlay::before {
+    width: 2px;
+    height: 18px;
+    top: 13px;
+    background-color: #eee;
+}
+
+/* 플레이 버튼 삼각형 CSS */
+.slidePause::after {
+    width: 0px;
+    height: 0px;
+    border-left: 15px solid #eee;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    margin: 14px 0 0 17px;
+}
+
+.slidePlay::before {
+    right: 16px;
+}
+
+.slidePlay::after {
+    left: 16px;
 }
 
 /* 페이지 카운트 */
 .pageNum {
-    background-color: azure;
-    top: 100px;
+    width: 80px;
+    border-radius: 50px;
+    right: 110px;
+    font-size: 20px;
+}
+
+.BoldNum {
+    color: #fff;
+}
+.lightNum {
+    color: #aaa;
 }
