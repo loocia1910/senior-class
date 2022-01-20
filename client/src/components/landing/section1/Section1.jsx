@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import SwiperCore, { Navigation, Pagination, EffectFade, Autoplay } from 'swiper';
+import { Navigation, Pagination, EffectFade, Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles
@@ -15,29 +15,24 @@ const Section1 = () => {
 
   // 배너 배경색 설정
   const bgColors = ['gray', 'red', 'green', 'blue'];
-  const [ bgIdx, setBgIdx ] = useState(1)
-  const [ bgColor, setBgColor ] = useState('gray');
-  const changebgIndex = () => {
-    if(bgIdx === bgColors.length-1) {
-      setBgIdx(0)
-    } else {
-      setBgIdx(bgIdx+1);
-    }
-    setBgColor(bgColors[bgIdx])
-  }
+  const [ bgIdx, setBgIdx ] = useState(0)
+
   // 배너 재생
   const [ isBnPlay, setBnPlay ] = useState(true);
+  const autoplaRef = useRef( null)
   const navigationPrevRef = useRef('<div></div>'|| null)
-  const navigationNextRef = useRef('<div></div>'||null)
+  const navigationNextRef = useRef('<div></div>'|| null)
 
+  const onMouseEnter =() => autoplaRef.current.swiper.autoplay.stop()
+  const onMouseLeave =() => autoplaRef.current.swiper.autoplay.start()
   return (
             <section>
-              <div className={styles.slider} style={{ background: `${bgColor}` }}>
+              <div className={styles.slider} style={{ background: `${bgColors[bgIdx]}` }}>
                 <Swiper
+                ref={autoplaRef}
                 modules={[Navigation, Pagination, EffectFade, Autoplay]}
                 className={styles.slidesBox}
                 slidesPerView={1}
-                onSlideChange={changebgIndex}
                 navigation={{
                   prevEl: navigationPrevRef.current,
                   nextEl: navigationNextRef.current,
@@ -49,10 +44,14 @@ const Section1 = () => {
                   swiper.navigation.init();
                   swiper.navigation.update();
                 }}
-                // autoplay={{ 
-                //   delay: 4000,
-                //   disableOnInteraction: false, // 인터렉션이 있어도 움직임
-                // }}
+                onSlideChange={(swiper) => {
+                  setBgIdx(swiper.activeIndex)
+                }}
+                onSwiper={s => console.log("swiper", s) }       
+                autoplay={{ 
+                  delay: 4000,
+                  disableOnInteraction: false, // 인터렉션이 있어도 움직임,
+                }}
                 effect={"fade"}
                 >
                   {/* 사진명이 연속된 수로 이뤄진 이미지 슬라이드 만들기 */}
@@ -61,25 +60,36 @@ const Section1 = () => {
                       <img className={styles.slidesImg} src={`/img/banner/${n}.jpg`} alt={`${n}`} />
                     </SwiperSlide>
                   )}
-                <div className={styles.slideNav1}  ref={navigationPrevRef}>prev</div>
-                <div className={styles.slideNav2} ref={navigationNextRef}>next</div>
-                </Swiper>
-                <div >
-                  <span>{bgIdx === 0 ? bgColors.length : bgIdx}</span>
-                  /
-                  <span>{bgColors.length}</span>
-                </div>
-                {/* <div >
+                  {/* 전후 네비게이션 */}
+                  <div className={`${styles.slideNav1} ${styles.zIndex_10}`}  ref={navigationPrevRef}>prev</div>
+                  <div className={`${styles.slideNav2} ${styles.zIndex_10}`} ref={navigationNextRef}>next</div>
+                  {/* 재생 버튼 */}
                   { 
                     isBnPlay ? 
-                    <button 
-                      ref={autoplayStartRef}
-                      onClick={handlePlayStop}>일시정지</button> :
-                    <button
-                      ref={autoplayStopRef}
-                      onClick={handlePlayStart}>재생</button>
+                    <div 
+                      ref={autoplaRef}
+                      className={`${styles.slidePause} ${styles.zIndex_10}`}
+                      onClick={() => {
+                        onMouseEnter()
+                        setBnPlay(false)
+                      }}>일시정지
+                    </div> :
+                    <div
+                      ref={autoplaRef}
+                      className={`${styles.slidePlay} ${styles.zIndex_10}`}
+                      onClick={() => {
+                        onMouseLeave()
+                        setBnPlay(true)
+                      }}
+                      >재생</div>
                   }
-                </div> */}
+                  {/* 페이지 카운트 */}
+                  <div className={`${styles.pageNum} ${styles.zIndex_10}`}>
+                    <span>{bgIdx+1}</span>
+                    /
+                    <span>{bgColors.length}</span>
+                  </div>
+                </Swiper>
               </div>
             </section>
   )

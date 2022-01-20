@@ -1,15 +1,16 @@
 @value WrapperSize from '../../../commonCss/index.css';
+
+.zIndex_10 {
+    z-index: 10;
+}
 .slider{
-    /* background-color: gray; */
-    /* display: flex; */
+    position: relative;
 }
 .slidesBox {
     width: WrapperSize;
     height: 400px;
 }
-.slides {
-    height: 400px;
-}
+
 .slidesImg {
     display: block;
     width: 100%;
@@ -17,19 +18,33 @@
 }
 
 .slideNav1,
-.slideNav2 {
+.slideNav2,
+.slidePause,
+.slidePlay,
+.pageNum  {
     position: absolute;
     top:0;
     padding: 1rem;
     background-color: aquamarine;
 }
 
+/* 전후 네비게이션 */
 .slideNav1 {
     left:0;
-    z-index: 3000;
 }
 
 .slideNav2 {
     left:100px;
-    z-index: 3001;
+}
+
+/* 재생 버튼 */
+.slidePause,
+.slidePlay {
+    left: 200px;
+}
+
+/* 페이지 카운트 */
+.pageNum {
+    background-color: azure;
+    top: 100px;
 }
