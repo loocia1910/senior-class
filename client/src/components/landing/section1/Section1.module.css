@@ -1,3 +1,35 @@
-.wrapper {
-    border: 1px solid green;
+@value WrapperSize from '../../../commonCss/index.css';
+.slider{
+    /* background-color: gray; */
+    /* display: flex; */
+}
+.slidesBox {
+    width: WrapperSize;
+    height: 400px;
+}
+.slides {
+    height: 400px;
+}
+.slidesImg {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.slideNav1,
+.slideNav2 {
+    position: absolute;
+    top:0;
+    padding: 1rem;
+    background-color: aquamarine;
+}
+
+.slideNav1 {
+    left:0;
+    z-index: 3000;
+}
+
+.slideNav2 {
+    left:100px;
+    z-index: 3001;
 }
