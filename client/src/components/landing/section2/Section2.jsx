@@ -54,7 +54,7 @@ const Section2 = () => {
             </div>
             {/* 그라디어트 */}
             <div className={isEndLeft ? "" : `${styles.leftGradiant}`}/>
-            <div className={isEndRight ? "" : `${styles.rigthGradiant}`}/>
+            <div className={isEndRight ? "" : `${styles.rigthGradiant}`}/> 
         </section>
       </div>
   )
