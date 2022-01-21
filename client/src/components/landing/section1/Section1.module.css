@@ -47,7 +47,6 @@
 .slideAfter {
     right: 0;
     border-radius: 0 50px 50px 0;
-
 }
 /* <, > 버튼 CSS */
 .slideBefore::before,
@@ -76,7 +75,7 @@
 /* 재생 버튼 */
 .slidePause,
 .slidePlay {
-    right: 210px;
+    right: 194px;
     width: 45px;
     border-radius: 50px;
     /* position: relative; */
@@ -93,9 +92,9 @@
 
 .slidePlay::after,
 .slidePlay::before {
-    width: 2px;
-    height: 18px;
-    top: 13px;
+    width: 4px;
+    height: 15px;
+    top: 16px;
     background-color: #eee;
 }
 
@@ -121,7 +120,7 @@
 .pageNum {
     width: 80px;
     border-radius: 50px;
-    right: 110px;
+    right: 102px;
     font-size: 20px;
 }
 

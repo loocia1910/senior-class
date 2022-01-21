@@ -1,12 +1,98 @@
 @value WrapperSize from '../../../commonCss/index.css';
 
-
-.wrapper {
-    margin: 0 auto;
-    width: WrapperSize;
-    border: 1px solid green;
-}
-
 .container {
     border: 1px solid rgb(112, 90, 114);
+    padding: 2.4rem 0;
+}
+
+.slider {
+    display: block;
+    width: 1170px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid green;
+}
+
+.leftGradiant,
+.rigthGradiant {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 80px;
+}
+
+.leftGradiant {
+    left: 0;
+    background: linear-gradient(to left, transparent, #fff);
+}
+
+.rigthGradiant {
+    right: 0;
+    background: linear-gradient(to right, transparent, #fff);
+}
+
+.slides {
+    display: flex;
+    width: 2340px;
+    border: 3px solid blue;
+}
+
+.ctg {
+    width: 195px;
+    text-align: center;
+    background-color: burlywood;
+    border: 2px solid red;
+    /* margin: 0 1rem; */
+}
+
+.ctgIcon {
+    width: 90px;
+    height: 90px;
+    margin: 0 auto;
+    background-color: #eee;
+}
+
+/* slide 전후 네비게이션 */
+
+.slidePrev,
+.slideNext {
+    position: absolute;
+    top: 50%;
+    margin-top: -22px;
+    width: 45px;
+    height: 45px;
+    background-color: rgba(0, 0, 0, .2);
+    border-radius: 50px;
+    z-index: 10;
+}
+.slidePrev {
+    left: 0;
+}
+
+.slideNext {
+    right: 0;
+}
+/* <, > 버튼 CSS */
+.slidePrev::before,
+.slideNext::before {
+    position: absolute;
+    top: 14px;
+    width: 12px;
+    height: 12px;
+    content: '';
+    display: block;
+    border-top: 2px solid #eee;
+    border-right: 2px solid #eee;
+   
+}
+
+.slidePrev::before {
+    left: 18px;
+    transform: rotate(225deg);
+}
+
+.slideNext::before {
+    right: 20px;
+    transform: rotate(45deg);
 }
