@@ -13,11 +13,12 @@ module.exports = {
           allowNull: false,
           type: Sequelize.DATE
         },
-        UserId: {
+        // 원ㄹ래는 대문자 였음 UserId, ClassId
+        userId: {
           type: Sequelize.INTEGER,
           primaryKey: true,
         },
-        ClassId: {
+        classId: {
           type: Sequelize.INTEGER,
           primaryKey: true,
         },

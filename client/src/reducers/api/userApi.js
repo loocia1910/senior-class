@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import customAxios from '../../utils/customAxios';
-import { logOutForce } from '../userSlice'
+import { logOutForce } from '../userSlice';
+import { logOutMylikes } from '../likeSlice';
 
 
 export const signUpThunk = createAsyncThunk(
@@ -84,8 +85,8 @@ export const signOutThunk = createAsyncThunk(
     async ({ navigate }, { dispatch, rejectWithValue }) => {
       try {
         // dispatch(logOutClassLike());
-        // dispatch(logOutMyClassList());
         // dispatch(logOutMyClassReview());
+        dispatch(logOutMylikes());
         const res = await customAxios.delete('/signout');
         navigate('/');
         return res;

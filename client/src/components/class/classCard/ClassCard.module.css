@@ -1,6 +1,7 @@
 @value FontWeightBold from '../../../commonCss/index.css';
 
 .container {
+    position:relative;
     width: 22.9%;
     margin: 2rem 0 0;
     background-color: #fff;
@@ -54,3 +55,12 @@
 .month {
     color: #777;
 }
+
+.unlikeheartIcon {
+    position: absolute;
+    top:6px;
+    right:6px;
+    width: 30px;
+    height: 30px;
+}
+

@@ -18,6 +18,7 @@ module.exports = {
         **/
         try {
             const refreshToken = req.cookies.refreshToken;
+            console.log('silentRefresh/refreshToken===', refreshToken)
 
             if(!refreshToken) {
                 return res.status(401).send('The refresh token does not exist.');
@@ -40,8 +41,8 @@ module.exports = {
             const newRefreshToken = await generateRefreshToken(db_user.dataValues);
             const newAccessToken = await generateAccessToken(db_user.dataValues);
 
-            await sendRefreshToken(res, newRefreshToken);
-            await sendAccessToken(res, newAccessToken, db_user.dataValues)
+            sendRefreshToken(res, newRefreshToken);
+            sendAccessToken(res, newAccessToken, db_user.dataValues)
         } catch (err) {
             console.log(err);
             throw err;

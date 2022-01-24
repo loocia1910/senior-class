@@ -5,7 +5,7 @@
     border: 1px solid rgb(112, 90, 114);
     width: 100vw;
     height: 320px;
-    background: no-repeat top -100px center url('./section6.jpg');
+    /* background: no-repeat top -100px center url('./section6.jpg'); */
     background-size: 100vw auto;
     position: relative;
 }

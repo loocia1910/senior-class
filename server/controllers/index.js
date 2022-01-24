@@ -24,12 +24,13 @@ router.post('/teacher/class/open', teacherCtrl.classOpen);
 
 // class
 // 클래스 불러오기
+router.get('/class/:userId', classCtrl.myClass);
 router.get('/class/:classId', classCtrl.oneClass);
 router.get('/class/:type', classCtrl.typeClass);
 router.get('/class/:type/:category', classCtrl.categoryClass);
 // 클래스 찜
 router.post('/class/like', classCtrl.like);
-router.delete('/class/like', classCtrl.unlike);
+router.post('/class/unlike', classCtrl.unlike);
 // 클래스 질문
 router.post('/class/question', classCtrl.question);
 router.post('/class/answer', classCtrl.answer);

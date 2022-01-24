@@ -12,10 +12,12 @@ module.exports = {
       return res.status(201).send({ accessToken , userInfo });
     },
     sendRefreshToken: async (res, refreshToken) => {
+      console.log('refreshToken??????????', refreshToken)
       res.cookie('refreshToken', refreshToken, {
-        sameSite: 'Strict',
+        sameSite: 'None', // 전송되는 쿠키에 대한 제한을 제거하기 위해 None 값을 도입
         secure: true,
         httpOnly: true,
+        expires: new Date(Date.now() + 1000 * 60 * 60 * 48) 
       });
     },
     isAuthorized: (req) => {

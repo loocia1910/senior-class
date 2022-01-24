@@ -48,16 +48,16 @@ const Section1 = () => {
                     setBgIdx(swiper.activeIndex)
                   }}
                   onSwiper={s => console.log("swiper", s) }
-                  autoplay={{
-                    delay: 4000,
-                    disableOnInteraction: false, // 인터렉션이 있어도 움직임,
-                  }}
+                  // autoplay={{
+                  //   delay: 4000,
+                  //   disableOnInteraction: false, // 인터렉션이 있어도 움직임,
+                  // }}
                   effect={"fade"}
                   >
                     {/* 사진명이 연속된 수로 이뤄진 이미지 슬라이드 만들기 */}
                     {Array.from({length: 4}, (v, i) => i+1 ).map((n,idx) =>
                       <SwiperSlide className={styles.slides} key={idx}>
-                        <img className={styles.slidesImg} src={`/img/banner/${n}.jpg`} alt={`${n}`} />
+                        {/* <img className={styles.slidesImg} src={`/img/banner/${n}.jpg`} alt={`${n}`} /> */}
                       </SwiperSlide>
                     )}
                     {/* 전후 네비게이션 */}

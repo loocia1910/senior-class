@@ -7,7 +7,9 @@ import {
   signInRefreshThunk  
 } from './api/userApi'
 
+
 let initialState = {
+  user_id: null,
   name: '',
   login_id: '',
   nickname: '',
@@ -24,6 +26,7 @@ const userSlice = createSlice({
   reducers: {
     // thunk에서 err를 만나면 강제로 로그아웃 시키기 위한 리듀서
     logOutForce(state) {
+      state.user_id = null;
       state.name = '';
       state.login_id = '';
       state.nickname = '';
@@ -46,7 +49,9 @@ const userSlice = createSlice({
         return state;
       })
       .addCase(signInThunk.fulfilled, (state, action) => {
-        const {name, login_id, nickname, profile_url, is_teacher, info} = action.payload.data.userInfo
+        const {id, name, login_id, nickname, profile_url, is_teacher, info} = action.payload.data.userInfo
+        console.log('./userSlice 유저아이디 ???', id);
+        state.user_id = id;
         state.name = name;
         state.login_id = login_id;
         state.nickname = nickname;
@@ -61,6 +66,7 @@ const userSlice = createSlice({
         return state;
       })
       .addCase(signOutThunk.fulfilled, (state, action) => {
+        state.user_id = null;
         state.name = '';
         state.login_id = '';
         state.nickname = '';

@@ -67,8 +67,9 @@ const Section5 = () => {
       <h2 className={styles.title}>오프라인 추천 클래스</h2>
       <span className={styles.moreClass}>오프라인 클래스 더보기 + </span>
           <div className={styles.classCard}>
-            {data.map((c) =>
+            {data.map((c, idx) =>
               <ClassCard
+                key={idx}
                 teacherName={c.teacherName}
                 className={c.className}
                 price={c.price}

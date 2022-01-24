@@ -1,4 +1,5 @@
 module.exports = {
+    myClass: require('./getClass').myClass,
     oneClass: require('./getClass').oneClass,
     typeClass: require('./getClass').typeClass,
     categoryClass: require('./getClass').categoryClass,
