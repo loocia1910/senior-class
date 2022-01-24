@@ -1,7 +1,45 @@
 import { useState } from 'react';
 import styles from './Section2.module.css';
+const categorys = [
+  {
+    name: '커리어',
+    img: '/img/category/career.png'
+  },
+  {
+    name: '운동/건강',
+    img: '/img/category/workout.png'
+  },
+  {
+    name: '음료/요리',
+    img: '/img/category/cooking.png'
+  },
+  {
+    name: '미술',
+    img: '/img/category/art.png'
+  },
+  {
+    name: '공예',
+    img: '/img/category/diy.png'
+  },
+  {
+    name: '음악',
+    img: '/img/category/music.png'
+  },
+  {
+    name: '사진/영상',
+    img: '/img/category/picture.png'
+  },
+  {
+    name: '재태크',
+    img: '/img/category/profits.png'
+  },
+  {
+    name: '외국어',
+    img: '/img/category/language.png'
+  }
+];
 
-// 900/6=150
+
 const Section2 = () => {
   const boxWidth = 1170;
   const slidesWidth = 2340;
@@ -23,10 +61,10 @@ const Section2 = () => {
         <section className={styles.slider}>
             <div className={styles.slides} style={{ marginLeft : `${marginLeft}px` }}>
               {/* <div className={styles.slide}> */}
-                {Array.from({ length : 8 }, (v,i) => i+1).map((n, idx) =>
+                {categorys.map((c, idx) =>
                   <div key={idx} className={styles.ctg}>
-                    <div className={styles.ctgIcon}><img src="" alt="" /></div>
-                    <span className={styles.ctgTitle}>{n}번째</span>
+                    <div className={styles.ctgIcon}><img src={c.img} alt={c.name} /></div>
+                    <span className={styles.ctgTitle}>{c.name}</span>
                   </div>
                 )}
               {/* </div> */}
@@ -53,8 +91,8 @@ const Section2 = () => {
               />}
             </div>
             {/* 그라디어트 */}
-            <div className={isEndLeft ? "" : `${styles.leftGradiant}`}/>
-            <div className={isEndRight ? "" : `${styles.rigthGradiant}`}/> 
+            {/* <div className={isEndLeft ? "" : `${styles.leftGradiant}`}/>
+            <div className={isEndRight ? "" : `${styles.rigthGradiant}`}/>  */}
         </section>
       </div>
   )
