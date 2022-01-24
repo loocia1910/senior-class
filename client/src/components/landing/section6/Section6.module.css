@@ -1,13 +1,41 @@
 @value WrapperSize from '../../../commonCss/index.css';
 
 
+.container {
+    border: 1px solid rgb(112, 90, 114);
+    width: 100vw;
+    height: 320px;
+    background: no-repeat top -100px center url('./section6.jpg');
+    background-size: 100vw auto;
+    position: relative;
+}
+
+.container::after {
+    position:absolute;
+    display: block;
+    content: '';
+    top:0;
+    left:0;
+    background-color: rgba(0, 0, 0, .5);
+    width: 100vw;
+    height: 320px;
+}
+
 .wrapper {
     margin: 0 auto;
     width: WrapperSize;
-    border: 1px solid green;
+    height: inherit;
 }
 
-.container {
-    border: 1px solid rgb(112, 90, 114);
+.txt {
+    position: relative;
+    z-index: 10;
+    top:50%;
+    transform: translateY(-50%);
+    text-align: center;
+    line-height: 4rem;
+    letter-spacing: .2rem;
+    font-size: 40px;
+    color: #fff;
+    font-weight: normal;
 }
-
