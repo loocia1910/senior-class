@@ -64,13 +64,13 @@ const Header = () => {
                         >
                             <AiOutlineUser className={`${styles.myIcon} ${styles.userIcon}`}/>
                             <ul style={style} >
-                                <li><Link to={is_login ? '/': '/signin'}>마이페이지</Link></li>
-                                <li><Link to={is_login ? '/': '/signin'}>회원정보</Link></li>
+                                <li><Link to={is_login ? '/mypage': '/signin'}>마이페이지</Link></li>
+                                <li><Link to={is_login ? '/mypage/auth_modify': '/signin'}>회원정보</Link></li>
                             { is_login ? <li className={styles.logoutBtn} onClick={onClickSignOut}>로그아웃</li> : null }
                             </ul>
                         </li>
-                        <li><Link to={is_login ? '/': '/signin'}><BsPlayBtn className={styles.myIcon}/></Link></li>{/* 내 강의 */}
-                        <li><Link to={is_login ? '/': '/signin'}><AiOutlineHeart className={styles.myIcon}/></Link></li>{/* 강의 찜 */}
+                        <li><Link to={is_login ? '/myclass': '/signin'}><BsPlayBtn className={styles.myIcon}/></Link></li>{/* 내 강의 */}
+                        <li><Link to={is_login ? '/mypage/class_wish': '/signin'}><AiOutlineHeart className={styles.myIcon}/></Link></li>{/* 강의 찜 */}
                     </ul>
                 </div>
                 <nav className={`${styles.relative} ${styles.nav}`}>

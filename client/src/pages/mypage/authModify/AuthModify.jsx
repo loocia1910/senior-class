@@ -1,4 +1,4 @@
-import styles from './ModifyBefore.module.css';
+import styles from './AuthModify.module.css';
 
 const ModifyBefore = () => {
 
