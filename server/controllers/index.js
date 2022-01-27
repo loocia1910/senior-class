@@ -49,8 +49,7 @@ router.get('/mypage/myclass/:classId', generalMypageCtrl.getOneMyClass);
 router.get('/mypage/likelist', generalMypageCtrl.myLikelist);
 router.get('/mypage/reviewlist', generalMypageCtrl.myReviewlist);
 router.post('/mypage/auth/modify', generalMypageCtrl.auth);
-router.post('/mypage/modify', generalMypageCtrl.modify);
-router.patch('/mypage/profile', generalMypageCtrl.updateProfile);
+router.patch('/mypage/modify', generalMypageCtrl.modify);
 
 // teacherMypage
 router.get('/:teacherId/product', teacherMypageCtrl.getMyOpendClassList);

@@ -1,1 +1,57 @@
-/*  */
+@value BrandColor from '../../../commonCss/index.css';
+@value FontColorMid from '../../../commonCss/index.css';
+@value FailColor from '../../../commonCss/index.css';
+@value SuccessColor from '../../../commonCss/index.css';
+
+
+.container {
+    margin-left: 3rem;
+    width: 460px;
+}
+
+.wrapper h2 {
+    margin: 0 0 2rem;
+}
+
+.inputBox {
+    margin: 0 0 2.2rem;
+}
+
+.input {
+    padding: .6rem;
+    width: 100%;
+    margin: .3rem 0 0;
+    background-color: #fafafa;
+    border: 1px solid #ddd;
+}
+
+.repassword {
+  margin: 1rem 0 0;
+}
+
+.btn {
+    display: inline-block;
+    padding: .8rem;
+    margin: .6rem 0 0;
+    width: 100%;
+    font-size: 20px;
+    color: #fff;
+    border: none;
+    transition: 250ms ease-in-out;
+    background-color: BrandColor;
+}
+
+.btn:hover {
+    color: FontColorMid;
+    border: 1px solid BrandColor;
+    background-color: #fff;
+    box-sizing: border-box;
+}
+
+.failMsg {
+    color: FailColor;
+}
+
+.successMsg {
+    color: SuccessColor;
+}

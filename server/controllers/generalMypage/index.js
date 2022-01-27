@@ -5,5 +5,4 @@ module.exports = {
     myReviewlist: require('./myReviewlist').myReviewlist,
     auth: require('./auth').auth,
     modify: require('./modify').modify,
-    updateProfile: require('./updateProfile').updateProfile,
 }

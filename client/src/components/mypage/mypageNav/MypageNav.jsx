@@ -3,7 +3,7 @@ import { useSelector} from 'react-redux';
 import styles from './MypageNav.module.css';
 
 const MypageNav = () => {
-    const username = useSelector((state) => state.user.name);
+    const nickname = useSelector((state) => state.user.nickname);
 
     return (
         <section className={styles.container}>
@@ -11,7 +11,7 @@ const MypageNav = () => {
                 <nav>
                     <div className={styles.profile}>
                         <img src="" alt="프로필 이미지" />
-                        <p className={styles.username}>{username}님</p>
+                        <p className={styles.nickname}>{nickname}님</p>
                     </div>
                     <div className={styles.classNav}>
                         <h2>클래스</h2>
