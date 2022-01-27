@@ -4,9 +4,11 @@ const ClassLikeList = () => {
 
 
     return (
-        <div className={styles.wrapper}>
-            나의 클래스 찜 페이지
-        </div>
+        <section>
+            <div className={styles.wrapper}>
+                나의 클래스 찜 페이지
+            </div>
+        </section>
     )
 }
 

@@ -4,9 +4,11 @@ const Modify = () => {
 
 
     return (
-        <div className={styles.wrapper}>
-            회원정보 수정하는 페이지
-        </div>
+        <section>
+            <div className={styles.wrapper}>
+                회원정보 수정하는 페이지 EnsEns!!
+            </div>
+        </section>
     )
 }
 

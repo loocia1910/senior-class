@@ -24,8 +24,8 @@ function App() {
         <Route path='signup' element={<SignUp />} />
         <Route path='signup_ok' element={<SignUpOk/>}/>
         <Route path='mypage' element={<Mypage/>}>
-          <Route path='class_wish' index element={<ClassLike />}/>
-          <Route path='class_review' element={<MyReview />}/>
+          <Route path='wish' index element={<ClassLike />}/>
+          <Route path='review' element={<MyReview />}/>
           <Route path='auth_modify' element={<AuthModify />}/>
           <Route path='modify' element={<Modify />}/>
         </Route>

@@ -70,7 +70,7 @@ const Header = () => {
                             </ul>
                         </li>
                         <li><Link to={is_login ? '/myclass': '/signin'}><BsPlayBtn className={styles.myIcon}/></Link></li>{/* 내 강의 */}
-                        <li><Link to={is_login ? '/mypage/class_wish': '/signin'}><AiOutlineHeart className={styles.myIcon}/></Link></li>{/* 강의 찜 */}
+                        <li><Link to={is_login ? '/mypage/wish': '/signin'}><AiOutlineHeart className={styles.myIcon}/></Link></li>{/* 강의 찜 */}
                     </ul>
                 </div>
                 <nav className={`${styles.relative} ${styles.nav}`}>

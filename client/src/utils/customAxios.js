@@ -6,7 +6,7 @@ const instance = axios.create();
 
 instance.defaults.baseURL = process.env.REACT_APP_API_URL;
 instance.defaults.withCredentials = true;
-instance.defaults.headers.common['Content-Type'] = 'application/json';
+// instance.defaults.headers.common['Content-Type'] = 'application/json';
 
 // interceptors를 이용하여
 // then 이나 catch에 핸들링되기 이전에 실행되어야 할 것을 실행

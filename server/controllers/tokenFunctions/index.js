@@ -20,15 +20,15 @@ module.exports = {
         expires: new Date(Date.now() + 1000 * 60 * 60 * 48) 
       });
     },
-    isAuthorized: (req) => {
-      const authorization = req.headers['Authorization'];
-      console.log('authorization????', authorization);
+    isAuthorized: async (req) => {
+      const authorization = await req.headers['authorization'];
+      console.log('tokenFunction/authorization????', authorization);
 
       // accessToken이 해더에 없는 경우
       if(!authorization) return null;
 
       const accessToken = authorization.split(' ')[1];
-      console.log('accessToken????', accessToken);
+      console.log('tokenFunction/accessToken????', accessToken);
 
       try {
           return verify(accessToken, process.env.ACCESS_SECRET);

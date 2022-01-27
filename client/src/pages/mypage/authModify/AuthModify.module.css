@@ -1,1 +1,52 @@
-/*  */
+@value BrandColor from '../../../commonCss/index.css';
+@value FontColorMid from '../../../commonCss/index.css';
+
+.wd_460 {
+    width: 460px;
+}
+
+.wrapper {
+    margin-left: 3rem;
+}
+
+.wrapper h2 {
+    margin: 0 0 2rem;
+}
+
+.input {
+    padding: .6rem;
+    margin: .3rem 0 0;
+    background-color: #fafafa;
+    border: 1px solid #ddd;
+}
+
+.password {
+    margin-top: 1rem;
+}
+
+.btnBox {
+    margin-top: 1rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: .8rem;
+    margin: .6rem 0 0;
+    font-size: 20px;
+    color: #fff;
+    border: none;
+    transition: 250ms ease-in-out;
+    background-color: BrandColor;
+}
+
+.btn:hover {
+    color: FontColorMid;
+    border: 1px solid BrandColor;
+    background-color: #fff;
+    box-sizing: border-box;
+}
+
+.errMsg {
+    margin-top: 1.6rem;
+    color: red;
+}

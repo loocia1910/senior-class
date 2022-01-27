@@ -36,8 +36,7 @@ const signInSuccess = async (res, navigate) => {
     const { accessToken } = res.data;
     console.log('signInSuccess에 accessToken', accessToken);
     // API 요청마다 헤더에 accessToken 담아 보내도록 설정
-    axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;// ??? 과연 모든 요청의 해더에 이 값이 있을까???
-    
+    customAxios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;// ??? 과연 모든 요청의 해더에 이 값이 있을까???
 }
 
 
@@ -96,8 +95,6 @@ export const signOutThunk = createAsyncThunk(
       }
     }
 );
-
-
 
 export const serverValidateNickname = async (data) => {
     console.log('닉네임', data)

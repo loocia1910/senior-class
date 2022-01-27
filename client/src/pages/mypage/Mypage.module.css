@@ -1,1 +1,27 @@
-/*  */
+@value WrapperSize from '../../commonCss/index.css';
+
+
+.container {
+    /* border: 1px solid red; */
+}
+
+.wrapper {
+    width: WrapperSize;
+    margin: 0 auto;
+    border: 1px solid blue;
+}
+
+.title {
+    width: 230px;
+    margin: 1.4rem 0 0;
+    font-size: 30px;
+    text-align: center;
+    padding: 0 0 1.4rem;
+}
+
+.wrapper > section {
+    display: flex;
+    justify-content: flex-start;
+}
+
+
