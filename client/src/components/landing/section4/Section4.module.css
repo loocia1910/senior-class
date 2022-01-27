@@ -1,12 +1,38 @@
 @value WrapperSize from '../../../commonCss/index.css';
+@value BrandColor from '../../../commonCss/index.css';
 
+
+.container {
+    /* border: 1px solid rgb(112, 90, 114); */
+}
 
 .wrapper {
     margin: 0 auto;
     width: WrapperSize;
-    border: 1px solid green;
+    position: relative;
 }
 
-.container {
-    border: 1px solid rgb(112, 90, 114);
+.title {
+    padding: 2.6rem 0 1.8rem;
 }
+
+.subTitle {
+    font-size: 28px;
+    margin: 0 0 .4rem;
+}
+
+.slideBox {
+    position: absolute;
+}
+
+.slidesTxt {
+    position: relative;
+    width: 280px;
+}
+
+.slidesTxt > span {
+    display: inline-block;
+    margin: 3.8rem 0 1rem;
+    color: BrandColor;
+}
+

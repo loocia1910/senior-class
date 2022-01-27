@@ -1,0 +1,83 @@
+@import "~slick-carousel/slick/slick.css"; 
+@import "~slick-carousel/slick/slick-theme.css";
+
+.slider {
+    margin: 0 0 0 280px;
+    width: 100vw;
+    height: 380px;
+}
+
+.slick-list {
+    margin-left: 2rem; 
+    order: 3;
+}
+
+.slides {
+    /* border: 1px solid red; */
+    margin-right: 1rem;
+    width: 500px;
+    height: 300px;
+}
+
+.slides > div {
+    border: 1px solid green;
+    padding: 1rem;
+    margin: 0 auto;
+}
+
+.slides img {
+    padding: 1rem;
+    width: 94%;
+    height: 94%;
+    box-shadow: 0px 2px 10px -2px rgb(0 0 0 / 36%), 0px 0px 1px 0px rgb(0 0 0 / 28%);
+    background-color: #eee;
+}
+
+
+/* <, > 버튼 CSS */
+.arrBox {
+    position: relative;
+}
+
+.arr {
+    position: absolute;
+    background-color: rgba(0, 0, 0, .2);
+    width: 45px;
+    height: 45px;
+    bottom:0;
+}
+
+
+.prev {
+    left: -108px;
+    bottom: -304px;
+    border-radius: 50px 0 0 50px;
+}
+
+.next {
+    left: -60px;
+    border-radius: 0 50px 50px 0;
+}
+
+.prev::before,
+.next::before {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    content: '';
+    display: block;
+    border-top: 2px solid #fff;
+    border-right: 2px solid #fff;
+    top: 50%;
+    margin-top: -6px;
+}
+
+.prev::before {
+    left: 48%;
+    transform: rotate(225deg);
+}
+
+.next::before {
+    right: 48%;
+    transform: rotate(45deg);
+}
