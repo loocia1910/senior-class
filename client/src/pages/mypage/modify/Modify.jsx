@@ -1,8 +1,8 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import styles from './Modify.module.css';
-import { modifyThunk } from '../../../reducers/api/userApi';
-import customAxios from '../../../utils/customAxios';
+import { modifyThunk, withdrawalThunk} from '../../../reducers/api/userApi';
 import { 
     regExpPassword, 
     isMatchPassword,
@@ -13,6 +13,8 @@ import AlarmModal from '../../../components/common/modal/alarmModal/AlarmModal';
 
 
 const Modify = () => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const login_id = useSelector((state) => state.user.login_id);
     const [ inputData, setInputData ] = useState({
@@ -112,15 +114,8 @@ const Modify = () => {
         }
     }
 
-    // 모달 상태 관리 modalMsg
-    const [ isModalOpen, setIsModalOpen ] = useState(true); 
-    const [ modalMsg, setModalMsg] = useState(''); 
-    const handleModalOpen = () => {
-        setIsModalOpen(!isModalOpen);
-    };
 
     // 회원 정보 수정 버튼
-    const dispatch = useDispatch();
     const onClickModify = async () => {
 
         try {
@@ -135,17 +130,64 @@ const Modify = () => {
             await dispatch(modifyThunk({ formData })).unwrap();
             
             setIsModalOpen(true);
-            setModalMsg("회원정보가\n성공적으로 변경되었습니다.")
+            setModalMsg1("회원정보가\n성공적으로 변경되었습니다.")
             
         } catch (err) {
-            console.log('errrrrrrrrrrr---------', err)
-            throw err
+            setIsModalOpen(false);
+            setModalMsg1("");
+            throw err;
         }
     }
 
-
-    // 회원탈퇴 관련
+    // 모달 상태 관리
+    const [ isModalOpen, setIsModalOpen ] = useState(false); 
+    const [ modalMsg1, setModalMsg1] = useState(''); 
+    const [ modalMsg2, setModalMsg2] = useState('');
+    const [ btnNeed, setBtnNeed ] = useState(false);  
+    // 회원탈퇴 예, 아니오 버튼
+    const handleBtnExist = (b) => {
+        setBtnNeed(b);
+    };
+    // 회원탈퇴 예, 아니오
     const [ isWithDrawal, setIsWithDrawal ] = useState(false);
+    // 회원탈퇴 요청
+    const requestWithDrawal = async () => {
+        try {
+            setIsWithDrawal(true);
+            handleBtnExist(false);
+            // 회원탈퇴
+            await dispatch(withdrawalThunk({})).unwrap();
+            // msg2
+            setModalMsg2('회원탈퇴가 성공적으로 완료되었습니다.');
+
+        } catch (err) {
+            setIsWithDrawal(false);
+            setModalMsg2('회원탈퇴 오류');
+            handleBtnExist(false);
+            throw err;
+        }
+    }
+    // 회원탈퇴 버튼
+    const onClickWithDrawal = () => {
+        handleBtnExist(true);
+        setModalMsg1('회원탈퇴 시 모든 데이터가 사라집니다.\n정말로 회원탈퇴 하시겠습니까?');
+        setIsModalOpen(true);
+    }
+
+    // 모달 X 버튼
+    const handleCloseModal = (e) => {
+        let cname = e.target.className;
+        let isCloseBtn = cname.includes('closeBtn');
+        setIsModalOpen(false);
+        if(isCloseBtn && isWithDrawal) {
+            navigate('/');
+            return;
+        }
+        if(isCloseBtn) {
+            window.location.reload(); //입력된 인풋값 클리어
+        }
+    };
+
 
     return (
         <section className={styles.container}>
@@ -199,19 +241,19 @@ const Modify = () => {
                     </p> 
                 </div>
                 <div className={styles.btnBox}>
-                    {/* {isLoginErr ?
-                      <p className={styles.errMsg}>비밀번호가 잘못 입력 되었습니다. 비밀번호를 정확히 입력해 주세요.</p> :
-                      null } */}
                     <button type="button"  onClick={onClickModify} className={`${styles.btn} ${styles.wd_460}`}>회원정보 수정</button>
                 </div>        
             </form>
-            <button className={styles.withDrawal}>회원탈퇴</button>
-            {/* {isModalOpen ? 
+            <div className={styles.withDrawal} onClick={onClickWithDrawal}>회원탈퇴</div>
+            {isModalOpen ? 
             <AlarmModal 
-              msg={modalMsg}
-              handleModalOpen={handleModalOpen}
+              msg1={modalMsg1}
+              msg2={modalMsg2 || ''}
+              btnNeed={btnNeed || false}
+              handleCloseModal={handleCloseModal}
+              requestWithDrawal={requestWithDrawal}
             /> :
-            null} */}
+            null}
         </section>
     )
 }

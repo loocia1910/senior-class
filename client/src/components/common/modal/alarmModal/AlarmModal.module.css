@@ -62,4 +62,24 @@
     padding: 1.4rem 0 0;
     font-size: 18px;
     font-weight: FontWeightBold;
+    white-space: pre-wrap; /* \n 개행문자 인식 */
+
+}
+
+.btn {
+    width: 40%;
+    border: none;
+    padding: .8rem 1rem;
+    margin-top: 1rem;
+    font-weight: FontWeightBold;
+    border-radius: .4rem;
+}
+
+.btn:not(:first-child) {
+    margin-left: 1rem;
+}
+
+.btn:hover {
+    background-color: #555;
+    color: #fff;
 }

@@ -4,10 +4,7 @@ const bcrypt = require('bcrypt');
 module.exports = {
     modify: async (req, res) => {
         try {
-            // return;
-            console.log('modify/req.body =====-----', req.body);
             const { login_id, nickname, password } = req.body;
-            console.log('modify/req.body =====-----login_idlogin_id', login_id);
             const db_user = await User.findOne({ where: { login_id } });
             
             if(nickname === '' && password === '') {

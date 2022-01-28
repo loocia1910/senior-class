@@ -12,7 +12,7 @@ import { signUpThunk,
          serverValidateNickname,
          serverValidateLoginId 
 } from '../../reducers/api/userApi'
-
+import { AlarmModal } from '../../components/common/modal/alarmModal/AlarmModal';
 import styles from './SignUp.module.css';
 
 

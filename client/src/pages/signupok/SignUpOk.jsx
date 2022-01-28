@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useSelector } from "react-redux";
 import styles from './SignUpOk.module.css'
 
@@ -16,8 +17,8 @@ const SignUpOk = () => {
                 <p>아이디 : <strong>{login_id || "미생성"}</strong></p>
             </div>
                 <div className={styles.btnBox}>
-                    <button className={styles.btn}>홈</button>
-                    <button className={styles.btn}>로그인</button>
+                    <Link to='/'><button className={styles.btn}>홈</button></Link>
+                    <Link to='/signin'><button className={styles.btn}>로그인</button></Link>
                 </div>
         </div>
     )

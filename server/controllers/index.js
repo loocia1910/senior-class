@@ -11,7 +11,7 @@ const validationCtrl = require('./validation');
 router.post('/signin', userCtrl.signIn);
 router.delete('/signout', userCtrl.signOut);
 router.post('/signup', userCtrl.signUp);
-router.delete('/withdrawal', userCtrl.withdrawal);
+router.delete('/withdrawal', userCtrl.withdrawal); // 회원탈퇴
 router.get('/auth/google', userCtrl.googleLogin);
 router.get('/auth/googleCallback', userCtrl.googleLogin);
 router.get('/auth/kakao', userCtrl.kakaoLogin);
@@ -48,8 +48,8 @@ router.get('/mypage/myclass', generalMypageCtrl.getAllMyClass);
 router.get('/mypage/myclass/:classId', generalMypageCtrl.getOneMyClass);
 router.get('/mypage/likelist', generalMypageCtrl.myLikelist);
 router.get('/mypage/reviewlist', generalMypageCtrl.myReviewlist);
-router.post('/mypage/authModify', generalMypageCtrl.auth);
-router.patch('/mypage/modify', generalMypageCtrl.modify);
+router.post('/mypage/authModify', generalMypageCtrl.auth); // 회원정보 수전 전 비밀번호 인증
+router.patch('/mypage/modify', generalMypageCtrl.modify); // 회원정보 수정
 
 // teacherMypage
 router.get('/:teacherId/product', teacherMypageCtrl.getMyOpendClassList);

@@ -4,7 +4,7 @@ import customAxios from '../../utils/customAxios';
 import { logOutForce } from '../userSlice';
 import { logOutMylikes } from '../likeSlice';
 
-
+// 회원가입
 export const signUpThunk = createAsyncThunk(
     'user/signUp',
     async ({ userState, navigate }, { dispatch, rejectWithValue }) => {
@@ -25,6 +25,7 @@ export const signUpThunk = createAsyncThunk(
     }
 );
 
+// 로그인
 const signInSuccess = async (res, navigate) => {
     /**
      * 로그인 성공 시
@@ -36,9 +37,8 @@ const signInSuccess = async (res, navigate) => {
     const { accessToken } = res.data;
     console.log('signInSuccess에 accessToken', accessToken);
     // API 요청마다 헤더에 accessToken 담아 보내도록 설정
-    customAxios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;// ??? 과연 모든 요청의 해더에 이 값이 있을까???
-}
-
+    customAxios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+};
 
 export const signInThunk = createAsyncThunk(
     'user/signIn',
@@ -64,6 +64,7 @@ export const signInThunk = createAsyncThunk(
     }
 );
 
+// refresh token으로 refresh token, access token 재발급 
 export const signInRefreshThunk = createAsyncThunk(
     'user/signInRefresh',
     async ({ loginData }, { dispatch, rejectWithValue }) => {
@@ -79,6 +80,7 @@ export const signInRefreshThunk = createAsyncThunk(
     }
 );
 
+// 로그아웃
 export const signOutThunk = createAsyncThunk(
     'user/signOut',
     async ({ navigate }, { dispatch, rejectWithValue }) => {
@@ -96,6 +98,7 @@ export const signOutThunk = createAsyncThunk(
     }
 );
 
+// 회원정보 수정 전: 비밀번호 인증
 export const authModifyThunk = createAsyncThunk(
     'user/authModify',
     async ({ navigate, loginInfo }, { rejectWithValue }) => {
@@ -109,6 +112,7 @@ export const authModifyThunk = createAsyncThunk(
     }
 );
 
+// 회원정보 수정
 export const modifyThunk = createAsyncThunk(
     'user/modify',
     async ({ formData }, { dispatch, rejectWithValue }) => {
@@ -121,12 +125,29 @@ export const modifyThunk = createAsyncThunk(
     }
 );
 
+// 회원탈퇴
+export const withdrawalThunk = createAsyncThunk(
+    'user/withdrawal',
+    async ({ }, { dispatch, rejectWithValue }) => {
+      try {
+        await customAxios.delete('/withdrawal');
+        dispatch(logOutMylikes());
+
+    } catch (err) {
+          dispatch(logOutForce());
+          return rejectWithValue(err);
+      }
+    }
+);
+
+// 닉네임 중복 확인
 export const serverValidateNickname = async (data) => {
     console.log('닉네임', data)
     const res = await customAxios.post('/validation/nickname', data);
     return res;
 }
 
+// 로그인 아이디 중복 확인
 export const serverValidateLoginId = async (data) => {
     const res = await customAxios.post('/validation/loginId', data);
     return res;

@@ -6,7 +6,8 @@ import {
   signOutThunk,
   signInRefreshThunk,
   authModifyThunk,
-  modifyThunk  
+  modifyThunk,
+  withdrawalThunk  
 } from './api/userApi'
 
 
@@ -48,13 +49,12 @@ const userSlice = createSlice({
         state.login_id = action.payload.data.login_id;
         return state;
       }) 
-      // .addCase(signUpThunk.rejected, (state, action) => {
-      //   state.error = action.error.message;
-      //   return state;
-      // })
+      .addCase(signUpThunk.rejected, (state, action) => {
+        state.error = action.error.message;
+        return state;
+      })
       .addCase(signInThunk.fulfilled, (state, action) => {
         const {id, name, login_id, nickname, profile_url, is_teacher, info} = action.payload.data.userInfo
-        console.log('./userSlice 유저아이디 ???', id);
         state.user_id = id;
         state.name = name;
         state.login_id = login_id;
@@ -84,7 +84,6 @@ const userSlice = createSlice({
       })
       .addCase(signInRefreshThunk.fulfilled, (state, action) => {
         const {name, login_id, nickname, profile_url, is_teacher, info} = action.payload.data.userInfo
-        console.log('userslice에 signInRefreshThunk action.payload--->', action.payload)
         state.name = name;
         state.login_id = login_id;
         state.nickname = nickname;
@@ -107,6 +106,21 @@ const userSlice = createSlice({
         state.nickname = action.payload
         return state;
       })
+      .addCase(withdrawalThunk.fulfilled, (state, action) => {
+        state.user_id = null;
+        state.name = '';
+        state.login_id = '';
+        state.nickname = '';
+        state.profile_url = '';
+        state.is_teacher = false;
+        state.info = '';
+        state.is_login = false;
+        state.isAuthorized = false;
+        return state;
+      })
+      .addDefaultCase((state) => {
+        return state;
+      });
   }
 })
 
