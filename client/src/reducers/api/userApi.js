@@ -1,4 +1,4 @@
-import axios from 'axios';
+
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import customAxios from '../../utils/customAxios';
 import { logOutForce } from '../userSlice';
@@ -49,7 +49,7 @@ export const signInThunk = createAsyncThunk(
             navigate('/');
 
             const JWT_EXPIRRY_TIME = 1000 * 3600 * 24 // accessToken 만료시간:24시간
-            setTimeout(dispatch(signInRefreshThunk({  })).unwrap(), JWT_EXPIRRY_TIME - 60000)
+            setTimeout(dispatch(signInRefreshThunk({ loginData })).unwrap(), JWT_EXPIRRY_TIME - 60000)
             return res;
             
             // await.Promise.all([
@@ -66,7 +66,7 @@ export const signInThunk = createAsyncThunk(
 
 export const signInRefreshThunk = createAsyncThunk(
     'user/signInRefresh',
-    async ({  }, { dispatch, rejectWithValue }) => {
+    async ({ loginData }, { dispatch, rejectWithValue }) => {
         try {
             // accessToken과 refreshToken을 재발급 받는다
             const res = await customAxios.get('/silentRefresh');
@@ -91,6 +91,31 @@ export const signOutThunk = createAsyncThunk(
         return res;
       } catch (err) {
           dispatch(logOutForce());
+          return rejectWithValue(err);
+      }
+    }
+);
+
+export const authModifyThunk = createAsyncThunk(
+    'user/authModify',
+    async ({ navigate, loginInfo }, { rejectWithValue }) => {
+      try {
+        const res = await customAxios.post('/mypage/authModify', loginInfo);
+        navigate('/mypage/modify');
+        return res;
+      } catch (err) {
+          return rejectWithValue(err);
+      }
+    }
+);
+
+export const modifyThunk = createAsyncThunk(
+    'user/modify',
+    async ({ formData }, { dispatch, rejectWithValue }) => {
+      try {
+        const res = await customAxios.patch('/mypage/modify', formData);
+        return res.data.nickname;
+      } catch (err) {
           return rejectWithValue(err);
       }
     }

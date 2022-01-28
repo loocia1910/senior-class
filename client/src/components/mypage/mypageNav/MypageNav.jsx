@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
 import { useSelector} from 'react-redux';
+import {AiTwotoneSetting } from 'react-icons/ai'
 import styles from './MypageNav.module.css';
 
 const MypageNav = () => {
-    const nickname = useSelector((state) => state.user.nickname);
+    const { nickname, isAuthorized } = useSelector((state) => state.user);
 
     return (
         <section className={styles.container}>
@@ -11,6 +12,7 @@ const MypageNav = () => {
                 <nav>
                     <div className={styles.profile}>
                         <img src="" alt="프로필 이미지" />
+                        {isAuthorized ? <AiTwotoneSetting className={styles.profileBtn} /> :''}
                         <p className={styles.nickname}>{nickname}님</p>
                     </div>
                     <div className={styles.classNav}>

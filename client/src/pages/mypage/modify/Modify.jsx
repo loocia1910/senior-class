@@ -1,15 +1,15 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import styles from './Modify.module.css';
+import { modifyThunk } from '../../../reducers/api/userApi';
 import customAxios from '../../../utils/customAxios';
 import { 
     regExpPassword, 
     isMatchPassword,
     regExpNickname,
 } from '../../../utils/validations';
-import { 
-    serverValidateNickname,
-} from '../../../reducers/api/userApi'
+import { serverValidateNickname} from '../../../reducers/api/userApi';
+import AlarmModal from '../../../components/common/modal/alarmModal/AlarmModal'; 
 
 
 const Modify = () => {
@@ -112,6 +112,15 @@ const Modify = () => {
         }
     }
 
+    // 모달 상태 관리 modalMsg
+    const [ isModalOpen, setIsModalOpen ] = useState(true); 
+    const [ modalMsg, setModalMsg] = useState(''); 
+    const handleModalOpen = () => {
+        setIsModalOpen(!isModalOpen);
+    };
+
+    // 회원 정보 수정 버튼
+    const dispatch = useDispatch();
     const onClickModify = async () => {
 
         try {
@@ -122,29 +131,25 @@ const Modify = () => {
                 return;
             }
 
-            const res = await customAxios({
-                method: 'patch',
-                url: '/mypage/modify',
-                data: { login_id, nickname, password },
-                headers: {
-                    'Content-Type' : 'application/json'
-                }
-            });
-
-            if(res.status === 200) {
-                console.log('비밀번호 변경 성공');
-                // ??? 모달 띄우기
-            }
-
+            let formData = { login_id, nickname, password }
+            await dispatch(modifyThunk({ formData })).unwrap();
+            
+            setIsModalOpen(true);
+            setModalMsg("회원정보가\n성공적으로 변경되었습니다.")
+            
         } catch (err) {
             console.log('errrrrrrrrrrr---------', err)
             throw err
         }
     }
 
+
+    // 회원탈퇴 관련
+    const [ isWithDrawal, setIsWithDrawal ] = useState(false);
+
     return (
         <section className={styles.container}>
-            <form className={styles.wrapper} onSubmit={onClickModify}>
+            <form className={styles.wrapper} >
                 <h2>회원정보 수정</h2>
                 <div className={styles.inputBox}>
                     <label>아이디</label>
@@ -197,10 +202,16 @@ const Modify = () => {
                     {/* {isLoginErr ?
                       <p className={styles.errMsg}>비밀번호가 잘못 입력 되었습니다. 비밀번호를 정확히 입력해 주세요.</p> :
                       null } */}
-                    <button type="submit" className={`${styles.btn} ${styles.wd_460}`}>회원정보 수정</button>
+                    <button type="button"  onClick={onClickModify} className={`${styles.btn} ${styles.wd_460}`}>회원정보 수정</button>
                 </div>        
             </form>
-            <button>회원탈퇴</button>
+            <button className={styles.withDrawal}>회원탈퇴</button>
+            {/* {isModalOpen ? 
+            <AlarmModal 
+              msg={modalMsg}
+              handleModalOpen={handleModalOpen}
+            /> :
+            null} */}
         </section>
     )
 }

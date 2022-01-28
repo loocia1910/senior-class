@@ -4,7 +4,10 @@ const bcrypt = require('bcrypt');
 module.exports = {
     modify: async (req, res) => {
         try {
+            // return;
+            console.log('modify/req.body =====-----', req.body);
             const { login_id, nickname, password } = req.body;
+            console.log('modify/req.body =====-----login_idlogin_id', login_id);
             const db_user = await User.findOne({ where: { login_id } });
             
             if(nickname === '' && password === '') {
@@ -14,7 +17,6 @@ module.exports = {
             if(nickname) {
                 await db_user.update({ nickname });
                 await db_user.save();
-                console.log('modify/db_user 닉네임 변경', db_user)
             }
 
             // 비밀번호 변경
@@ -27,11 +29,10 @@ module.exports = {
                         if(err) { throw err }
                         await db_user.update({ password: hash });
                         await db_user.save();
-                        console.log('modify/db_user 비밀번호 변경', db_user)
                 });
             }
                 
-            return res.status(200).send('The user info has been succefully changed.');;                
+            return res.status(200).send({ nickname });                
 
         } catch (err) {
             throw err;

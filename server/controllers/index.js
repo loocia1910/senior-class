@@ -48,7 +48,7 @@ router.get('/mypage/myclass', generalMypageCtrl.getAllMyClass);
 router.get('/mypage/myclass/:classId', generalMypageCtrl.getOneMyClass);
 router.get('/mypage/likelist', generalMypageCtrl.myLikelist);
 router.get('/mypage/reviewlist', generalMypageCtrl.myReviewlist);
-router.post('/mypage/auth/modify', generalMypageCtrl.auth);
+router.post('/mypage/authModify', generalMypageCtrl.auth);
 router.patch('/mypage/modify', generalMypageCtrl.modify);
 
 // teacherMypage

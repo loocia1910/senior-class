@@ -1,6 +1,7 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import customAxios from '../../../utils/customAxios';
+import { authModifyThunk } from '../../../reducers/api/userApi'
 import styles from './AuthModify.module.css';
 
 const ModifyBefore = () => {
@@ -16,6 +17,8 @@ const ModifyBefore = () => {
 
     const [ isLoginErr, setIsErr ] = useState(false);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+
     const onClickModify = async (e) => {
         e.preventDefault();
         setIsErr(false);
@@ -27,22 +30,7 @@ const ModifyBefore = () => {
                 return;
             }
 
-            const res = await customAxios({
-                method: 'post',
-                url: '/mypage/auth/modify',
-                data: loginInfo,
-                headers: {
-                    'Content-Type' : 'application/json'
-                }
-            });
-
-            if(res.status === 200) {
-                setIsErr(false);
-                navigate('/mypage/modify');
-                return;
-            } 
-
-            setIsErr(true);
+            await dispatch(authModifyThunk({ navigate, loginInfo })).unwrap();
 
         } catch (err) {
             console.log(err);

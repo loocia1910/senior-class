@@ -4,7 +4,9 @@ import {
   signUpThunk,
   signInThunk,
   signOutThunk,
-  signInRefreshThunk  
+  signInRefreshThunk,
+  authModifyThunk,
+  modifyThunk  
 } from './api/userApi'
 
 
@@ -18,6 +20,7 @@ let initialState = {
   info: '',
   profile_url: '',
   error: null,
+  isAuthorized: false,
 }
 
 const userSlice = createSlice({
@@ -34,6 +37,7 @@ const userSlice = createSlice({
       state.is_teacher = false;
       state.info = '';
       state.is_login = false;
+      state.isAuthorized = false;
       return state;
     }
   },
@@ -44,10 +48,10 @@ const userSlice = createSlice({
         state.login_id = action.payload.data.login_id;
         return state;
       }) 
-      .addCase(signUpThunk.rejected, (state, action) => {
-        state.error = action.error.message;
-        return state;
-      })
+      // .addCase(signUpThunk.rejected, (state, action) => {
+      //   state.error = action.error.message;
+      //   return state;
+      // })
       .addCase(signInThunk.fulfilled, (state, action) => {
         const {id, name, login_id, nickname, profile_url, is_teacher, info} = action.payload.data.userInfo
         console.log('./userSlice 유저아이디 ???', id);
@@ -59,6 +63,7 @@ const userSlice = createSlice({
         state.is_teacher = is_teacher;
         state.info = info;
         state.is_login = true;
+        state.isAuthorized = false;
         return state;
       })
       .addCase(signInThunk.rejected, (state, action) => {
@@ -74,7 +79,7 @@ const userSlice = createSlice({
         state.is_teacher = false;
         state.info = '';
         state.is_login = false;
-        console.log('signout 상태========', state)
+        state.isAuthorized = false;
         return state;
       })
       .addCase(signInRefreshThunk.fulfilled, (state, action) => {
@@ -87,10 +92,19 @@ const userSlice = createSlice({
         state.is_teacher = is_teacher;
         state.info = info;
         state.is_login = true;
+        state.isAuthorized = false;
         return state;
       })
       .addCase(signInRefreshThunk.rejected, (state, action) => {
         state.error = action.error.message
+        return state;
+      })
+      .addCase(authModifyThunk.fulfilled, (state, action) => {
+        state.isAuthorized = true;
+        return state;
+      })
+      .addCase(modifyThunk.fulfilled, (state, action) => {
+        state.nickname = action.payload
         return state;
       })
   }
