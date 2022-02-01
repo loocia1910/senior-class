@@ -5,4 +5,5 @@ module.exports = {
     myReviewlist: require('./myReviewlist').myReviewlist,
     auth: require('./auth').auth,
     modify: require('./modify').modify,
+    profile: require('./profile').profile,
 }

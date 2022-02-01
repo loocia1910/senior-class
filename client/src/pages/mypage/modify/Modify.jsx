@@ -2,7 +2,11 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import styles from './Modify.module.css';
-import { modifyThunk, withdrawalThunk} from '../../../reducers/api/userApi';
+import { 
+    modifyThunk,
+    withdrawalThunk,
+    profileImgThunk
+} from '../../../reducers/api/userApi';
 import { 
     regExpPassword, 
     isMatchPassword,
@@ -188,15 +192,50 @@ const Modify = () => {
         }
     };
 
+    // 프로필 이미지 변경
+    const [ profileImg, setProfileImg ] = useState()
+
+    const uploadProfile = async (e) => {
+        const profile = e.target.files[0];
+        setProfileImg(profile);
+    }
+    
+    const profileSubmit = async (e) => {
+        e.preventDefault();
+        // 서버 '/profile'로 요청을 보낸다.
+        // formidable로 파일을 받아 임시저장
+        // aws에 저장
+        // 저장된 url DB에 저장
+        // 저장된 url을 리턴한다
+        // user slice에서 응답으로 받은 url을 새로 저장
+        try {
+            console.log('profileImg', profileImg);
+            const formData = new FormData();
+            formData.append('profile', profileImg);
+            formData.append('login_id', login_id);
+            await dispatch(profileImgThunk({ formData }));
+            window.location.reload();
+        } catch (err) {
+            throw err;
+        }
+    }
+
 
     return (
         <section className={styles.container}>
+            <h2>회원정보 수정</h2>
+            <div className={styles.inputBox}>
+                <label>아이디</label>
+                <strong>{login_id}</strong>
+            </div>
+            <form className={styles.inputBox} onSubmit={profileSubmit}>
+                <label >프로필 이미지 변경</label>
+                <label htmlFor='imgFile' className={styles.profileLabel}>파일선택</label>
+                <input type='file' name='userfile' id='imgFile' accept='image/*' onChange={e => uploadProfile(e)} className={styles.fileInput} />
+                <label htmlFor='submitBtn' className={styles.profileLabel}>변경하기</label>
+                <input id='submitBtn' type="submit" className={styles.profileSubmit}/>
+            </form>             
             <form className={styles.wrapper} >
-                <h2>회원정보 수정</h2>
-                <div className={styles.inputBox}>
-                    <label>아이디</label>
-                    <strong>{login_id}</strong>
-                </div>             
                 <div className={styles.inputBox}>
                     <label htmlFor="nickname">닉네임</label>
                     <input

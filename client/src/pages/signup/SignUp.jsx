@@ -12,7 +12,6 @@ import { signUpThunk,
          serverValidateNickname,
          serverValidateLoginId 
 } from '../../reducers/api/userApi'
-import { AlarmModal } from '../../components/common/modal/alarmModal/AlarmModal';
 import styles from './SignUp.module.css';
 
 
@@ -49,7 +48,7 @@ const SignUp = () => {
         birth: '',
         gender: '성별'
     });
-    const { login_id, password, repassword, nickname, name, birth, gender} = userState;
+    const { login_id, password, repassword, nickname, name,  gender} = userState;
     const { yy, mm, dd } = birthState;
     // 입력값 상태 메시지
     const [ totalMag, setTotalMsg ] = useState('');

@@ -1,18 +1,23 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector} from 'react-redux';
-import {AiTwotoneSetting } from 'react-icons/ai'
 import styles from './MypageNav.module.css';
 
 const MypageNav = () => {
-    const { nickname, isAuthorized } = useSelector((state) => state.user);
-
+    const { nickname,  profile_url } = useSelector((state) => state.user);
+    const [ img, setImg ] = useState(profile_url);
+    if(!img) {
+        setImg('/img/user/default.jpg')
+    }
+    
     return (
         <section className={styles.container}>
             <div className={styles.wrapper}>
                 <nav>
                     <div className={styles.profile}>
-                        <img src="" alt="프로필 이미지" />
-                        {isAuthorized ? <AiTwotoneSetting className={styles.profileBtn} /> :''}
+                        <label htmlFor='imgFile' className={styles.profileBox}>
+                            <img src={img} alt='프로필 이미지' />
+                        </label>
                         <p className={styles.nickname}>{nickname}님</p>
                     </div>
                     <div className={styles.classNav}>

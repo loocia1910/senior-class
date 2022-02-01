@@ -7,6 +7,7 @@ import {
   signInRefreshThunk,
   authModifyThunk,
   modifyThunk,
+  profileImgThunk,
   withdrawalThunk  
 } from './api/userApi'
 
@@ -103,7 +104,12 @@ const userSlice = createSlice({
         return state;
       })
       .addCase(modifyThunk.fulfilled, (state, action) => {
-        state.nickname = action.payload
+        state.nickname = action.payload 
+        return state;
+      })
+      .addCase(profileImgThunk.fulfilled, (state, action) => {
+        console.log('userSlice/action.payload profileImgThunk', action.payload)
+        state.profile_url = action.payload 
         return state;
       })
       .addCase(withdrawalThunk.fulfilled, (state, action) => {

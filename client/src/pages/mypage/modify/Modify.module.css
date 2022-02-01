@@ -14,7 +14,8 @@
 }
 
 .inputBox {
-    margin: 0 0 2.2rem;
+    margin: 2rem 0 2.6rem;
+    display: block;
 }
 
 .input {
@@ -26,7 +27,7 @@
 }
 
 .repassword {
-  margin: 1rem 0 0;
+  margin: 2rem 0 0;
 }
 
 .btn {
@@ -66,4 +67,31 @@
 
 .withDrawal:hover {
     text-decoration: underline;
+}
+
+input[type=file]::file-selector-button {
+    display: none;
+}
+
+input[type=file] {
+    /* border: 1px solid #eee; */
+}
+
+.profileLabel {
+    display: inline-block;
+    background-color: #ddd;
+    padding: .6rem .4rem;
+    margin: .4rem 0 0;
+    border-radius: .2rem;
+}
+
+.fileInput {
+    padding: .6rem;
+    margin: 0 2rem 0 .6rem;
+    background-color: #fafafa;
+    border: 1px solid #ddd;
+}
+
+.profileSubmit {
+    display: none;
 }

@@ -125,10 +125,24 @@ export const modifyThunk = createAsyncThunk(
     }
 );
 
+// 프로필 이미지 수정
+export const profileImgThunk = createAsyncThunk(
+    'user/profile',
+    async ({ formData }, { dispatch, rejectWithValue }) => {
+      try {
+          const res = await customAxios.post('/mypage/profile', formData);
+          console.log('userApi res.data.profile_url', res.data.profile_url);
+        return res.data.profile_url;
+      } catch (err) {
+          return rejectWithValue(err);
+      }
+    }
+);
+
 // 회원탈퇴
 export const withdrawalThunk = createAsyncThunk(
     'user/withdrawal',
-    async ({ }, { dispatch, rejectWithValue }) => {
+    async ({ a }, { dispatch, rejectWithValue }) => {
       try {
         await customAxios.delete('/withdrawal');
         dispatch(logOutMylikes());

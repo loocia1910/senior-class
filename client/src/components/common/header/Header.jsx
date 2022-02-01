@@ -17,7 +17,7 @@ const Header = () => {
         setIsOpen(!isOpen);
     }
     const userInfo = useSelector((state) => state.user);
-    const { nickname, is_login } = userInfo;
+    const { nickname, is_login, profile_url } = userInfo;
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -92,7 +92,7 @@ const Header = () => {
                            <div className={styles.joinUser}>
                                <p><strong>{nickname}</strong>님</p>
                                <div className={styles.userImgBox}>
-                                   <div className={styles.userImg}><img alt='프로필 사진'/></div>
+                                   <div className={styles.userImg}><img src={profile_url} alt='프로필 사진'/></div>
                                </div>
                             </div>
                         }

@@ -50,6 +50,7 @@ router.get('/mypage/likelist', generalMypageCtrl.myLikelist);
 router.get('/mypage/reviewlist', generalMypageCtrl.myReviewlist);
 router.post('/mypage/authModify', generalMypageCtrl.auth); // 회원정보 수전 전 비밀번호 인증
 router.patch('/mypage/modify', generalMypageCtrl.modify); // 회원정보 수정
+router.post('/mypage/profile', generalMypageCtrl.profile);
 
 // teacherMypage
 router.get('/:teacherId/product', teacherMypageCtrl.getMyOpendClassList);

@@ -1,5 +1,5 @@
 @value WrapperSize from '../../../commonCss/index.css';
-@value FontWeightMid from '../../../commonCss/index.css';
+@value FontWeightBold from '../../../commonCss/index.css';
 @value BrandColor from '../../../commonCss/index.css';
 
 .container {
@@ -8,31 +8,25 @@
 
 .profile {
  text-align: center;
- position: relative;
 }
 
-.profileBtn {
-    width: 36px;
-    height: 36px;
-    position: absolute;
-    right: 10%;
-    bottom: 20%;
-    padding: .4rem;
-    box-sizing: content-box;
-    border-radius: 50%;
-    background-color: #eee;
+.profileBox {
+    width: 150px;
+    height: 150px;
+    margin:0 auto;
 }
 
 .profile img{
-    display: inline-block;
-    width: 150px;
-    height: 150px;
+    width: 100%;
+    height: 100%;
     border-radius: 50%;
-    background-color: #eee;
+    border: 2px solid #eee;
 }
 
 .nickname {
-    font-weight: FontWeightMid;
+    font-size: 18px;
+    font-weight: FontWeightBold;
+    margin:  .4rem 0 0;
 }
 
 .wrapper nav {

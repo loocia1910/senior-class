@@ -193,6 +193,11 @@ header {
   height: 48px;
   position:absolute;
   top: -18px;
-  border-radius: 50%;
   background-color: blanchedalmond;
+}
+
+.userImg img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
 }

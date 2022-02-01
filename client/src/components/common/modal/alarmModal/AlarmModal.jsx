@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { BsFillCheckCircleFill } from 'react-icons/bs'
 import styles from './AlarmModal.module.css';
 
