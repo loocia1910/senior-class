@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
 import { useSelector} from 'react-redux';
+import CustomLink from '../../common/customLink/CustomLink';
 import styles from './MypageNav.module.css';
 
 const MypageNav = () => {
@@ -24,18 +24,18 @@ const MypageNav = () => {
                     </div>
                     <div className={styles.classNav}>
                         <h2>클래스</h2>
-                        <Link to='/mypage'>
+                        <CustomLink to='/mypage'>
                             <p className={styles.NavMenu}>나의 찜</p>
-                        </Link>
-                        <Link to='/mypage/myclass'>
+                        </CustomLink>
+                        <CustomLink to='/mypage/myclass'>
                             <p className={styles.NavMenu}>나의 클래스</p>
-                        </Link>
+                        </CustomLink>
                     </div>
                     <div className={styles.myinfoNav}>
                         <h2>회원정보</h2>
-                        <Link to='/mypage/auth_modify'>
+                        <CustomLink to='/mypage/auth_modify'>
                             <p className={styles.NavMenu}>회원정보 수정</p>
-                        </Link>
+                        </CustomLink>
                     </div>
                 </nav>
             </div>

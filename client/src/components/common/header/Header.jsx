@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { NavLink, Link, useNavigate } from 'react-router-dom';
 import { BsSearch } from 'react-icons/bs';
 import { BsPlayBtn } from 'react-icons/bs';
 import { AiOutlineUser } from 'react-icons/ai';
 import { AiOutlineHeart } from 'react-icons/ai';
 import { signOutThunk } from '../../../reducers/api/userApi'
 import ContactModal from '../modal/ContactModal';
+import CustomLink from '../customLink/CustomLink';
 import styles from './Header.module.css';
 
 
@@ -29,6 +30,14 @@ const Header = () => {
             throw err;
         }
     };
+
+    const activeStyle = ({ isActive }) => {
+        return {
+            // display: "block",
+            // margin: "1rem 0",
+            color: isActive ? "red" : ""            
+        }
+    }
     
 
     return (
@@ -75,10 +84,11 @@ const Header = () => {
                 </div>
                 <nav className={`${styles.relative} ${styles.nav}`}>
                     <ul className={`${styles.classMenuBox} ${styles.flex}`}>
-                        <li className={styles.classMenu}>온라인 클래스</li>
-                        <li className={styles.classMenu}>오프라인 클래스</li>
-                        <li className={styles.classMenu}>신규 클래스</li>
-                        <li className={styles.classMenu}>무료 클래스</li>&nbsp;&nbsp;&nbsp;<span>|</span>&nbsp;&nbsp;&nbsp;
+                        <li className={styles.classMenu}><CustomLink to='class'>온라인 클래스</CustomLink></li>
+                        <li className={styles.classMenu}><CustomLink to='class/offline'>오프라인 클래스</CustomLink></li>
+                        <li className={styles.classMenu}><CustomLink to='class/latest'>신규 클래스</CustomLink></li>
+                        <li className={styles.classMenu}><CustomLink to='class/free'>무료 클래스</CustomLink></li>
+                        &nbsp;&nbsp;&nbsp;<span>|</span>&nbsp;&nbsp;&nbsp;
                         <li className={styles.applyTeacher}><Link to='teacher/apply'>강사지원하기</Link></li>
                     </ul>
                     <div className={`${styles.joinBox} ${styles.absolute}`}>
