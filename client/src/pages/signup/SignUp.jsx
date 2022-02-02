@@ -234,8 +234,7 @@ const SignUp = () => {
               !isPwdAccepted ||
               !isRePwdAccepted ||
               !isNnameAccepted ||
-              nameMsg.length < 0 ||
-              validBirthMsg.length < 0 
+              nameMsg.length < 0 
           ) { 
             setTotalMsg('입력란을 확인 해주세요.'); 
             return;

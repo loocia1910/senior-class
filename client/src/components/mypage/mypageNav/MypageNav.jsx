@@ -1,15 +1,17 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector} from 'react-redux';
 import styles from './MypageNav.module.css';
 
 const MypageNav = () => {
+    
     const { nickname,  profile_url } = useSelector((state) => state.user);
     const [ img, setImg ] = useState(profile_url);
     if(!img) {
-        setImg('/img/user/default.jpg')
-    }
-    
+            setImg('/img/user/default.jpg')
+        }
+
+
     return (
         <section className={styles.container}>
             <div className={styles.wrapper}>
@@ -22,11 +24,11 @@ const MypageNav = () => {
                     </div>
                     <div className={styles.classNav}>
                         <h2>클래스</h2>
-                        <Link to='/mypage/wish'>
+                        <Link to='/mypage'>
                             <p className={styles.NavMenu}>나의 찜</p>
                         </Link>
-                        <Link to='/mypage/review'>
-                            <p className={styles.NavMenu}>나의 후기</p>
+                        <Link to='/mypage/myclass'>
+                            <p className={styles.NavMenu}>나의 클래스</p>
                         </Link>
                     </div>
                     <div className={styles.myinfoNav}>

@@ -79,7 +79,7 @@ const Header = () => {
                         <li className={styles.classMenu}>오프라인 클래스</li>
                         <li className={styles.classMenu}>신규 클래스</li>
                         <li className={styles.classMenu}>무료 클래스</li>&nbsp;&nbsp;&nbsp;<span>|</span>&nbsp;&nbsp;&nbsp;
-                        <li className={styles.applyTeacher}>강사지원하기</li>
+                        <li className={styles.applyTeacher}><Link to='teacher/apply'>강사지원하기</Link></li>
                     </ul>
                     <div className={`${styles.joinBox} ${styles.absolute}`}>
                         { 

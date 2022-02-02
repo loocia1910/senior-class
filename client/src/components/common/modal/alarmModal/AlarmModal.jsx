@@ -9,7 +9,7 @@ const AlarmModal = ({ msg1, msg2, btnNeed, handleCloseModal, requestWithDrawal})
           <div className={styles.closeBtn} onClick={handleCloseModal}/>
           <div className={styles.containerInner}>
             <BsFillCheckCircleFill className={styles.checkIcon}/>
-            <p className={styles.msg}>{ msg2.length > 0 ? msg2 : msg1}</p>
+            <p className={styles.msg}>{ !!msg2? msg2 : msg1}</p>
             { 
               btnNeed ?
               <div>

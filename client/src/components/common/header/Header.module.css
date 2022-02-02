@@ -62,7 +62,6 @@ header {
 }
 
 .logoBox {
-  background-color: bisque;
   padding: .8rem;
 }
 
@@ -193,7 +192,6 @@ header {
   height: 48px;
   position:absolute;
   top: -18px;
-  background-color: blanchedalmond;
 }
 
 .userImg img {

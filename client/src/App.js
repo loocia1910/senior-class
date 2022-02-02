@@ -5,6 +5,7 @@ import Landing from './pages/landing/Landing';
 import SignIn from './pages/signin/SignIn';
 import SignUp from './pages/signup/SignUp';
 import SignUpOk from './pages/signupok/SignUpOk';
+import TeacherApply from './pages/teacherApply/TeacherApply';
 import Mypage from './pages/mypage';
 import ClassLike from './pages/mypage/classLikeList/ClassLikeList';
 import MyReview from './pages/mypage/myReviewList/MyReviewList';
@@ -23,13 +24,13 @@ function App() {
         <Route path='signin' element={<SignIn />} />
         <Route path='signup' element={<SignUp />} />
         <Route path='signup_ok' element={<SignUpOk/>}/>
+        <Route path='teacher/apply' element={<TeacherApply/>}/>
         <Route path='mypage' element={<Mypage/>}>
-          <Route path='wish' index element={<ClassLike />}/>
-          <Route path='review' element={<MyReview />}/>
+          <Route index element={<ClassLike />}/>
           <Route path='auth_modify' element={<AuthModify />}/>
           <Route path='modify' element={<Modify />}/>
+          <Route path='myclass' element={<MyClass />}/>
         </Route>
-        <Route path='myclass' element={<MyClass />}/>
       </Routes>
       <Footer/>
     </>
