@@ -1,29 +1,121 @@
-import { useState, useRef, useEffect } from 'react';
-import { Route} from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import {  Outlet, useOutletContext } from 'react-router';
+import { useState, useEffect } from 'react';
+import { useParams ,Outlet } from 'react-router-dom';
+import ClassCard from '../../../components/class/classCard/ClassCard';
+import ClassMenuNav from '../../../components/class/classMenu/ClassMenuNav';
 import styles from './ClassList.module.css';
 
 export const ClassListWrap = () => {
-    const [ category, setCatgory] = useState(''); // 클래스 리스트에서 클릭하면 해당 category 명이 바뀜
+
     return (
         <div className={styles.container}>
             <div className={styles.wrapper}>
-                클래스 리스트 전체
-                {/* 클래스 리스트 Nav */}
-                <Outlet context={[category]}/>
+                <section >
+                    <ClassMenuNav />
+                </section>
+                <section >
+                    <Outlet />
+                </section>
             </div>
         </div>
     )
 }
 
-export const ClassList = ({ arg }) => {
-    const [ category ] = useOutletContext();
+export const ClassList = () => {
+    
+    const params = useParams();
+    const { type, category } = params;
+    const [ _type, setType ] = useState(type);
+
+
+    useEffect(() => {
+        console.log('type', type)
+        if(type === 'online') {
+            setType('온라인');
+            return;
+        } else if (type === 'offline') {
+            setType('오프라인')
+            return;
+        } else if (type === 'latest') {
+            setType('신규')
+            return;
+        } else if (type === 'free'){
+            setType('무료')
+            return;
+        }
+
+    }, [type])
+    
+
     return (
         <div className={styles.listContainer}>
-            <span>{category} 카테고리</span>
-            <h2>{arg} 클래스</h2>
+            <span>{_type} 클래스</span>
+            <h2>{category || '전체보기'}</h2>
+            <div className={styles.classCardBox}>
+                {data.map((c,idx) =>
+                <div className={styles.card}>
+                    <ClassCard
+                        key={idx}
+                        teacherName={c.teacherName}
+                        cName={c.className}
+                        price={c.price}
+                        discount={c.discount}
+                    />
+                </div>
+                )}
+          </div>
         </div>
     )
 }
 
+
+    const data = [
+      {
+        teacherName : '강사명',
+        className : '클래스명',
+        price : '22,000',
+        discount: '15'
+      },
+      {
+        teacherName : '강사명',
+        className : '클래스명',
+        price : '22,000',
+        discount: '15'
+      },
+      {
+        teacherName : '강사명',
+        className : '클래스명',
+        price : '22,000',
+        discount: '15'
+      },
+      {
+        teacherName : '강사명',
+        className : '클래스명',
+        price : '22,000',
+        discount: '15'
+      },
+      {
+        teacherName : '강사명',
+        className : '클래스명',
+        price : '22,000',
+        discount: '15'
+      },
+      {
+        teacherName : '강사명',
+        className : '클래스명',
+        price : '22,000',
+        discount: '15'
+      },
+      {
+        teacherName : '강사명',
+        className : '클래스명',
+        price : '22,000',
+        discount: '15'
+      },
+      {
+        teacherName : '강사명',
+        className : '클래스명',
+        price : '22,000',
+        discount: '15'
+      },
+    ]
+    

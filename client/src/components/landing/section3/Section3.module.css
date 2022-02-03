@@ -25,7 +25,15 @@
    text-decoration: underline;
 }
 
-.classCard {
+.classCardBox {
     display: flex;
     flex-wrap: wrap;
+}
+
+.card {
+    width: 23%;
+}
+
+.card:not(:nth-child(4n)){
+    margin-right: 1.3rem;
 }

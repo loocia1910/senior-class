@@ -4,11 +4,11 @@ export const categorys = [
       img: '/img/category/career.png'
     },
     {
-      name: '운동/건강',
+      name: '운동&건강',
       img: '/img/category/workout.png'
     },
     {
-      name: '음료/요리',
+      name: '음료&요리',
       img: '/img/category/cooking.png'
     },
     {
@@ -24,7 +24,7 @@ export const categorys = [
       img: '/img/category/music.png'
     },
     {
-      name: '사진/영상',
+      name: '사진&영상',
       img: '/img/category/picture.png'
     },
     {

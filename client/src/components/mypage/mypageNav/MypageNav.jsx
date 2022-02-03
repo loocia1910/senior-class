@@ -24,18 +24,24 @@ const MypageNav = () => {
                     </div>
                     <div className={styles.classNav}>
                         <h2>클래스</h2>
-                        <CustomLink to='/mypage'>
-                            <p className={styles.NavMenu}>나의 찜</p>
-                        </CustomLink>
-                        <CustomLink to='/mypage/myclass'>
-                            <p className={styles.NavMenu}>나의 클래스</p>
-                        </CustomLink>
+                         <p className={styles.NavMenu}>
+                            <CustomLink to='/mypage'>
+                            나의 찜
+                            </CustomLink>
+                        </p>
+                        <p className={styles.NavMenu}>
+                            <CustomLink to='/mypage/myclass'>
+                              나의 클래스    
+                            </CustomLink>
+                        </p>
                     </div>
                     <div className={styles.myinfoNav}>
                         <h2>회원정보</h2>
-                        <CustomLink to='/mypage/auth_modify'>
-                            <p className={styles.NavMenu}>회원정보 수정</p>
-                        </CustomLink>
+                        <p className={styles.NavMenu}>
+                            <CustomLink to='/mypage/auth_modify'>
+                                회원정보 수정
+                            </CustomLink>
+                        </p>
                     </div>
                 </nav>
             </div>

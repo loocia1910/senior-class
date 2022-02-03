@@ -66,16 +66,18 @@ const Section5 = () => {
       <section className={styles.wrapper}>
       <h2 className={styles.title}>오프라인 추천 클래스</h2>
       <span className={styles.moreClass}>오프라인 클래스 더보기 + </span>
-          <div className={styles.classCard}>
+          <div className={styles.classCardBox}>
             {data.map((c, idx) =>
-              <ClassCard
-                key={idx}
-                teacherName={c.teacherName}
-                className={c.className}
-                price={c.price}
-                discount={c.discount}
-                region={c.region}
-              />
+              <div className={styles.card}>
+                <ClassCard
+                  key={idx}
+                  teacherName={c.teacherName}
+                  cName={c.className}
+                  price={c.price}
+                  discount={c.discount}
+                  region={c.region}
+                />
+              </div>
             )}
           </div>
       </section>

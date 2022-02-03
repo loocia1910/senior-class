@@ -84,12 +84,12 @@ const Header = () => {
                 </div>
                 <nav className={`${styles.relative} ${styles.nav}`}>
                     <ul className={`${styles.classMenuBox} ${styles.flex}`}>
-                        <li className={styles.classMenu}><CustomLink to='class'>온라인 클래스</CustomLink></li>
+                        <li className={styles.classMenu}><CustomLink to='class/online'>온라인 클래스</CustomLink></li>
                         <li className={styles.classMenu}><CustomLink to='class/offline'>오프라인 클래스</CustomLink></li>
                         <li className={styles.classMenu}><CustomLink to='class/latest'>신규 클래스</CustomLink></li>
                         <li className={styles.classMenu}><CustomLink to='class/free'>무료 클래스</CustomLink></li>
                         &nbsp;&nbsp;&nbsp;<span>|</span>&nbsp;&nbsp;&nbsp;
-                        <li className={styles.applyTeacher}><Link to='teacher/apply'>강사지원하기</Link></li>
+                        <li className={styles.applyTeacher}><CustomLink to='teacher/apply'>강사지원하기</CustomLink></li>
                     </ul>
                     <div className={`${styles.joinBox} ${styles.absolute}`}>
                         { 

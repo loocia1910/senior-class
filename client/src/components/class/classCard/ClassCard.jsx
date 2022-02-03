@@ -6,7 +6,7 @@ import { ReactComponent as UnlikeHeartIcon } from './unlikeheart.svg';
 import { ReactComponent as LikeHeartIcon } from './likeheart.svg';
 import { addlikesThunk, deleteLikesThunk } from '../../../reducers/api/likeApi';
 
-const ClassCard = ({ classId, teacherName, className, price, discount, img, region}) => {
+const ClassCard = ({ classId, teacherName, cName, price, discount, img, region}) => {
   // ??? 클래스 아이디값 props로 넘겨주기
   const userId  = useSelector((state) => state.user.user_id);
   const isLogin = useSelector((state) => state.user.is_login);
@@ -49,7 +49,7 @@ const ClassCard = ({ classId, teacherName, className, price, discount, img, regi
           <div className={styles.classInfoBox}>
               {!!region ? <span className={styles.region}>{region}</span> : null}
               <span className={styles.teacherName}>{teacherName}</span>
-              <p className={styles.className}>{className}</p>
+              <p className={styles.className}>{cName}</p>
               <span className={styles.discount}>{discount}</span><span className={styles.percentTxt}>%</span>
               <span className={styles.price}>{price}</span><span>원</span>
               <span className={styles.month}>(3개월)</span>

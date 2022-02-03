@@ -60,15 +60,17 @@ const Section3 = () => {
       <section className={styles.wrapper}>
           <h2 className={styles.title}>온라인 추천 클래스</h2>
           <span className={styles.moreClass}>온라인 클래스 더보기 + </span>
-          <div className={styles.classCard}>
+          <div className={styles.classCardBox}>
             {data.map((c,idx) =>
-              <ClassCard
-                key={idx}
-                teacherName={c.teacherName}
-                className={c.className}
-                price={c.price}
-                discount={c.discount}
-              />
+              <div className={styles.card}>
+                <ClassCard
+                  key={idx}
+                  teacherName={c.teacherName}
+                  cName={c.className}
+                  price={c.price}
+                  discount={c.discount}
+                />
+              </div>
             )}
           </div>
       </section>

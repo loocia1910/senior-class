@@ -38,10 +38,11 @@ const App = () => {
           <Route path='myclass' element={<MyClass />}/>
         </Route>
         <Route path='class' element={<ClassListWrap />}>
-          <Route index element={<ClassList arg='온라인'/>}/>
-          <Route path='offline' element={<ClassList arg='오프라인'/>}/>
-          <Route path='latest' element={<ClassList arg='최신'/>}/>
-          <Route path='free' element={<ClassList arg='무료'/>}/>
+          <Route path=':type' element={<ClassList/>}>
+            <Route path=':category' element={<ClassList/>} >
+              {/* <Route path=':classId' element={<ClassList/>} /> */}
+            </Route>
+            </Route>
         </Route>
         <Route path='*' element={<p>존재하지 않는 페이지 입니다.</p>} />
       </Routes>

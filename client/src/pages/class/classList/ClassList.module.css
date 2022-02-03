@@ -1,1 +1,21 @@
-/*  */
+@value WrapperSize from '../../../commonCss/index.css';
+
+
+.wrapper {
+    display: flex;
+    margin: 2rem auto 0;
+    width: WrapperSize;
+}
+
+.classCardBox{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 32%;
+}
+
+.card:not(:nth-child(3n)) {
+    margin-right: 1rem;
+}
