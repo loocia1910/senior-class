@@ -1,14 +1,14 @@
 import { BsFillCheckCircleFill } from 'react-icons/bs'
 import styles from './AlarmModal.module.css';
 
-const AlarmModal = ({ msg1, msg2, btnNeed, handleCloseModal, requestWithDrawal}) => {
+const AlarmModal = ({ msg1, msg2, btnNeed, handleCloseModal, requestWithDrawal, failModal }) => {
 
   return (
     <div className={styles.wrapper} >
       <div className={styles.container}>
           <div className={styles.closeBtn} onClick={handleCloseModal}/>
           <div className={styles.containerInner}>
-            <BsFillCheckCircleFill className={styles.checkIcon}/>
+            <BsFillCheckCircleFill className={ !failModal ? `${styles.success}` : `${styles.fail}` }/>
             <p className={styles.msg}>{ !!msg2? msg2 : msg1}</p>
             { 
               btnNeed ?

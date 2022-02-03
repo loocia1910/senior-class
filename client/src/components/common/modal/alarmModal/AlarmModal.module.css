@@ -3,6 +3,7 @@
 .wrapper {
     background-color: rgba(0, 0, 0, 0.7);
     position:fixed;
+    z-index: 300;
     width: 100vw;
     height: 100vh;
     left: 0;
@@ -52,10 +53,16 @@
   transform: translate(-50%, -50%) rotate(45deg);
 }
 
-.checkIcon {
+.success {
     width: 40px;
     height: 40px;
     color: #6eb36e;
+}
+
+.fail {
+    width: 40px;
+    height: 40px;
+    color: #f43142;    
 }
 
 .msg {

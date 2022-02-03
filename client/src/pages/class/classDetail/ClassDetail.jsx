@@ -1,4 +1,9 @@
 import { useRef, useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { addlikesThunk, deleteLikesThunk } from '../../../reducers/api/likeApi';
+import AlarmModal from '../../../components/common/modal/alarmModal/AlarmModal';
+import RegionLabel from '../../../components/region/RegionLable';
 import styles from './ClassDetail.module.css';
 
 const ClassDetail = () => {
@@ -31,34 +36,86 @@ const ClassDetail = () => {
     const [refundActive, setRefundActive] = useState(false);
 
     const updateScroll = () => {
-        // if(!infoRef.current ) return;
-        if (infoRef.current.getBoundingClientRect().top <= 0 || null) {
+        if(!infoRef.current ) return;
+        if (infoRef.current.getBoundingClientRect().top <= 30 || null) {
             setInfoActive(true)
-        } else if(infoRef.current.getBoundingClientRect().top > 0){
+        } else if(infoRef.current.getBoundingClientRect().top > 30){
             setInfoActive(false)
         }
         
-        if (teacherRef.current.getBoundingClientRect().top <= 0 || null){
+        if (teacherRef.current.getBoundingClientRect().top <= 30 || null){
             setInfoActive(false)
             setTeacherActive(true);
-        } else if(teacherRef.current.getBoundingClientRect().top > 0){
+        } else if(teacherRef.current.getBoundingClientRect().top > 30){
             setTeacherActive(false)
         }
 
-        if (reviewRef.current.getBoundingClientRect().top <= 0 || null){
+        if (reviewRef.current.getBoundingClientRect().top <= 30 || null){
             setTeacherActive(false)
             setReviewActive(true);
-        } else if(reviewRef.current.getBoundingClientRect().top > 0){
+        } else if(reviewRef.current.getBoundingClientRect().top > 30){
             setReviewActive(false)
         }
 
-        if (refundRef.current.getBoundingClientRect().top <= 0 || null){
+        if (refundRef.current.getBoundingClientRect().top <= 30 || null){
             setReviewActive(false)
             setRefundActive(true);       
-        } else if(refundRef.current.getBoundingClientRect().top > 0){
+        } else if(refundRef.current.getBoundingClientRect().top > 30){
             setRefundActive(false)
         }
     }
+
+
+    // 찜하기 버튼
+    const { is_login, login_id } = useSelector((state) => state.user);
+    const [ isHeartClicked, setIsHeartClicked ] = useState(false);
+    const navigate = useNavigate();
+    const classId = 1; // ??? 데이터 받으면 변경
+    const dispatch = useDispatch();
+
+    const onHeartClicked = async () => {
+        console.log('하트클릭')
+
+      setIsHeartClicked(!isHeartClicked)
+      if(!is_login) {
+          navigate('/signin');
+          return;
+      }
+
+      // 로그인 된 상태에서 찜 등록 요청
+      if( is_login && !isHeartClicked) {
+        try {
+          await dispatch(addlikesThunk({ login_id, classId }).unwrap())
+        } catch (err) {
+          console.log(err);
+          throw err;
+        }
+      }
+  
+      // 로그인 된 상태에서 찜 삭제 요청
+      if( is_login && isHeartClicked) {
+        try {
+          await dispatch(deleteLikesThunk({ login_id, classId }).unwrap())
+        } catch (err) {
+          console.log(err);
+          throw err;
+        }
+      }
+    
+    }
+
+
+    // 결제하기 버튼
+    const [ isModalOpen, setIsModalOpen ] = useState(false); 
+    const modalMsg1 = '준비 중인 기능입니다.'; 
+
+    const onBuyClicked = () => {
+        setIsModalOpen(true);
+    }
+
+    const handleCloseModal = (e) => {
+        setIsModalOpen(false);
+    };
 
     useEffect(() => {
         window.addEventListener('scroll', updateScroll)
@@ -70,12 +127,12 @@ const ClassDetail = () => {
                 <section className={styles.contents}>
                     {/* 메인 배너 */}
                     <div className={styles.mainbanner}>
-                        <p>온라인 클래스  온동건강  클래스명</p>
-                        <h2>클래스 명</h2>
+                        <p className={styles.category}>온라인 클래스 &gt; 운동건강</p>
                         <div>
-                            <span>지역</span> &nbsp;
+                            <RegionLabel region='서울' /> &nbsp;
                             <span>강사명</span>
                         </div>
+                        <h2 className={styles.title}>클래스 명</h2>
                         <div className={styles.banner}>
                             {/* <img src="" alt="" /> */}
                         </div>
@@ -93,9 +150,6 @@ const ClassDetail = () => {
                     <div id='info' className={styles.info}>
                         <div ref={infoRef} className={styles.mark}></div>
                         <h2 className={styles.subTitle}>클래스 소개</h2>
-                        <div className={styles.banner}>
-                                {/* <img src="" alt="" /> */}
-                        </div>
                         <div>
                             <p>클래스 설명</p>
                             <p>클래스 설명</p>
@@ -129,23 +183,37 @@ const ClassDetail = () => {
                 </section>
                 {/* 결제 */}
                 <section className={styles.payment}>
-                    <span>지역</span>
+                    <RegionLabel region='서울'/>&nbsp;
                     <span>강사명</span>
                     <h3>클래스명</h3>
                     <div className={styles.priceBox}>
-                        <p>3개월 할부</p>
-                        <span>15%</span>
-                        <span>월 15,000원</span>
-                        <p>총 할인액 -13,000원</p>
+                        <p className={styles.weight_light}>3개월 할부</p>
+                        <span className={styles.discount}>15%</span>&nbsp;&nbsp;
+                        <span className={styles.price}>월 15,000원</span>
+                        <p className={styles.weight_light}>총 할인액 -13,000원</p>
                     </div>
                     <div>
-                        <button className={`${styles.btn}`}>공유하기</button>
-                        <button className={`${styles.btn}`}>찜하기</button>
+                        <button
+                          className={`${styles.btn} ${styles.wishBtn}`}
+                          onClick={onHeartClicked}
+                        >
+                          { isHeartClicked ? '찜 취소' : '찜하기' }
+                        </button>
                     </div>
                     <div>
-                        <button className={`${styles.btn}`}>클래스 신청하기</button>
+                        <button 
+                          className={`${styles.btn} ${styles.payBtn}`}
+                          onClick={onBuyClicked}
+                        >
+                          클래스 신청하기
+                        </button>
                     </div>
                 </section>
+                {
+                  isModalOpen ? 
+                  <AlarmModal msg1={modalMsg1} failModal='failModal' handleCloseModal={handleCloseModal}/> :
+                  null
+                }
             </div>
         </div>
     )

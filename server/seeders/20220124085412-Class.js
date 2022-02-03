@@ -379,7 +379,7 @@ module.exports = {
           teacherId: 18,
           regionId: 1,
         },
-        // 경기 2
+        // 경기도 2
         {
           name: '몸과 마을을 바로 잡는 기체조',
           price: 5000,
@@ -428,7 +428,7 @@ module.exports = {
           teacherId: 3,
           regionId: 2,
         },
-        // 인천 3
+        // 강원도 3
         {
           name: '실버 교구 놀이',
           price: 0,

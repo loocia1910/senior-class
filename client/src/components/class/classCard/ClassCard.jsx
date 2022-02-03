@@ -19,7 +19,7 @@ const ClassCard = ({ classId, teacherName, cName, price, discount, img, region})
     setIsHeartClicked(!isHeartClicked)
 
     // 로그인 된 상태에서 찜 등록 요청
-    if( isLogin && isHeartClicked) {
+    if( isLogin && !isHeartClicked) {
       try {
         await dispatch(addlikesThunk({ userId, classId }).unwrap())
       } catch (err) {
@@ -29,7 +29,7 @@ const ClassCard = ({ classId, teacherName, cName, price, discount, img, region})
     }
 
     // 로그인 된 상태에서 찜 삭제 요청
-    if( isLogin && isHeartClicked === false) {
+    if( isLogin && isHeartClicked) {
       try {
         await dispatch(deleteLikesThunk({ userId, classId }).unwrap())
       } catch (err) {
