@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams ,Outlet } from 'react-router-dom';
+import { useParams, Outlet, Link } from 'react-router-dom';
 import ClassCard from '../../../components/class/classCard/ClassCard';
 import ClassMenuNav from '../../../components/class/classMenu/ClassMenuNav';
 import styles from './ClassList.module.css';
@@ -24,6 +24,7 @@ export const ClassList = () => {
     
     const params = useParams();
     const { type, category } = params;
+    console.log('params', params);
     const [ _type, setType ] = useState(type);
 
 
@@ -52,14 +53,16 @@ export const ClassList = () => {
             <h2>{category || '전체보기'}</h2>
             <div className={styles.classCardBox}>
                 {data.map((c,idx) =>
-                <div className={styles.card}>
-                    <ClassCard
-                        key={idx}
-                        teacherName={c.teacherName}
-                        cName={c.className}
-                        price={c.price}
-                        discount={c.discount}
-                    />
+                <div key={idx} className={styles.card}>
+                    <Link to={`/product/${c.className}`}>
+                        {/* ??? to 파라미터 클래스 아이디로 바꾸기 */}
+                        <ClassCard
+                            teacherName={c.teacherName}
+                            cName={c.className}
+                            price={c.price}
+                            discount={c.discount}
+                        />
+                    </Link>
                 </div>
                 )}
           </div>

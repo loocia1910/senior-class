@@ -1,0 +1,78 @@
+@value WrapperSize from '../../../commonCss/index.css';
+@value BrandColor from '../../../commonCss/index.css';
+@value FontWeightMid from '../../../commonCss/index.css';
+
+
+.wrapper {
+    width: WrapperSize;
+    margin: 0 auto;
+    display: flex;
+}
+
+.contents {
+    width: 870px;
+    height: 2500px;
+}
+
+/* 컨텐츠 */
+.banner {
+    width: 870px;
+    height: 400px;
+    background-color: #ddd;
+}
+
+.nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: #fff;
+}
+
+.nav ul {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 2.4rem 0 3.4rem;
+}
+
+.navMenu {
+    width: 25%;
+    padding: 1rem;
+    text-align: center;
+    border: 1px solid BrandColor;
+    font-weight: FontWeightMid;
+}
+.subTitle {
+    margin-bottom: .8rem; 
+}
+
+.mark {
+    padding: 1rem 0 3rem;
+}
+
+/* 환불 정책 */
+.styles.refund_policy {
+    margin-top: 4rem;
+}
+.refund_policy_text {
+    background-color: #f1f1f1;
+    padding: 1.6rem; 
+}
+
+/* 결제 박스 */
+.payment {
+    width: 300px;
+    height: 250px;
+    position: sticky;
+    z-index: 100;
+    top: 40px;
+    border: 1px solid blue;
+}
+
+.priceBox {
+    text-align: right;
+}
+
+.active {
+    background-color: BrandColor;
+    color: #fff;
+}

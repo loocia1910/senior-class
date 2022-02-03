@@ -21,20 +21,6 @@ const data = [
     className : '클래스명',
     price : '22,000',
     discount: '15',
-    region: '서울'
-  },
-  {
-    teacherName : '강사명',
-    className : '클래스명',
-    price : '22,000',
-    discount: '15',
-    region: '서울'
-  },
-  {
-    teacherName : '강사명',
-    className : '클래스명',
-    price : '22,000',
-    discount: '15',
     region: '충청도'
   },
   {

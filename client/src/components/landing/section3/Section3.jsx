@@ -40,19 +40,7 @@ const Section3 = () => {
       className : '클래스명',
       price : '22,000',
       discount: '15'
-    },
-    {
-      teacherName : '강사명',
-      className : '클래스명',
-      price : '22,000',
-      discount: '15'
-    },
-    {
-      teacherName : '강사명',
-      className : '클래스명',
-      price : '22,000',
-      discount: '15'
-    },
+    }
   ]
   
   return (

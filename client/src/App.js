@@ -13,6 +13,7 @@ import AuthModify from './pages/mypage/authModify/AuthModify';
 import Modify from './pages/mypage/modify/Modify';
 import MyClass from './pages/myClassList/MyClassList';
 import { ClassList, ClassListWrap } from './pages/class/classList/ClassList';
+import ClassDetail from './pages/class/classDetail/ClassDetail';
 
 // app에서 path(또는 page)를 하나하나 만든다고 생각하면 된다
 const App = () => {
@@ -38,12 +39,12 @@ const App = () => {
           <Route path='myclass' element={<MyClass />}/>
         </Route>
         <Route path='class' element={<ClassListWrap />}>
-          <Route path=':type' element={<ClassList/>}>
+          <Route path=':type' element={<ClassList/>} >
             <Route path=':category' element={<ClassList/>} >
-              {/* <Route path=':classId' element={<ClassList/>} /> */}
             </Route>
-            </Route>
+          </Route>
         </Route>
+        <Route path='product/:classId' element={<ClassDetail/>} />
         <Route path='*' element={<p>존재하지 않는 페이지 입니다.</p>} />
       </Routes>
       <Footer/>
