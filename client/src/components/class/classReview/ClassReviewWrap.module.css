@@ -1,0 +1,32 @@
+.flex {
+    display: flex;
+}
+
+.wrapper {
+    border-top: 1px solid #ddd;
+    padding: .8rem;
+}
+
+.profile {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: slategray;
+    margin-right: .6rem;
+}
+
+.login_id {
+  font-size: 13px;
+  font-weight: bold;
+  line-height: .6rem;
+  /* color: #555; */
+}
+
+.createdAt {
+    color: #777;
+    font-size: 14px;
+}
+
+.contents {
+
+}

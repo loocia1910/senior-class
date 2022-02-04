@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { addlikesThunk, deleteLikesThunk } from '../../../reducers/api/likeApi';
 import AlarmModal from '../../../components/common/modal/alarmModal/AlarmModal';
 import RegionLabel from '../../../components/region/RegionLable';
+import ClassReviewWrap from '../../../components/class/classReview/ClassReview';
 import styles from './ClassDetail.module.css';
 
 const ClassDetail = () => {
@@ -168,6 +169,7 @@ const ClassDetail = () => {
                     <div id='review' className={styles.review}>
                         <div ref={reviewRef} className={styles.mark}></div>
                         <h2 className={styles.subTitle}>수강후기</h2>
+                        <ClassReviewWrap />
                     </div>
                     {/* 환불 정책 */}
                     <div id='refund' className={styles.refund_policy}>
