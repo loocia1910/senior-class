@@ -28,7 +28,7 @@ export const categorys = [
       img: '/img/category/picture.png'
     },
     {
-      name: '재태크',
+      name: '재테크',
       img: '/img/category/profits.png'
     },
     {

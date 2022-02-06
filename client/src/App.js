@@ -15,7 +15,7 @@ import Modify from './pages/mypage/modify/Modify';
 import MyClass from './pages/myClassList/MyClassList';
 import { ClassList, ClassListWrap } from './pages/class/classList/ClassList';
 import ClassDetail from './pages/class/classDetail/ClassDetail';
-import { getOnlineClassThunk } from './reducers/api/classApi';
+import { getTypeClassThunk } from './reducers/api/classApi';
 
 // app에서 path(또는 page)를 하나하나 만든다고 생각하면 된다
 const App = () => {
@@ -23,7 +23,7 @@ const App = () => {
 
   const getOnlineClass = async () => {
     try {
-      await dispatch(getOnlineClassThunk({ params: 'online' })).unwrap();
+      await dispatch(getTypeClassThunk({ type: 'online' })).unwrap();
     } catch (err) {
       throw err;
     }
@@ -31,7 +31,7 @@ const App = () => {
 
   const getOfflineClass = async () => {
     try {
-      await dispatch(getOnlineClassThunk({ params: 'offline' })).unwrap();
+      await dispatch(getTypeClassThunk({ type: 'offline' })).unwrap();
     } catch (err) {
       throw err;
     }
@@ -39,7 +39,7 @@ const App = () => {
 
   const getlatestClass = async () => {
     try {
-      await dispatch(getOnlineClassThunk({ params: 'free' })).unwrap();
+      await dispatch(getTypeClassThunk({ type: 'free' })).unwrap();
     } catch (err) {
       throw err;
     }
@@ -47,7 +47,7 @@ const App = () => {
 
   const getFreeClass = async () => {
     try {
-      await dispatch(getOnlineClassThunk({ params: 'latest' })).unwrap();
+      await dispatch(getTypeClassThunk({ type: 'latest' })).unwrap();
     } catch (err) {
       throw err;
     }
@@ -55,7 +55,6 @@ const App = () => {
 
   useEffect(() => {
     // 온라인, 오프라인, 최신, 무료 클래스 받아오기
-    // 각각의 컴포넌트에게 받아온 데이터 props로 넘겨주기
     getOnlineClass();
     getOfflineClass();
     getlatestClass();

@@ -1,20 +1,21 @@
 const RegionLabel = ({ region }) => {
   
   const regionColor = {
-      서울: 'yellow', 
-      경기도: 'skyblue',
-      강원도: 'pink',
-      전라도: 'purple',
-      충청도: 'green',
-      경상도: 'gray'
+      서울: '#D9D7F1', 
+      경기도: '#FFFDDE',
+      강원도: '#E7FBBE',
+      전라도: '#FFCBCB',
+      충청도: '#FFEDDB',
+      경상도: '#D6E5FA'
   }
 
   return (
       <span
          style={{ 
              backgroundColor : regionColor[`${region}`],
-             padding: '.1rem .4rem',
-             borderRadius: '4px'
+             padding: '.1rem .3rem',
+             borderRadius: '4px',
+             marginRight: '.2rem'
         }}
       >{region}</span>
   )

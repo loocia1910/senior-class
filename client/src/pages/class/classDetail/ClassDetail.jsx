@@ -1,10 +1,12 @@
 import { useRef, useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { addlikesThunk, deleteLikesThunk } from '../../../reducers/api/likeApi';
+import { getClassDetailThunk } from '../../../reducers/api/classApi';
 import AlarmModal from '../../../components/common/modal/alarmModal/AlarmModal';
 import RegionLabel from '../../../components/region/RegionLable';
 import ClassReviewWrap from '../../../components/class/classReview/ClassReview';
+import { categorys } from './catagorys';
 import styles from './ClassDetail.module.css';
 
 const ClassDetail = () => {
@@ -118,9 +120,30 @@ const ClassDetail = () => {
         setIsModalOpen(false);
     };
 
+    // 클래스 아이디에 따른 데이터 가져오기
+    const params = useParams();
+    const fetchClassDetail = async () => {
+        try {
+            await dispatch(getClassDetailThunk({ classId: params.classId })).unwrap();
+        }  catch(err) {
+            throw err;
+        }
+    }
+
+    // 스크롤 위치 따른 메뉴바 active css로 변경
     useEffect(() => {
         window.addEventListener('scroll', updateScroll)
     }, [infoRef, teacherRef, reviewRef, refundRef])
+    
+    // 클래스 아이디에 따른 데이터 가져오기 요청
+    useEffect(() => {
+        fetchClassDetail();
+    }, [params])
+
+    const { name, price, discount, category, type, img_url, contents, teacherInfo, region, User} = useSelector(state => state.class.classDetail)
+    const teacherName = User.name;
+    const discountAmount = price*(discount/100);
+    
 
     return (
         <div className={styles.container}>
@@ -128,14 +151,14 @@ const ClassDetail = () => {
                 <section className={styles.contents}>
                     {/* 메인 배너 */}
                     <div className={styles.mainbanner}>
-                        <p className={styles.category}>온라인 클래스 &gt; 운동건강</p>
+                        <p className={styles.category}>{ type === '0'? '온라인 클래스' : '오프라인 클래스'} &gt; {categorys[category]}</p>
                         <div>
-                            <RegionLabel region='서울' /> &nbsp;
-                            <span>강사명</span>
+                            {region ? <RegionLabel region={region} />: null}
+                            <span>{teacherName}</span>
                         </div>
-                        <h2 className={styles.title}>클래스 명</h2>
+                        <h2 className={styles.title}>{name}</h2>
                         <div className={styles.banner}>
-                            {/* <img src="" alt="" /> */}
+                            <img src={img_url} alt={name} />
                         </div>
                     </div>
                     {/* nav */}
@@ -152,18 +175,22 @@ const ClassDetail = () => {
                         <div ref={infoRef} className={styles.mark}></div>
                         <h2 className={styles.subTitle}>클래스 소개</h2>
                         <div>
-                            <p>클래스 설명</p>
-                            <p>클래스 설명</p>
-                            <p>클래스 설명</p>
+                            {contents.split('.').map((content,idx) => {
+                                if(content === '') return;
+                               return <p key={idx}>{content}.</p>
+                            }
+                            )}
                         </div>
                     </div>
                     {/* 강사 소개 */}
                     <div id='teacher' className={styles.teacher}>
                         <div ref={teacherRef} className={styles.mark}></div>
                         <h2 className={styles.subTitle}>강사 소개</h2>
-                        <p>강사 설명</p>
-                        <p>강사 설명</p>
-                        <p>강사 설명</p>
+                        <div>
+                            {teacherInfo.split('.').map((t_info,idx) =>
+                                <p key={idx}>{t_info}</p>
+                            )}
+                        </div>
                     </div>
                     {/* 수강 후기 */}
                     <div id='review' className={styles.review}>
@@ -185,14 +212,14 @@ const ClassDetail = () => {
                 </section>
                 {/* 결제 */}
                 <section className={styles.payment}>
-                    <RegionLabel region='서울'/>&nbsp;
-                    <span>강사명</span>
-                    <h3>클래스명</h3>
+                    {region ? <RegionLabel region={region}/> : null}
+                    <span>{teacherName}</span>
+                    <h3 >{name}</h3>
                     <div className={styles.priceBox}>
                         <p className={styles.weight_light}>3개월 할부</p>
-                        <span className={styles.discount}>15%</span>&nbsp;&nbsp;
-                        <span className={styles.price}>월 15,000원</span>
-                        <p className={styles.weight_light}>총 할인액 -13,000원</p>
+                        <span className={styles.discount}>{discount}%</span>&nbsp;&nbsp;
+                        <span className={styles.price}>{ price !== 0 ? `월 ${price}원` : null}</span>
+                        <p className={styles.weight_light}>월 할인액 -{discountAmount}원</p>
                     </div>
                     <div>
                         <button

@@ -5,6 +5,7 @@ import styles from './ClassCard.module.css';
 import { ReactComponent as UnlikeHeartIcon } from './unlikeheart.svg';
 import { ReactComponent as LikeHeartIcon } from './likeheart.svg';
 import { addlikesThunk, deleteLikesThunk } from '../../../reducers/api/likeApi';
+import RegionLable from '../../region/RegionLable';
 
 const ClassCard = ({ classId, teacherName, cName, price, discount, img, region}) => {
   // ??? 클래스 아이디값 props로 넘겨주기
@@ -47,7 +48,7 @@ const ClassCard = ({ classId, teacherName, cName, price, discount, img, region})
               <img src={img} alt={cName} />
           </div>
           <div className={styles.classInfoBox}>
-              {!!region ? <span className={styles.region}>{region}</span> : null}
+              {!!region ? <RegionLable region={region}/> : null}
               <span className={styles.teacherName}>{teacherName}</span>
               <p className={styles.className}>{cName}</p>
               <span className={styles.discount}>{discount}</span><span className={styles.percentTxt}>%</span>
@@ -58,12 +59,13 @@ const ClassCard = ({ classId, teacherName, cName, price, discount, img, region})
                  <UnlikeHeartIcon 
                    className={styles.unlikeheartIcon}
                    onClick={heartClicked}
+                   fill='#FF7878'
                  />
                  :
                   isLogin && isHeartClicked ?
                   <LikeHeartIcon 
                     className={styles.unlikeheartIcon}
-                    fill='red'
+                    fill='#FF7878'
                     onClick={heartClicked}                    
                   />
                   :

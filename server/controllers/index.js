@@ -24,7 +24,7 @@ router.post('/teacher/class/open', teacherCtrl.classOpen);
 
 // class
 // 클래스 불러오기
-// router.get('/class/:userId', classCtrl.myClass);
+router.get('/product/:classId', classCtrl.classDetail);
 router.get('/class/:type', classCtrl.typeClass);
 
 // 클래스 찜
@@ -39,8 +39,6 @@ router.get('/class/review/:classId', classCtrl.getAllReview);
 
 
 // generalMypage
-router.get('/mypage/myclass', generalMypageCtrl.getAllMyClass);
-router.get('/mypage/myclass/:classId', generalMypageCtrl.getOneMyClass);
 router.get('/mypage/likelist', generalMypageCtrl.myLikelist);
 router.get('/mypage/reviewlist', generalMypageCtrl.myReviewlist);
 router.post('/mypage/authModify', generalMypageCtrl.auth); // 회원정보 수전 전 비밀번호 인증

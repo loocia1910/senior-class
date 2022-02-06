@@ -1,5 +1,5 @@
 module.exports = {
-    // myClass: require('./getMyClass').myClass,
+    classDetail: require('./getClassDetail').classDetail,
     typeClass: require('./getTypeClass').typeClass,
     like: require('./likeClass').like,
     unlike: require('./likeClass').unlike,

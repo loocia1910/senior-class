@@ -31,8 +31,9 @@ const ClassReviewWrap = () => {
     return (
         <section>
             {
-                data.map((user) => (
-                    <ClassReview 
+                data.map((user, idx) => (
+                    <ClassReview
+                      key={idx} 
                       login_id={user.login_id}
                       profile={user.profile}
                       contents={user.contents}
