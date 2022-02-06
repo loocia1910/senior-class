@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Routes, Route} from 'react-router-dom';
+import { useDispatch } from 'react-redux'; 
 import Header from './components/common/header/Header';
 import Footer from './components/common/footer/Footer';
 import Landing from './pages/landing/Landing';
@@ -14,14 +15,53 @@ import Modify from './pages/mypage/modify/Modify';
 import MyClass from './pages/myClassList/MyClassList';
 import { ClassList, ClassListWrap } from './pages/class/classList/ClassList';
 import ClassDetail from './pages/class/classDetail/ClassDetail';
+import { getOnlineClassThunk } from './reducers/api/classApi';
 
 // app에서 path(또는 page)를 하나하나 만든다고 생각하면 된다
 const App = () => {
+  const dispatch = useDispatch();
+
+  const getOnlineClass = async () => {
+    try {
+      await dispatch(getOnlineClassThunk({ params: 'online' })).unwrap();
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  const getOfflineClass = async () => {
+    try {
+      await dispatch(getOnlineClassThunk({ params: 'offline' })).unwrap();
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  const getlatestClass = async () => {
+    try {
+      await dispatch(getOnlineClassThunk({ params: 'free' })).unwrap();
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  const getFreeClass = async () => {
+    try {
+      await dispatch(getOnlineClassThunk({ params: 'latest' })).unwrap();
+    } catch (err) {
+      throw err;
+    }
+  }
 
   useEffect(() => {
     // 온라인, 오프라인, 최신, 무료 클래스 받아오기
     // 각각의 컴포넌트에게 받아온 데이터 props로 넘겨주기
-  })
+    getOnlineClass();
+    getOfflineClass();
+    getlatestClass();
+    getFreeClass();
+
+  }, [dispatch])
 
   return (
     <>

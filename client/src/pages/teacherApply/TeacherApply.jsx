@@ -1,8 +1,5 @@
-import { useState, useRef, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useState, useRef } from 'react';
 import emailjs from '@emailjs/browser';
-import { signInThunk } from '../../reducers/api/userApi';
 import AlarmModal from '../../components/common/modal/alarmModal/AlarmModal';
 import styles from './TeacherApply.module.css';
 

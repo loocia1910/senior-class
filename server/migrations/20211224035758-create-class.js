@@ -20,10 +20,6 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
-      score: {
-        allowNull: false,
-        type: Sequelize.INTEGER
-      },
       discount: {
         type: Sequelize.INTEGER
       },
@@ -31,10 +27,22 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
+      category: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
       contents: {
         allowNull: false,
         type: Sequelize.STRING
       },
+      teacherInfo: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+      region: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },      
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

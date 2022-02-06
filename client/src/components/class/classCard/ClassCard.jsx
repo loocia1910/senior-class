@@ -44,7 +44,7 @@ const ClassCard = ({ classId, teacherName, cName, price, discount, img, region})
   return (
       <div className={styles.container}>
           <div className={styles.imgBox}>
-              {/* <img src="" alt="00" /> */}
+              <img src={img} alt={cName} />
           </div>
           <div className={styles.classInfoBox}>
               {!!region ? <span className={styles.region}>{region}</span> : null}

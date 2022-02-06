@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { NavLink, Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { BsSearch } from 'react-icons/bs';
 import { BsPlayBtn } from 'react-icons/bs';
 import { AiOutlineUser } from 'react-icons/ai';
@@ -31,13 +31,6 @@ const Header = () => {
         }
     };
 
-    const activeStyle = ({ isActive }) => {
-        return {
-            // display: "block",
-            // margin: "1rem 0",
-            color: isActive ? "red" : ""            
-        }
-    }
     
 
     return (

@@ -1,16 +1,10 @@
 module.exports = {
-    myClass: require('./getClass').myClass,
-    oneClass: require('./getClass').oneClass,
-    typeClass: require('./getClass').typeClass,
-    categoryClass: require('./getClass').categoryClass,
+    // myClass: require('./getMyClass').myClass,
+    typeClass: require('./getTypeClass').typeClass,
     like: require('./likeClass').like,
     unlike: require('./likeClass').unlike,
-    question: require('./QnA').question,
-    answer: require('./QnA').answer,
-    getAllQnA: require('./QnA').getAllQnA,
     postReview: require('./review').postReview,
     putReview: require('./review').putReview,
     deleteReview: require('./review').deleteReview,
     getAllReview: require('./review').getAllReview,
-    payment: require('./payment').payment,
 }

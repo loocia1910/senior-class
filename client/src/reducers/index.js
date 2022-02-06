@@ -2,6 +2,8 @@ import { combineReducers } from '@reduxjs/toolkit'; // 여러개의 reducing fun
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage'; // localstorage에 저장
 import userReducer from './userSlice';
+import classReducer from './classSlice';
+import likeReducer from './likeSlice';
 
 const persistConfig = {
   key: 'root',
@@ -11,7 +13,9 @@ const persistConfig = {
 export const persistedReducer = persistReducer(
   persistConfig,
   combineReducers({ 
-    user: userReducer
+    user: userReducer,
+    class: classReducer,
+    like: likeReducer
   })
 )
 

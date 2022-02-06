@@ -14,13 +14,4 @@ module.exports = {
         // 해당 유저의 likeclass들을 배열로 보내준다
         res.status(200).send('');
     },
-    oneClass: (req, res) => {
-        res.end();
-    },
-    typeClass: (req, res) => {
-        res.end();
-    },
-    categoryClass: (req, res) => {
-        res.end();
-    }
 }
