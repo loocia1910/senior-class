@@ -59,18 +59,16 @@ export const ClassList = () => {
             <div className={styles.classCardBox}>
                 {classList.map((c,idx) =>
                 <div key={idx} className={styles.card}>
-                    <Link to={`/product/${c.id}`}>
-                        {/* ??? to 파라미터 클래스 아이디로 바꾸기 */}
-                        <ClassCard
-                            classId={c.id}
-                            teacherName={c.User.name}
-                            cName={c.name}
-                            price={c.price}
-                            discount={c.discount}
-                            region={c.region}
-                            img={c.img_url}
-                        />
-                    </Link>
+                    {/* ??? to 파라미터 클래스 아이디로 바꾸기 */}
+                    <ClassCard
+                        classId={c.id}
+                        teacherName={c.User.name}
+                        cName={c.name}
+                        price={c.price}
+                        discount={c.discount}
+                        region={c.region}
+                        img={c.img_url}
+                    />
                 </div>
                 )}
           </div>

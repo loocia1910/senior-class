@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import styles from './ClassCard.module.css';
 import { ReactComponent as UnlikeHeartIcon } from './unlikeheart.svg';
 import { ReactComponent as LikeHeartIcon } from './likeheart.svg';
@@ -43,7 +43,8 @@ const ClassCard = ({ classId, teacherName, cName, price, discount, img, region})
   const navigate = useNavigate();
 
   return (
-      <div className={styles.container}>
+    <Link to={`/product/${classId}`}>
+      <div className={styles.container} >
           <div className={styles.imgBox}>
               <img src={img} alt={cName} />
           </div>
@@ -73,6 +74,7 @@ const ClassCard = ({ classId, teacherName, cName, price, discount, img, region})
                 }
           </div>
       </div>
+    </Link>
   )
 }
 
