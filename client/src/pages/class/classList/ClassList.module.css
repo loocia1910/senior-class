@@ -10,11 +10,13 @@
 .classCardBox{
     display: flex;
     flex-wrap: wrap;
+
 }
 
 .card {
-    width: 48%;
+    width: 426px;
     margin-top: 1.4rem;
+
 }
 
 .card:not(:nth-child(2n)) {

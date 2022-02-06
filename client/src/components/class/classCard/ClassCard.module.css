@@ -41,6 +41,11 @@
  margin: 0 .4rem 0 0;
 }
 
+.priceFree {
+    color: rgb(2, 2, 192);
+    font-weight: FontWeightBold;
+}
+
 .className,
 .price,
 .discount {

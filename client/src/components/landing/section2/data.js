@@ -36,4 +36,4 @@ export const categorys = [
       img: '/img/category/language.png'
     }
   ];
-  
+

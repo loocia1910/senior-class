@@ -138,7 +138,7 @@ const ClassDetail = () => {
     // 클래스 아이디에 따른 데이터 가져오기 요청
     useEffect(() => {
         fetchClassDetail();
-    }, [params])
+    }, [dispatch])
 
     const { name, price, discount, category, type, img_url, contents, teacherInfo, region, User} = useSelector(state => state.class.classDetail)
     const teacherName = User.name;
@@ -175,10 +175,8 @@ const ClassDetail = () => {
                         <div ref={infoRef} className={styles.mark}></div>
                         <h2 className={styles.subTitle}>클래스 소개</h2>
                         <div>
-                            {contents.split('.').map((content,idx) => {
-                                if(content === '') return;
-                               return <p key={idx}>{content}.</p>
-                            }
+                            {contents.split('.').map((content,idx) => 
+                              <p key={idx}>{content=== '' ? null : content}.</p>
                             )}
                         </div>
                     </div>
@@ -187,8 +185,8 @@ const ClassDetail = () => {
                         <div ref={teacherRef} className={styles.mark}></div>
                         <h2 className={styles.subTitle}>강사 소개</h2>
                         <div>
-                            {teacherInfo.split('.').map((t_info,idx) =>
-                                <p key={idx}>{t_info}</p>
+                            {teacherInfo.split('.').map((t_info,idx) => 
+                             <p key={idx}>{t_info === '' ? null : t_info}.</p>
                             )}
                         </div>
                     </div>
@@ -216,10 +214,10 @@ const ClassDetail = () => {
                     <span>{teacherName}</span>
                     <h3 >{name}</h3>
                     <div className={styles.priceBox}>
-                        <p className={styles.weight_light}>3개월 할부</p>
-                        <span className={styles.discount}>{discount}%</span>&nbsp;&nbsp;
-                        <span className={styles.price}>{ price !== 0 ? `월 ${price}원` : null}</span>
-                        <p className={styles.weight_light}>월 할인액 -{discountAmount}원</p>
+                        {price === 0 ? null: <p className={styles.weight_light}>3개월 할부</p>}
+                        {price === 0 ? null: <span className={styles.discount}>{discount}% &nbsp;&nbsp;</span>}
+                        <span className={price === 0 ? `${styles.priceFree}`:`${styles.price}`}>{ price === 0 ? '무료' : `월 ${price}원`}</span>
+                        {price === 0 ? null: <p className={styles.weight_light}>월 할인액 -{discountAmount}원</p>}
                     </div>
                     <div>
                         <button

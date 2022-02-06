@@ -43,8 +43,7 @@ const ClassCard = ({ classId, teacherName, cName, price, discount, img, region})
   const navigate = useNavigate();
 
   return (
-    <Link to={`/product/${classId}`}>
-      <div className={styles.container} >
+      <div className={styles.container} onClick={() => navigate(`/product/${classId}`)}>
           <div className={styles.imgBox}>
               <img src={img} alt={cName} />
           </div>
@@ -52,9 +51,9 @@ const ClassCard = ({ classId, teacherName, cName, price, discount, img, region})
               {!!region ? <RegionLable region={region}/> : null}
               <span className={styles.teacherName}>{teacherName}</span>
               <p className={styles.className}>{cName}</p>
-              <span className={styles.discount}>{discount}</span><span className={styles.percentTxt}>%</span>
-              <span className={styles.price}>{price}</span><span>원</span>
-              <span className={styles.month}>(3개월)</span>
+              <span className={styles.discount}>{discount === 0 ? null : `${discount}%`}</span>
+              <span className={price === 0 ? `${styles.priceFree}`:`${styles.price}`}>{price === 0 ? '무료' : `${price}원`}</span>
+              <span className={styles.month}>{price === 0 ? null : `(3개월)`}</span>
                 {
                   isHeartClicked === false  || (isLogin && isHeartClicked === false)?
                  <UnlikeHeartIcon 
@@ -74,7 +73,6 @@ const ClassCard = ({ classId, teacherName, cName, price, discount, img, region})
                 }
           </div>
       </div>
-    </Link>
   )
 }
 

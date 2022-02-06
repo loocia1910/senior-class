@@ -126,3 +126,8 @@
 .discount {
   color: #f43142;
 }
+
+.priceFree {
+    color: rgb(2, 2, 192);
+    font-weight: 500;
+}
