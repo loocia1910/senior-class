@@ -39,7 +39,6 @@ module.exports = {
 
               const refreshToken = await generateRefreshToken(db_user.dataValues);
               const accessToken = await generateAccessToken(db_user.dataValues);
-              console.log('signin/refreshToken----', refreshToken)
               // refreshToken을 쿠키에 담아 전달
               sendRefreshToken(res, refreshToken);
               // accessToken을 응답 바디에 담아 전달

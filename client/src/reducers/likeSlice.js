@@ -19,16 +19,16 @@ const likeSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getMyLikesThunk.fulfilled, (state, action) => {
-        const mylikes = action.payload
-        state = mylikes;
+        const myLikes = action.payload
+        state = myLikes;
       })
       .addCase(addlikesThunk.fulfilled, (state, action) => {
-        const addedClassId = action.payload;
-        state.push(addedClassId);
+        const myLikes = action.payload;
+        state = myLikes;
       }) 
       .addCase(deleteLikesThunk.fulfilled, (state, action) => {
-        const deletedClassId = action.payload
-        state = state.filter((classId) => classId !== deletedClassId);
+        const myLikes = action.payload
+        state = myLikes;
       })
       .addDefaultCase((state) => {
         return state;

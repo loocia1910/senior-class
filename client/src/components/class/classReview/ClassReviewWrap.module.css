@@ -3,7 +3,7 @@
 }
 
 .wrapper {
-    border-top: 1px solid #ddd;
+    border-top: 1px solid #efefef;
     padding: .8rem;
 }
 
@@ -27,6 +27,3 @@
     font-size: 14px;
 }
 
-.contents {
-
-}

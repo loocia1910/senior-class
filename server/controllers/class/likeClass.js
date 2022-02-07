@@ -1,18 +1,23 @@
 const { User } = require('../../models');
-const { like_classes } = require('../../models');
+const { Class_like } = require('../../models');
 
 module.exports = {
     like: async (req, res) => {
         try {
+            console.log('7777777', req.body)
+            console.log('Class_like????', Class_like);
+
+
+            return;
             const { userId, classId } = req.body;
             // ??? userId나 clasId가 없는 경우 에러핸들링하기
-            const addedClass = await like_classes.create({
+            const addedClass = await Class_like.create({
                 userId,
                 classId
             })
 
-            console.log('addedClass????', addedClass)
-            return res.status(200).send(addedClass.classId);
+            // 해당 유저의 like 리스트를 보내준다.
+            return res.status(200).send({ myLikes });
 
         } catch (err) {
             console.log(err);
@@ -23,7 +28,7 @@ module.exports = {
         try {
             const { userId, classId } = req.body;
             // ??? userId나 clasId가 없는 경우 에러핸들링하기
-            const deletedClass = await like_classes.destory({
+            const deletedClass = await Class_like.destory({
                 where: {
                     userId,
                     classId

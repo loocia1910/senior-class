@@ -18,7 +18,7 @@ module.exports = {
         **/
         try {
             const refreshToken = req.cookies.refreshToken;
-            console.log('silentRefresh/refreshToken===', refreshToken)
+            console.log('/req.cookies===', req.cookies)
 
             if(!refreshToken) {
                 return res.status(401).send('The refresh token does not exist.');

@@ -26,7 +26,7 @@ export const signUpThunk = createAsyncThunk(
 );
 
 // 로그인
-const signInSuccess = async (res, navigate) => {
+const signInSuccess = async (res) => {
     /**
      * 로그인 성공 시
      * API 요청마다 헤더에 accessToken 담아 보내도록 설정
@@ -45,11 +45,11 @@ export const signInThunk = createAsyncThunk(
     async ({ loginData, navigate }, { dispatch, rejectWithValue }) => {
         try {
             const res = await customAxios.post('/signin', { loginData } );
-            signInSuccess(res, navigate);
+            signInSuccess(res);
             navigate('/');
 
             const JWT_EXPIRRY_TIME = 1000 * 3600 * 24 // accessToken 만료시간:24시간
-            setTimeout(dispatch(signInRefreshThunk({ loginData })).unwrap(), JWT_EXPIRRY_TIME - 60000)
+            setTimeout(() => dispatch(signInRefreshThunk({ loginData })).unwrap(), JWT_EXPIRRY_TIME - 60000)
             return res;
             
             // await.Promise.all([

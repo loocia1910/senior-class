@@ -19,7 +19,6 @@ let initialState = {
   nickname: '',
   is_login: false,
   is_teacher: false,
-  info: '',
   profile_url: '',
   error: null,
   isAuthorized: false,
@@ -37,7 +36,6 @@ const userSlice = createSlice({
       state.nickname = '';
       state.profile_url = '';
       state.is_teacher = false;
-      state.info = '';
       state.is_login = false;
       state.isAuthorized = false;
       return state;
@@ -55,14 +53,13 @@ const userSlice = createSlice({
         return state;
       })
       .addCase(signInThunk.fulfilled, (state, action) => {
-        const {id, name, login_id, nickname, profile_url, is_teacher, info} = action.payload.data.userInfo
+        const {id, name, login_id, nickname, profile_url, is_teacher } = action.payload.data.userInfo
         state.user_id = id;
         state.name = name;
         state.login_id = login_id;
         state.nickname = nickname;
         state.profile_url = profile_url;
         state.is_teacher = is_teacher;
-        state.info = info;
         state.is_login = true;
         state.isAuthorized = false;
         return state;
@@ -78,19 +75,17 @@ const userSlice = createSlice({
         state.nickname = '';
         state.profile_url = '';
         state.is_teacher = false;
-        state.info = '';
         state.is_login = false;
         state.isAuthorized = false;
         return state;
       })
       .addCase(signInRefreshThunk.fulfilled, (state, action) => {
-        const {name, login_id, nickname, profile_url, is_teacher, info} = action.payload.data.userInfo
+        const {name, login_id, nickname, profile_url, is_teacher} = action.payload.data.userInfo
         state.name = name;
         state.login_id = login_id;
         state.nickname = nickname;
         state.profile_url = profile_url;
         state.is_teacher = is_teacher;
-        state.info = info;
         state.is_login = true;
         state.isAuthorized = false;
         return state;
@@ -119,7 +114,6 @@ const userSlice = createSlice({
         state.nickname = '';
         state.profile_url = '';
         state.is_teacher = false;
-        state.info = '';
         state.is_login = false;
         state.isAuthorized = false;
         return state;

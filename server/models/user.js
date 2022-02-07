@@ -20,7 +20,6 @@ module.exports = (sequelize, DataTypes) => {
     gender: DataTypes.STRING,
     profile_url: DataTypes.STRING,
     is_teacher: DataTypes.STRING,
-    info: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'User',

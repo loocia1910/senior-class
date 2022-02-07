@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { categorys } from './data'
 import styles from './Section2.module.css';
 
@@ -26,7 +27,9 @@ const Section2 = () => {
               {/* <div className={styles.slide}> */}
                 {categorys.map((c, idx) =>
                   <div key={idx} className={styles.ctg}>
-                    <div className={styles.ctgIcon}><img src={c.img} alt={c.name} /></div>
+                    <Link to={`/class/online`}>
+                      <div className={styles.ctgIcon}><img src={c.img} alt={c.name} /></div>
+                    </Link>
                     <span className={styles.ctgTitle}>{c.name}</span>
                   </div>
                 )}

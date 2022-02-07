@@ -7,7 +7,7 @@ import { AiOutlineUser } from 'react-icons/ai';
 import { AiOutlineHeart } from 'react-icons/ai';
 import { signOutThunk } from '../../../reducers/api/userApi'
 import ContactModal from '../modal/ContactModal';
-import CustomLink from '../customLink/CustomLink';
+import { CustomLink } from '../customLink/CustomLink';
 import styles from './Header.module.css';
 
 
@@ -95,7 +95,7 @@ const Header = () => {
                            <div className={styles.joinUser}>
                                <p><strong>{nickname}</strong>님</p>
                                <div className={styles.userImgBox}>
-                                   <div className={styles.userImg}><img src={profile_url} alt='프로필 사진'/></div>
+                                   <div className={styles.userImg}><img src={profile_url ? profile_url: '/img/user/default.jpg'} alt='프로필 사진'/></div>
                                </div>
                             </div>
                         }
