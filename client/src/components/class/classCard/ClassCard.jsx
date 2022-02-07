@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { ReactComponent as UnlikeHeartIcon } from './unlikeheart.svg';
 import { ReactComponent as LikeHeartIcon } from './likeheart.svg';
 import { addlikesThunk, deleteLikesThunk } from '../../../reducers/api/likeApi';
@@ -13,13 +13,12 @@ const ClassCard = ({ classId, teacherName, cName, price, discount, img, region})
 
   const userId  = useSelector((state) => state.user.user_id);
   const isLogin = useSelector((state) => state.user.is_login);
-  const myLikes = useSelector((state) => state.like);
-  const myLike = myLikes.filter((el) => el.classId === classId).length > 0;
 
-  console.log('classCard myLikes====', myLikes);
-  console.log('classCard myLikellll===', myLike);
-  
-  const [ isHeartClicked, setIsHeartClicked ] = useState(myLike);
+
+  const myLikes = useSelector((state) => state.like);
+  const [ _myLikes, setMyLikes ] = useState(myLikes);// 현재 나의 좋아요 리스트
+  const isMyLikes = _myLikes.filter((el) => el.classId === classId).length > 0 ;
+  const [ isHeartClicked, setIsHeartClicked ] = useState(isMyLikes);
   
   const heartClicked = async () => {
     console.log('하트 클릭')
@@ -47,8 +46,11 @@ const ClassCard = ({ classId, teacherName, cName, price, discount, img, region})
   }
 
   useEffect(() => {
+    setMyLikes(myLikes);
+    // console.log('_mylike', _myLikes)
+  }, [myLikes, _myLikes]);
 
-  }, [myLikes]);
+
 
   return (
       <div className={styles.container}>
@@ -68,7 +70,7 @@ const ClassCard = ({ classId, teacherName, cName, price, discount, img, region})
         <div onClick={heartClicked} className={styles.heartIconBox}>
           {
             // 내가 찜한 하트일 때
-            isHeartClicked
+            isMyLikes
             ?
           <LikeHeartIcon
             className={styles.heartIcon}

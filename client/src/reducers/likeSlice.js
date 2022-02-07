@@ -14,12 +14,14 @@ const likeSlice = createSlice({
   reducers: {
     logOutMylikes(state) {
       state = [];
+      return state;
     }
   },
   extraReducers: (builder) => {
     builder
       .addCase(getMyLikesThunk.fulfilled, (state, action) => {
         const myLikes = action.payload
+        console.log('like sliece/ mylikes ========', myLikes)
         state = myLikes;
         return state;
       })

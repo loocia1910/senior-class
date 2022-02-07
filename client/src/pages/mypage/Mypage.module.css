@@ -1,17 +1,13 @@
 @value WrapperSize from '../../commonCss/index.css';
 
 
-.container {
-    /* border: 1px solid red; */
-}
-
 .wrapper {
     width: WrapperSize;
     margin: 0 auto;
 }
 
 .title {
-    width: 230px;
+    width: 200px;
     margin: 1.4rem 0 0;
     font-size: 30px;
     text-align: center;

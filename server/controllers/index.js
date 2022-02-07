@@ -28,7 +28,7 @@ router.get('/class/:type', classCtrl.typeClass);
 // 클래스 찜
 router.post('/class/like', classCtrl.like);
 router.post('/class/unlike', classCtrl.unlike);
-router.get('/class/mylike/:userId', classCtrl.getMyLike);
+router.get('/class/mylike/:loginId', classCtrl.getMyLike);
 
 // 클래스 리뷰
 router.post('/class/review', classCtrl.postReview);

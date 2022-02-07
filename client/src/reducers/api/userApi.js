@@ -3,6 +3,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import customAxios from '../../utils/customAxios';
 import { logOutForce } from '../userSlice';
 import { logOutMylikes } from '../likeSlice';
+import { getMyLikesThunk } from '../api/likeApi';
 
 // 회원가입
 export const signUpThunk = createAsyncThunk(
@@ -47,16 +48,19 @@ export const signInThunk = createAsyncThunk(
             const res = await customAxios.post('/signin', { loginData } );
             signInSuccess(res);
             navigate('/');
+            console.log('loginData', loginData);
+            const loginId = loginData.login_id;
+            // dispatch(나의 리뷰).unwrap(),
+            // dispatch(나의 클래스 찜).unwrap(),
+            await Promise.all([
+                dispatch(getMyLikesThunk({ loginId })).unwrap()
+            ]);
 
             const JWT_EXPIRRY_TIME = 1000 * 3600 * 24 // accessToken 만료시간:24시간
             setTimeout(() => dispatch(signInRefreshThunk({ loginData })).unwrap(), JWT_EXPIRRY_TIME - 60000)
             return res;
             
-            // await.Promise.all([
-                // dispatch(나의 리뷰).unwrap(),
-                // dispatch(나의 클래스 찜).unwrap(),
-                // dispatch(나의 클래스).unwrap()
-                // ])
+
         } catch (err) {
             dispatch(logOutForce());
             return rejectWithValue(err);
@@ -87,9 +91,10 @@ export const signOutThunk = createAsyncThunk(
       try {
         // dispatch(logOutClassLike());
         // dispatch(logOutMyClassReview());
-        dispatch(logOutMylikes());
-        const res = await customAxios.delete('/signout');
+        await dispatch(logOutMylikes());
+        await dispatch(logOutForce());
         navigate('/');
+        const res = await customAxios.delete('/signout');
         return res;
       } catch (err) {
           dispatch(logOutForce());

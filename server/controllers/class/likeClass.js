@@ -18,7 +18,17 @@ module.exports = {
              where:{ userId, classId }
             });
 
-            const myLikes = await Class_like.findAll({ where: { userId } })
+            const myLikes = await Class_like.findAll({
+                include: [{
+                    model: Class,
+                    attributes: ['id', 'name', 'price', 'discount', 'region', 'img_url'],
+                    include: [{
+                        model: User,
+                        attributes: ['id', 'name']
+                    }]
+                }],
+                where: { userId }
+            })
 
             // 해당 유저의 like 리스트를 보내준다.
             return res.status(200).send({ myLikes });
@@ -47,10 +57,17 @@ module.exports = {
             });
 
             const myLikes = await Class_like.findAll({
-                where: {
-                    userId
-                }
+                include: [{
+                    model: Class,
+                    attributes: ['id', 'name', 'price', 'discount', 'region', 'img_url'],
+                    include: [{
+                        model: User,
+                        attributes: ['id', 'name']
+                    }]
+                }],
+                where: { userId }
             });
+            console.log('마이라이크가 지워졌나?', myLikes)
 
             return res.status(200).send({ myLikes });
 

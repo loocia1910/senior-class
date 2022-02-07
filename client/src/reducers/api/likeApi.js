@@ -3,11 +3,11 @@ import customAxios from '../../utils/customAxios';
 
 
 export const getMyLikesThunk = createAsyncThunk(
-    'class/mylikes',
-    async ({ userId }, { dispatch, rejectWithValue }) => {
+    'like/mylikes',
+    async ({ loginId }, { dispatch, rejectWithValue }) => {
         try {
-            const res = await customAxios.get(`/class/mylike/${userId}`);
-            return res;
+            const res = await customAxios.get(`/class/mylike/${loginId}`);
+            return res.data.myLikes;
 
         } catch (err) {
             return rejectWithValue(err);
@@ -16,7 +16,7 @@ export const getMyLikesThunk = createAsyncThunk(
 );
 
 export const addlikesThunk = createAsyncThunk(
-    'class/like',
+    'like/add',
     async ({ userId, classId }, { dispatch, rejectWithValue }) => {
         try {
             const res = await customAxios.post('/class/like', { userId, classId } );
@@ -29,7 +29,7 @@ export const addlikesThunk = createAsyncThunk(
 );
 
 export const deleteLikesThunk = createAsyncThunk(
-    'class/unlike',
+    'like/delete',
     async ({ userId, classId }, { dispatch, rejectWithValue }) => {
         try {
             const res = await customAxios.post('/class/unlike', { userId, classId } );
