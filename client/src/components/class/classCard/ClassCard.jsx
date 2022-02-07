@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
-import styles from './ClassCard.module.css';
 import { ReactComponent as UnlikeHeartIcon } from './unlikeheart.svg';
 import { ReactComponent as LikeHeartIcon } from './likeheart.svg';
 import { addlikesThunk, deleteLikesThunk } from '../../../reducers/api/likeApi';
 import RegionLable from '../../region/RegionLable';
+import styles from './ClassCard.module.css';
 
 const ClassCard = ({ classId, teacherName, cName, price, discount, img, region}) => {
   const navigate = useNavigate();
@@ -13,39 +13,42 @@ const ClassCard = ({ classId, teacherName, cName, price, discount, img, region})
 
   const userId  = useSelector((state) => state.user.user_id);
   const isLogin = useSelector((state) => state.user.is_login);
-  const [ isHeartClicked, setIsHeartClicked ] = useState(false);
+  const myLikes = useSelector((state) => state.like);
+  const myLike = myLikes.filter((el) => el.classId === classId).length > 0;
 
+  console.log('classCard myLikes====', myLikes);
+  console.log('classCard myLikellll===', myLike);
+  
+  const [ isHeartClicked, setIsHeartClicked ] = useState(myLike);
+  
   const heartClicked = async () => {
     console.log('하트 클릭')
     // 로그인이 안 되어 있으면 로그인 요청
-    if(!isLogin) {
-      navigate('signin');
-      return;
-    }
-
-    setIsHeartClicked(!isHeartClicked)
-
-    //  찜 등록 요청
-    if(!isHeartClicked) {
-      try {
-        await dispatch(addlikesThunk({ userId, classId }).unwrap())
-      } catch (err) {
-        console.log(err);
-        throw err;
+    try {
+      if(!isLogin) {
+        navigate('signin');
+        return;
       }
-    }
 
-    // 찜 삭제 요청
-    if(isHeartClicked) {
-      try {
-        await dispatch(deleteLikesThunk({ userId, classId }).unwrap())
-      } catch (err) {
-        console.log(err);
-        throw err;
+      setIsHeartClicked(!isHeartClicked)
+
+      //  찜 등록 요청
+      if(!isHeartClicked) {
+          await dispatch(addlikesThunk({ userId, classId })).unwrap();
+      } else {
+      // 찜 삭제 요청
+          await dispatch(deleteLikesThunk({ userId, classId })).unwrap();
       }
+    } catch (err) {
+      console.log(err)
+      throw err;
     }
   
   }
+
+  useEffect(() => {
+
+  }, [myLikes]);
 
   return (
       <div className={styles.container}>
@@ -64,18 +67,18 @@ const ClassCard = ({ classId, teacherName, cName, price, discount, img, region})
         </div>
         <div onClick={heartClicked} className={styles.heartIconBox}>
           {
-            !isHeartClicked
+            // 내가 찜한 하트일 때
+            isHeartClicked
             ?
-          <UnlikeHeartIcon
+          <LikeHeartIcon
             className={styles.heartIcon}
             fill='#FF7878'
             
           />
           :
-            <LikeHeartIcon
+            <UnlikeHeartIcon
               className={styles.heartIcon}
               fill='#FF7878'
-              // onClick={heartClicked}
             />
           }
         </div>

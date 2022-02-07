@@ -19,7 +19,6 @@ export const getClassDetailThunk = createAsyncThunk(
     async ({ classId }, { dispatch, rejectWithValue }) => {
         try {
             const res = await customAxios.get(`/product/${classId}`);
-            console.log('classApi////res', res)
             return res.data;
         } catch (err) {
             return rejectWithValue(err);

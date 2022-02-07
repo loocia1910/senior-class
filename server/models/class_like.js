@@ -17,8 +17,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Class_like.init({
-      user_id: DataTypes.INTEGER,
-      class_id: DataTypes.INTEGER,
+      userId: DataTypes.INTEGER,
+      classId: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'Class_like',

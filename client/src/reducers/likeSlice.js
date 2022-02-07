@@ -21,14 +21,17 @@ const likeSlice = createSlice({
       .addCase(getMyLikesThunk.fulfilled, (state, action) => {
         const myLikes = action.payload
         state = myLikes;
+        return state;
       })
       .addCase(addlikesThunk.fulfilled, (state, action) => {
         const myLikes = action.payload;
         state = myLikes;
+        return state;
       }) 
       .addCase(deleteLikesThunk.fulfilled, (state, action) => {
         const myLikes = action.payload
         state = myLikes;
+        return state;
       })
       .addDefaultCase((state) => {
         return state;
