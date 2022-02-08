@@ -71,8 +71,8 @@ const Header = () => {
                             { is_login ? <li className={styles.logoutBtn} onClick={onClickSignOut}>로그아웃</li> : null }
                             </ul>
                         </li>
-                        <li><Link to={is_login ? '/myclass': '/signin'}><BsPlayBtn className={styles.myIcon}/></Link></li>{/* 내 강의 */}
-                        <li><Link to={is_login ? '/mypage/wish': '/signin'}><AiOutlineHeart className={styles.myIcon}/></Link></li>{/* 강의 찜 */}
+                        <li><Link to={is_login ? 'mypage/myclass': '/signin'}><BsPlayBtn className={styles.myIcon}/></Link></li>{/* 내 강의 */}
+                        <li><Link to={is_login ? '/mypage': '/signin'}><AiOutlineHeart className={styles.myIcon}/></Link></li>{/* 강의 찜 */}
                     </ul>
                 </div>
                 <nav className={`${styles.relative} ${styles.nav}`}>

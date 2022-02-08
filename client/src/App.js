@@ -10,6 +10,7 @@ import SignUpOk from './pages/signupok/SignUpOk';
 import TeacherApply from './pages/teacherApply/TeacherApply';
 import Mypage from './pages/mypage';
 import ClassLike from './pages/mypage/classLikeList/ClassLikeList';
+import MyClass from './pages/myClassList/MyClassList';
 import AuthModify from './pages/mypage/authModify/AuthModify';
 import Modify from './pages/mypage/modify/Modify';
 import MyReview from './pages/mypage/myReviewList/MyReviewList';
@@ -74,6 +75,7 @@ const App = () => {
         <Route path='mypage' element={<Mypage/>}>
           <Route index element={<ClassLike />}/>
           <Route path='review' element={<MyReview />}/>
+          <Route path='myclass' element={<MyClass />}/>
           <Route path='auth_modify' element={<AuthModify />}/>
           <Route path='modify' element={<Modify />}/>
         </Route>

@@ -30,6 +30,11 @@ const MypageNav = () => {
                             </CustomMypageLink>
                         </p>
                         <p className={styles.NavMenu}>
+                            <CustomMypageLink to='/mypage/myclass'>
+                              나의 클래스 
+                            </CustomMypageLink>
+                        </p>
+                        <p className={styles.NavMenu}>
                             <CustomMypageLink to='/mypage/review'>
                               나의 클래스후기  
                             </CustomMypageLink>
