@@ -3,7 +3,8 @@
 
 
 .container {
-    /* border: 1px solid rgb(112, 90, 114); */
+    width: 100vw;
+    overflow: hidden;
 }
 
 .wrapper {
