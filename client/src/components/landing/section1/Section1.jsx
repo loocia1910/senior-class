@@ -57,7 +57,7 @@ const Section1 = () => {
                     {/* 사진명이 연속된 수로 이뤄진 이미지 슬라이드 만들기 */}
                     {Array.from({length: 4}, (v, i) => i+1 ).map((n,idx) =>
                       <SwiperSlide className={styles.slides} key={idx}>
-                        {/* <img className={styles.slidesImg} src={`/img/banner/${n}.jpg`} alt={`${n}`} /> */}
+                        <img className={styles.slidesImg} src={`/img/banner/banner${n}.jpg`} alt={`배너이미지 ${n}`} />
                       </SwiperSlide>
                     )}
                     {/* 전후 네비게이션 */}
