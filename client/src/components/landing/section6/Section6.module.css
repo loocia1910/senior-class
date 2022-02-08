@@ -1,11 +1,12 @@
 @value WrapperSize from '../../../commonCss/index.css';
+@value BrandColor from '../../../commonCss/index.css';
 
 
 .container {
     border: 1px solid rgb(112, 90, 114);
     width: 100vw;
     height: 320px;
-    /* background: no-repeat top -100px center url('./section6.jpg'); */
+    background: no-repeat top -100px center url('./section6.jpg');
     background-size: 100vw auto;
     position: relative;
 }
@@ -27,15 +28,34 @@
     height: inherit;
 }
 
-.txt {
+.txtBox {
     position: relative;
     z-index: 10;
     top:50%;
     transform: translateY(-50%);
     text-align: center;
-    line-height: 4rem;
+}
+
+.logo {
+    font-size: 18px;
+    color: #eee;
+    margin-bottom: .6rem;
+}
+
+.txt {
     letter-spacing: .2rem;
-    font-size: 40px;
+    font-size: 30px;
     color: #fff;
     font-weight: normal;
+}
+
+.Btn {
+    padding: .8rem 1.8rem; 
+    border: none;
+    border-radius: 10px;
+    margin-top: 1.4rem;
+    color: #fff;
+    background-color: BrandColor; 
+    cursor: pointer;
+    font-weight: bold;
 }

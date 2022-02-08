@@ -3,32 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getClassReviewThunk } from '../../../reducers/api/classApi';
 import styles from './ClassReviewWrap.module.css';
 
-const data = [
-    {
-        login_id: '김이름',
-        user_profile: '이미지',
-        contents: '와 이 수업 완전 좋아요~~!',
-        createdAt: '2022.02.04'
-    },
-    {
-        login_id: '김이름',
-        user_profile: '이미지',
-        contents: '와 이 수업 완전 좋아요~~!',
-        createdAt: '2022.02.04'
-    },
-    {
-        login_id: '김이름',
-        user_profile: '이미지',
-        contents: '와 이 수업 완전 좋아요~~!',
-        createdAt: '2022.02.04'
-    },
-    {
-        login_id: '김이름',
-        user_profile: '이미지',
-        contents: '와 이 수업 완전 좋아요~~!',
-        createdAt: '2022.02.04'
-    }
-]
 
 const ClassReviewWrap = ({ classId }) => {
     const dispatch = useDispatch();

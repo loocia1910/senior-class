@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ClassCard from '../../class/classCard/ClassCard';
 import styles from './Section3.module.css'
@@ -12,7 +13,7 @@ const Section3 = () => {
     <div className={styles.container}>
       <section className={styles.wrapper}>
           <h2 className={styles.title}>온라인 추천 클래스</h2>
-          <span className={styles.moreClass}>온라인 클래스 더보기 + </span>
+          <span className={styles.moreClass}><Link to='/class/online'>온라인 클래스 더보기 + </Link></span>
           <div className={styles.classCardBox}>
             {sixOfonlineClass.map((c,idx) =>
               <div key={idx} className={styles.card}>
