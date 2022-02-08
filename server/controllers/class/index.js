@@ -4,8 +4,6 @@ module.exports = {
     like: require('./likeClass').like,
     unlike: require('./likeClass').unlike,
     getMyLike: require('./getMyLike').getMyLike,
-    postReview: require('./review').postReview,
-    putReview: require('./review').putReview,
-    deleteReview: require('./review').deleteReview,
     getAllReview: require('./review').getAllReview,
+    getMyReview: require('./review').getMyReview,
 }

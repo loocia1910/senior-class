@@ -15,6 +15,12 @@
     margin-right: .6rem;
 }
 
+.profile img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
 .login_id {
   font-size: 13px;
   font-weight: bold;
@@ -27,3 +33,9 @@
     font-size: 14px;
 }
 
+
+.noReview {
+    text-align: center;
+    background-color: #efefef;
+    padding: 1.6rem; 
+}

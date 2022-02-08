@@ -8,6 +8,7 @@ import {
   authModifyThunk,
   modifyThunk,
   profileImgThunk,
+  getMyReviewThunk,
   withdrawalThunk  
 } from './api/userApi'
 
@@ -22,6 +23,7 @@ let initialState = {
   profile_url: '',
   error: null,
   isAuthorized: false,
+  myReview: []
 }
 
 const userSlice = createSlice({
@@ -38,6 +40,7 @@ const userSlice = createSlice({
       state.is_teacher = false;
       state.is_login = false;
       state.isAuthorized = false;
+      state.myReview = [];
       return state;
     }
   },
@@ -77,6 +80,7 @@ const userSlice = createSlice({
         state.is_teacher = false;
         state.is_login = false;
         state.isAuthorized = false;
+        state.myReview = [];
         return state;
       })
       .addCase(signInRefreshThunk.fulfilled, (state, action) => {
@@ -103,8 +107,13 @@ const userSlice = createSlice({
         return state;
       })
       .addCase(profileImgThunk.fulfilled, (state, action) => {
-        console.log('userSlice/action.payload profileImgThunk', action.payload)
         state.profile_url = action.payload 
+        return state;
+      })
+      .addCase(getMyReviewThunk.fulfilled, (state, action) => {
+        const { myReview } = action.payload;
+        console.log('유저 슬라이스 myReview', myReview)
+        state.myReview = myReview;
         return state;
       })
       .addCase(withdrawalThunk.fulfilled, (state, action) => {
@@ -113,6 +122,7 @@ const userSlice = createSlice({
         state.login_id = '';
         state.nickname = '';
         state.profile_url = '';
+        state.myReview = [];
         state.is_teacher = false;
         state.is_login = false;
         state.isAuthorized = false;

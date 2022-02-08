@@ -140,6 +140,27 @@ module.exports = {
        createdAt,
        updatedAt
      },
+     {
+      contents: '오랜만에 색소폰을 다시 배우네요. 오랜만에 배우는 거라 가물가물 했지만 쌤이 정말 잘 가르쳐주십니다.^^',
+       userId: 22,
+       classId: 24,
+       createdAt,
+       updatedAt
+     },
+     {
+      contents: '요즘 집에만 있다보니 체중이 좀 늘어난 것 같아, 해독주스 마시고 다이어트하려고 수업을 신청했어요. 만들어 먹어보니 맛도 맛있고, 건강해지는 느낌입니다.ㅎㅎ',
+       userId: 22,
+       classId: 21,
+       createdAt,
+       updatedAt
+     },
+     {
+      contents: '여행을 자주 다녀서 블로그를 시작하였습니다. 이 수업을 듣고 나서 이웃 수가 전 보다 많이 늘었어요. 선생님이 소소한 팁들도 정말 유용합니다. 감사합니다~',
+       userId: 22,
+       classId: 15,
+       createdAt,
+       updatedAt
+     },
     ], {});
   },
 

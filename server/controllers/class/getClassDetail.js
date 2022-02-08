@@ -13,7 +13,6 @@ module.exports = {
                 where: { id: classId }
             });
             
-            console.log('classDetail', classDetail)
             res.status(200).send({ classDetail });
         } catch (err) {
             throw err;

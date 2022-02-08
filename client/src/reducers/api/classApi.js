@@ -26,3 +26,16 @@ export const getClassDetailThunk = createAsyncThunk(
     }
 );
 
+
+export const getClassReviewThunk = createAsyncThunk(
+    'user/myreview',
+    async ({ classId }, { dispatch, rejectWithValue }) => {
+        try { 
+            const res = await customAxios.get(`/class/review/${classId}`);
+            return res.data;
+        } catch (err) {
+            return rejectWithValue(err);
+        }
+    }
+);
+

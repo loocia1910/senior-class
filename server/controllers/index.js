@@ -31,9 +31,7 @@ router.post('/class/unlike', classCtrl.unlike);
 router.get('/class/mylike/:loginId', classCtrl.getMyLike);
 
 // 클래스 리뷰
-router.post('/class/review', classCtrl.postReview);
-router.put('/class/review', classCtrl.putReview);
-router.delete('/class/review', classCtrl.deleteReview);
+router.get('/class/myreview/:userId', classCtrl.getMyReview);
 router.get('/class/review/:classId', classCtrl.getAllReview);
 
 

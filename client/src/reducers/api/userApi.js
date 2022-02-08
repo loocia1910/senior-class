@@ -171,3 +171,16 @@ export const serverValidateLoginId = async (data) => {
     const res = await customAxios.post('/validation/loginId', data);
     return res;
 }
+
+// 마이 리뷰
+export const getMyReviewThunk = createAsyncThunk(
+    'user/myreview',
+    async ({ userId }, { dispatch, rejectWithValue }) => {
+        try { 
+            const res = await customAxios.get(`/class/myreview/${userId}`);
+            return res.data;
+        } catch (err) {
+            return rejectWithValue(err);
+        }
+    }
+);

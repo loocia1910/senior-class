@@ -70,11 +70,12 @@ const ClassDetail = () => {
 
 
     // 찜하기 버튼
-    const { is_login, login_id } = useSelector((state) => state.user);
+    const { is_login, user_id } = useSelector((state) => state.user);
     const [ isHeartClicked, setIsHeartClicked ] = useState(false);
     const navigate = useNavigate();
-    const classId = 1; // ??? 데이터 받으면 변경
     const dispatch = useDispatch();
+    const params = useParams();
+    const { classId } = params ; // ??? 데이터 받으면 변경
 
     const onHeartClicked = async () => {
         console.log('하트클릭')
@@ -88,7 +89,7 @@ const ClassDetail = () => {
       // 로그인 된 상태에서 찜 등록 요청
       if( is_login && !isHeartClicked) {
         try {
-          await dispatch(addlikesThunk({ login_id, classId }).unwrap())
+          await dispatch(addlikesThunk({ user_id, classId }).unwrap())
         } catch (err) {
           console.log(err);
           throw err;
@@ -98,7 +99,7 @@ const ClassDetail = () => {
       // 로그인 된 상태에서 찜 삭제 요청
       if( is_login && isHeartClicked) {
         try {
-          await dispatch(deleteLikesThunk({ login_id, classId }).unwrap())
+          await dispatch(deleteLikesThunk({ user_id, classId }).unwrap())
         } catch (err) {
           console.log(err);
           throw err;
@@ -120,8 +121,7 @@ const ClassDetail = () => {
         setIsModalOpen(false);
     };
 
-    // 클래스 아이디에 따른 데이터 가져오기
-    const params = useParams();
+
     const fetchClassDetail = async () => {
         try {
             await dispatch(getClassDetailThunk({ classId: params.classId })).unwrap();
@@ -139,6 +139,7 @@ const ClassDetail = () => {
     useEffect(() => {
         fetchClassDetail();
     }, [dispatch])
+
 
     const { name, price, discount, category, type, img_url, contents, teacherInfo, region, User} = useSelector(state => state.class.classDetail)
     const teacherName = User.name;
@@ -176,7 +177,7 @@ const ClassDetail = () => {
                         <h2 className={styles.subTitle}>클래스 소개</h2>
                         <div>
                             {contents.split('.').map((content,idx) => 
-                              <p key={idx}>{content=== '' ? null : content}.</p>
+                              <p key={idx}>{content=== '' ? null : content + '.'}</p>
                             )}
                         </div>
                     </div>
@@ -186,7 +187,7 @@ const ClassDetail = () => {
                         <h2 className={styles.subTitle}>강사 소개</h2>
                         <div>
                             {teacherInfo.split('.').map((t_info,idx) => 
-                             <p key={idx}>{t_info === '' ? null : t_info}.</p>
+                             <p key={idx}>{t_info === '' ? null : t_info + '.'}</p>
                             )}
                         </div>
                     </div>
@@ -194,7 +195,9 @@ const ClassDetail = () => {
                     <div id='review' className={styles.review}>
                         <div ref={reviewRef} className={styles.mark}></div>
                         <h2 className={styles.subTitle}>수강후기</h2>
-                        <ClassReviewWrap />
+                        <ClassReviewWrap 
+                          classId={classId}
+                        />
                     </div>
                     {/* 환불 정책 */}
                     <div id='refund' className={styles.refund_policy}>

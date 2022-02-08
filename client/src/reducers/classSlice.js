@@ -2,7 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 import {
     getTypeClassThunk,
-    getClassDetailThunk
+    getClassDetailThunk,
+    getClassReviewThunk
 } from './api/classApi'
 
 let initialState = {
@@ -10,16 +11,16 @@ let initialState = {
     offlineClass: [],
     latestClass :[],
     freeClass: [],
-    myClass: [],
-    classDetail: {}
+    classDetail: {},
+    classReviews: []
 }
 
 const classSlice = createSlice({
     name: 'class',
     initialState,
     reducers: {
-        logOutMyClass(state) {
-            state.myClass = [];
+        returnClass(state) {
+            return state;
         }
     },
     extraReducers: (builder) => {
@@ -38,16 +39,19 @@ const classSlice = createSlice({
               return state;
           })
           .addCase(getClassDetailThunk.fulfilled, (state, action) => {
-            console.log('classSlice/action.payload', action.payload)
             const { classDetail } = action.payload;
             state.classDetail = classDetail;
             return state;
-        })          
-          .addDefaultCase((state) => {
+          })
+          .addCase(getClassReviewThunk.fulfilled, (state, action) => {
+              const { classReviews } = action.payload;
+              state.classReviews = classReviews;
               return state;
+          })                      
+          .addDefaultCase((state) => {
+            return state;
           })
     }
 })
 
-export const { logOutMyClass } = classSlice.actions;
 export default classSlice.reducer;

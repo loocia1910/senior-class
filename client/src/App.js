@@ -12,7 +12,7 @@ import Mypage from './pages/mypage';
 import ClassLike from './pages/mypage/classLikeList/ClassLikeList';
 import AuthModify from './pages/mypage/authModify/AuthModify';
 import Modify from './pages/mypage/modify/Modify';
-import MyClass from './pages/myClassList/MyClassList';
+import MyReview from './pages/mypage/myReviewList/MyReviewList';
 import { ClassList, ClassListWrap } from './pages/class/classList/ClassList';
 import ClassDetail from './pages/class/classDetail/ClassDetail';
 import { getTypeClassThunk } from './reducers/api/classApi';
@@ -73,9 +73,9 @@ const App = () => {
         <Route path='teacher/apply' element={<TeacherApply/>}/>
         <Route path='mypage' element={<Mypage/>}>
           <Route index element={<ClassLike />}/>
+          <Route path='review' element={<MyReview />}/>
           <Route path='auth_modify' element={<AuthModify />}/>
           <Route path='modify' element={<Modify />}/>
-          <Route path='myclass' element={<MyClass />}/>
         </Route>
         <Route path='class' element={<ClassListWrap />}>
           <Route path=':type' element={<ClassList/>} >
