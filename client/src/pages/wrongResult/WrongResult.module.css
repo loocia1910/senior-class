@@ -1,0 +1,17 @@
+@value WrapperSize from '../../commonCss/index.css';
+
+.contanier {
+
+    border-radius: 1px solid red;
+}
+
+.wrapper {
+    width: WrapperSize;
+    margin: 2rem auto;
+    text-align: center;
+}
+
+.wrapper img {
+    width: 250px;
+    height: 250px;
+}

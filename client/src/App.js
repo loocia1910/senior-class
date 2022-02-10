@@ -18,6 +18,7 @@ import ClassSearch from './pages/class/classSearch/ClassSearch';
 import ClassDetail from './pages/class/classDetail/ClassDetail';
 import { ClassList, ClassListWrap } from './pages/class/classList/ClassList';
 import { getTypeClassThunk } from './reducers/api/classApi';
+import WrongResult from './pages/wrongResult/WrongResult';
 
 // app에서 path(또는 page)를 하나하나 만든다고 생각하면 된다
 const App = () => {
@@ -88,7 +89,7 @@ const App = () => {
         </Route>
         <Route path='product/:classId' element={<ClassDetail/>} />
         <Route path='product/search/:searchValue' element={<ClassSearch/>} />        
-        <Route path='*' element={<p>존재하지 않는 페이지 입니다.</p>} />
+        <Route path='*' element={<WrongResult msg='찾을 수 없는 페이지 입니다.'/>} />
       </Routes>
       <Footer/>
     </>

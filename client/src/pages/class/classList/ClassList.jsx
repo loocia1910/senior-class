@@ -3,6 +3,7 @@ import { useParams, Outlet } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ClassCard from '../../../components/class/classCard/ClassCard';
 import ClassMenuNav from '../../../components/class/classMenu/ClassMenuNav';
+import WrongResult from '../../wrongResult/WrongResult';
 import styles from './ClassList.module.css';
 
 export const ClassListWrap = () => {
@@ -200,7 +201,7 @@ export const ClassList = () => {
                     />
                   </div>)
                 :
-                <p>데이터가 없습니다.</p> /* ??? 노데이터 컴포넌트 넣기*/
+                <WrongResult msg='찾을 수 없는 검색결과 입니다.'/>
               }
            </div>
         </div>

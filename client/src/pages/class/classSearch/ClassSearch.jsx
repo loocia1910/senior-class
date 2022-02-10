@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useParams, useNavigate } from "react-router";
 import { useSelector } from 'react-redux';
+import WrongResult from '../../wrongResult/WrongResult';
 import ClassCard from '../../../components/class/classCard/ClassCard';
 import styles from './ClassSearch.module.css';
 
@@ -33,7 +34,13 @@ const ClassSearch = () => {
               <span>(총 {filteredList.length}건)</span>
             </div>
             <div className={styles.classCardBox}>
-              {filteredList.map((c, idx) => 
+              {
+              filteredList.length === 0 
+              ?
+              <WrongResult  msg='찾을 수 없는 검색결과 입니다.'/>
+              :
+
+              !!filteredList && filteredList.map((c, idx) => 
                   <div className={styles.classCard}>
                     <ClassCard
                         key={idx}
