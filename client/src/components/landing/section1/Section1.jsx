@@ -46,11 +46,10 @@ const Section1 = () => {
                   onSlideChange={(swiper) => {
                     setBgIdx(swiper.activeIndex)
                   }}
-                  onSwiper={s => console.log("swiper", s) }
-                  // autoplay={{
-                  //   delay: 4000,
-                  //   disableOnInteraction: false, // 인터렉션이 있어도 움직임,
-                  // }}
+                  autoplay={{
+                    delay: 4000,
+                    disableOnInteraction: false, // 인터렉션이 있어도 움직임,
+                  }}
                   effect={"fade"}
                   >
                     {/* 사진명이 연속된 수로 이뤄진 이미지 슬라이드 만들기 */}
