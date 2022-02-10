@@ -12,6 +12,8 @@ import styles from './Header.module.css';
 
 
 const Header = () => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [ style, setStlye ]  = useState({display: 'none'});
     const [ isOpen, setIsOpen ] = useState(false);
     const isOpenHandler = () => {
@@ -20,8 +22,6 @@ const Header = () => {
     const userInfo = useSelector((state) => state.user);
     const { nickname, is_login, profile_url } = userInfo;
 
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
     const onClickSignOut = async (e) => {
         try {
             setStlye({display: 'none'});
@@ -31,7 +31,21 @@ const Header = () => {
         }
     };
 
-    
+    // 검색 기능
+    const [ searchValue, setSearch ] = useState('');
+    const onChangeSearch = (e) => {
+        const searchValue = e.target.value;
+        setSearch(searchValue);
+    };
+    const onKeyEnter = (e) => {
+        // 엔터를 쳐도 검색이 된다.
+        if(e.which == 13 || e.keyCode == 13) {
+            navigate(`product/search/${searchValue}`);
+        }
+    };
+    const onClickSearch = () => {
+        navigate(`product/search/${searchValue}`);
+    };
 
     return (
         <div className={styles.wrapper}>
@@ -45,12 +59,19 @@ const Header = () => {
                         <h1><Link to="/">시니어 클래스</Link></h1>
                     </div>
                     <div className={`${styles.searchFormBox} ${styles.relative}`}>
-                        <form >
-                            <input className={styles.searchForm} type="search" placeholder="어떤 취미를 찾고 계신가요?"/>
-                            <button className={styles.searchBtn}>
+                        <div >
+                            <input 
+                               className={styles.searchForm}
+                               type="search"
+                               placeholder="어떤 취미를 찾고 계신가요?"
+                               value={searchValue || ''}
+                               onChange={onChangeSearch}
+                               onKeyDown={onKeyEnter}
+                            />
+                            <button className={styles.searchBtn} onClick={onClickSearch}>
                                 <BsSearch className={styles.searchIcon}/>
                             </button>
-                        </form>
+                        </div>
                     </div>
                     <ul className={`${styles.userIconBox} ${styles.flex}`}>
                         <li

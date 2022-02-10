@@ -1,0 +1,25 @@
+.wrapper {
+    width: 1170px;
+    margin: 0 auto;
+}
+.classCardBox {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.classCard {
+    width: 32%;
+}
+
+
+.classCard:not(:nth-child(3n)) {
+    margin-right: 1.3rem;
+}
+
+.resultTxt {
+    margin-top: 1.6rem;
+}
+
+.resultTxt span:nth-child(1){
+    font-size: 22px;
+}

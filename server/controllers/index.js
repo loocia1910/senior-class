@@ -1,7 +1,6 @@
 const { Router } = require('express');
 const router = Router();
 const userCtrl = require('./user');
-const teacherCtrl = require('./teacher');
 const classCtrl = require('./class');
 const generalMypageCtrl = require('./generalMypage');
 const validationCtrl = require('./validation');

@@ -8,7 +8,9 @@ const ClassReviewWrap = ({ classId }) => {
     const dispatch = useDispatch();
     const fetchReviews = async () => {
         try {
+            
             await dispatch(getClassReviewThunk({ classId })).unwrap();
+            
         } catch (err) {
             throw err;
         }
@@ -27,7 +29,7 @@ const ClassReviewWrap = ({ classId }) => {
     return (
         <section>
             {
-                classReviews.length > 0
+                !!classReviews && classReviews.length > 0
                 ?
                 classReviews.map((c, idx) => (
                     <ClassReview

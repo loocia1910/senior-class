@@ -9,13 +9,14 @@ import SignUp from './pages/signup/SignUp';
 import SignUpOk from './pages/signupok/SignUpOk';
 import TeacherApply from './pages/teacherApply/TeacherApply';
 import Mypage from './pages/mypage';
-import ClassLike from './pages/mypage/classLikeList/ClassLikeList';
 import MyClass from './pages/myClassList/MyClassList';
 import AuthModify from './pages/mypage/authModify/AuthModify';
 import Modify from './pages/mypage/modify/Modify';
 import MyReview from './pages/mypage/myReviewList/MyReviewList';
-import { ClassList, ClassListWrap } from './pages/class/classList/ClassList';
+import ClassLike from './pages/mypage/classLikeList/ClassLikeList';
+import ClassSearch from './pages/class/classSearch/ClassSearch';
 import ClassDetail from './pages/class/classDetail/ClassDetail';
+import { ClassList, ClassListWrap } from './pages/class/classList/ClassList';
 import { getTypeClassThunk } from './reducers/api/classApi';
 
 // app에서 path(또는 page)를 하나하나 만든다고 생각하면 된다
@@ -86,6 +87,7 @@ const App = () => {
           </Route>
         </Route>
         <Route path='product/:classId' element={<ClassDetail/>} />
+        <Route path='product/search/:searchValue' element={<ClassSearch/>} />        
         <Route path='*' element={<p>존재하지 않는 페이지 입니다.</p>} />
       </Routes>
       <Footer/>

@@ -75,7 +75,8 @@ const ClassDetail = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const params = useParams();
-    const { classId } = params ; // ??? 데이터 받으면 변경
+    const { classId } = params; 
+    console.log('클래스 아이디', classId)
 
     const onHeartClicked = async () => {
         console.log('하트클릭')

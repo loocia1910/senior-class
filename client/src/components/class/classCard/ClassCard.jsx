@@ -25,7 +25,7 @@ const ClassCard = ({ classId, teacherName, cName, price, discount, img, region})
     // 로그인이 안 되어 있으면 로그인 요청
     try {
       if(!isLogin) {
-        navigate('signin');
+        navigate('/signin');
         return;
       }
 

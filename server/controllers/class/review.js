@@ -7,6 +7,7 @@ module.exports = {
     getAllReview: async (req, res) => {
         try {
             const { classId } = req.params;
+            console.log('서버클래스 아이디', classId)
             const classReviews = await Review.findAll({ 
                 include: [{
                     model: User,
