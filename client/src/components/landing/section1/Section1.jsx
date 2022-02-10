@@ -7,13 +7,12 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
 import 'swiper/css/effect-fade';
-
 import styles from './Section1.module.css'
 
 const Section1 = () => {
-
+  
   // 배너 배경색 설정
-  const bgColors = ['gray', 'red', 'green', 'blue'];
+  const bgColors = ['#fbfecb', '#FFEFEF', '#C8F2EF', '#E7FBBE'];
   const [ bgIdx, setBgIdx ] = useState(0)
 
   // 배너 재생
