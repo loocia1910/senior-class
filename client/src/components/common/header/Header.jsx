@@ -56,7 +56,7 @@ const Header = () => {
                 </div>
                 <div className={`${styles.flexCenterAlign} ${styles.logoRow}`}>
                     <div className={styles.logoBox}>
-                        <h1><Link to="/">시니어 클래스</Link></h1>
+                        <Link to="/"><h1 className={styles.logo}>Senior Class</h1></Link>
                     </div>
                     <div className={`${styles.searchFormBox} ${styles.relative}`}>
                         <div >
