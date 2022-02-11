@@ -28,8 +28,12 @@ const MyReviewList = () => {
             <div className={styles.wrapper}>
                 <h2>나의 클래스 후기</h2>
                 <div>
-                    {
-                       myReview.map((review, idx) => 
+                    {  
+                      myReview.length === 0
+                      ?
+                      <p className={styles.noData}>나의 리뷰가 없습니다.</p>
+                      :
+                       !!myReview && myReview.map((review, idx) => 
                         <div key={idx} className={styles.reviewBox}>
                             <div className={styles.imgBox}><img src={review.Class.img_url} alt={review.Class.name} /></div>
                             <div>
