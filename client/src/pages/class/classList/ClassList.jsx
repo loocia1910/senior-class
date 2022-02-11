@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useParams, Outlet } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ClassCard from '../../../components/class/classCard/ClassCard';
@@ -29,35 +29,20 @@ export const ClassList = () => {
     const [ _type, setType ] = useState(type); // 해더 메뉴 클릭에 따라 type 변경
     const [ typeList, setTypeList ] = useState([]);
     const [ categoryList, setCategoryList ] = useState([]);
-    const [ isFilterClicked, setFilterClicked ] = useState(false);
-    const [ filterClassList, setFilterClassList ] = useState([]);
-    
 
-    const filterClass = async (list, targetId) => {
-      let filteredClass;
-      let classes = list.slice();
+    const [ filterTag, setFilterTag ] = useState('');
+    const [ priceASCList, setPriceASCList ] = useState([]);
+    const [ priceDESCList, setPriceDESCList ] = useState([]);
+    const [ filterClicked, setFilterClicked ] = useState(false);
 
-      // 가격 오름차순
-      if(targetId === 'priceASC') {
-        filteredClass = classes.sort((a, b) => a.price - b.price);
-      } 
-      
-      // 가격 내림차순
-      else if ( targetId === 'priceDESC') {
-        filteredClass = classes.sort((a, b) => b.price - a.price);
-      }
-
-      setFilterClassList(filteredClass);
-    };
 
     // type에 따른 분류
     useEffect(() => {
+      setFilterClicked(false);
+
       // console.log('type', type)
       // console.log('typeList', typeList)
       // console.log('filterClassList', filterClassList);
-
-      setFilterClicked(false);
-
       if(type === 'online') {
         setType('온라인');
         setTypeList(onlineClass);
@@ -72,15 +57,15 @@ export const ClassList = () => {
         setTypeList(freeClass);
       }
       
-    }, [type, filterClassList, freeClass, latestClass, offlineClass, onlineClass, typeList])
+    }, [type, freeClass, latestClass, offlineClass, onlineClass, typeList])
 
     
     // category에 따른 분류
     useEffect(() => {
-      setFilterClicked(false);
       // console.log('category', category)
       // console.log('categoryList', categoryList)
       // console.log('filterClassList', filterClassList);
+      setFilterClicked(false);
 
       const categoryClass = async (category) => {
         let filter =  await typeList.filter(el => el.category === category);
@@ -126,40 +111,73 @@ export const ClassList = () => {
       if(type !== 'offline') return;
       regionClass(category);
     }, [category, type, typeList])
-
+    
+    const cList = useMemo(() => categoryList.slice(), [categoryList]);
+    const tList = useMemo(() => typeList.slice(), [typeList]);
 
     // filter 태그에 따른 분류
-    const onClickFilter = async (e) => {
-      const tagId = e.target.id
+    useEffect(() => {
+      if(!filterClicked) return;
+
+      const filterClass = (tag) => {
+        let classes;
+        if(category) {
+          classes = cList;
+        } else {
+          classes = tList;
+        }
+
+        // 가격 오름차순
+        if(tag === 'priceASC') {
+          let filteredClass = classes.sort((a, b) => a.price - b.price);
+          setPriceASCList(filteredClass);
+          setPriceDESCList([]);
+        } else if(tag === 'priceDESC') {
+          // 가격 내림차순
+          let filteredClass = classes.sort((a, b) => b.price - a.price);
+          setPriceDESCList(filteredClass);
+          setPriceASCList([]);
+        } 
+      };
+      
+      filterClass(filterTag);
+    }, [ filterTag, category, cList, tList, filterClicked ]);
+
+    const handleFilterClicked = (e) => {
+      const tagId = e.target.id;
+      setFilterTag(tagId);
       setFilterClicked(true);
-
-
-      // category가 없는 경우
-      if(category === undefined) {
-        await filterClass(typeList, tagId);
-      } else {
-        // category가 있는 경우
-        await filterClass(categoryList, tagId);
-      }
-      // console.log('filterClassList', filterClassList)
     };
-
-
 
     return (
         <div className={styles.listContainer}>
             <span>{_type} 클래스</span>
             <h2>{category || '전체보기'}</h2>
             <div>
-              <span onClick={(e) => onClickFilter(e)} id='priceASC' className={styles.filterBtn}>#가격 낮은순</span>
-              <span onClick={(e) => onClickFilter(e)} id='priceDESC' className={styles.filterBtn}>#가격 높은순</span>
+              <span onClick={(e) => handleFilterClicked(e)} id='priceASC' className={styles.filterBtn}>#가격 낮은순</span>
+              <span onClick={(e) => handleFilterClicked(e)} id='priceDESC' className={styles.filterBtn}>#가격 높은순</span>
               {/* <span onClick={(e) => onClickFilter(e)} id='reviewDESC' className={styles.filterBtn}>#리뷰 많은순</span> */}
             </div>
             <div className={styles.classCardBox}>
                 { 
-                isFilterClicked // filter 태그가 클릭되면
+                filterClicked && priceASCList.length > 0// filter 태그가 클릭되고, 바뀌면
                 ?
-                filterClassList.map((c,idx) => // filter 리스트를 출력
+                priceASCList.map((c,idx) => // filter 리스트를 출력
+                <div key={idx} className={styles.card}>
+                    <ClassCard
+                        classId={c.id}
+                        teacherName={c.User.name}
+                        cName={c.name}
+                        price={c.price}
+                        discount={c.discount}
+                        region={c.region}
+                        img={c.img_url}
+                    />
+                </div>)
+                :
+                filterClicked && priceDESCList.length > 0// filter 태그가 클릭되고, 바뀌면
+                ?
+                priceDESCList.map((c,idx) => // filter 리스트를 출력
                 <div key={idx} className={styles.card}>
                     <ClassCard
                         classId={c.id}
