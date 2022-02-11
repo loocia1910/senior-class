@@ -32,15 +32,6 @@ export const ClassList = () => {
     const [ isFilterClicked, setFilterClicked ] = useState(false);
     const [ filterClassList, setFilterClassList ] = useState([]);
     
-    const categoryClass = async (category) => {
-      let filter =  await typeList.filter(el => el.category === category);
-      await setCategoryList(filter);
-    }
-
-    const regionClass = async (region) => {
-      let filter =  await typeList.filter(el => el.region === region);
-      await setCategoryList(filter);
-    }
 
     const filterClass = async (list, targetId) => {
       let filteredClass;
@@ -91,6 +82,11 @@ export const ClassList = () => {
       // console.log('categoryList', categoryList)
       // console.log('filterClassList', filterClassList);
 
+      const categoryClass = async (category) => {
+        let filter =  await typeList.filter(el => el.category === category);
+        await setCategoryList(filter);
+      }
+  
 
       if(!category) return;
       if(type === 'offline') return;
@@ -116,15 +112,20 @@ export const ClassList = () => {
         categoryClass('foreign');
       }
 
-    }, [category, type])
+    }, [category, type, typeList])
 
     // region에 따른 분류
     useEffect(() => {
       setFilterClicked(false);
 
+      const regionClass = async (region) => {
+        let filter =  await typeList.filter(el => el.region === region);
+        setCategoryList(filter);
+      };
+      
       if(type !== 'offline') return;
       regionClass(category);
-    }, [category, type])
+    }, [category, type, typeList])
 
 
     // filter 태그에 따른 분류

@@ -6,15 +6,17 @@ import styles from './MyReviewList.module.css';
 const MyReviewList = () => {
     const dispatch = useDispatch();
     const { user_id, myReview } = useSelector(state => state.user);
-    const fetchMyReviews = async () => {
-        try {
-            await dispatch(getMyReviewThunk({ userId: user_id })).unwrap();
-        } catch (err) {
-            throw err;
-        }
-    };
 
     useEffect(() => {
+        
+        const fetchMyReviews = async () => {
+            try {
+                await dispatch(getMyReviewThunk({ userId: user_id })).unwrap();
+            } catch (err) {
+                throw err;
+            }
+        };
+
         fetchMyReviews();
     }, [dispatch]);
 

@@ -6,21 +6,22 @@ import styles from './ClassReviewWrap.module.css';
 
 const ClassReviewWrap = ({ classId }) => {
     const dispatch = useDispatch();
-    const fetchReviews = async () => {
-        try {
-            
-            await dispatch(getClassReviewThunk({ classId })).unwrap();
-            
-        } catch (err) {
-            throw err;
-        }
-    }
     const { classReviews } = useSelector(state => state.class);
-    console.log('클래스 리뷰 컴포넌트 리뷰', classReviews)
 
     useEffect(() => {
+        const fetchReviews = async () => {
+            try {
+                
+                await dispatch(getClassReviewThunk({ classId })).unwrap();
+                
+            } catch (err) {
+                throw err;
+            }
+        }
+        // console.log('클래스 리뷰', classReviews)
+
         fetchReviews();
-    }, [dispatch]);
+    }, [dispatch, classId]);
 
     useEffect(() => {
 

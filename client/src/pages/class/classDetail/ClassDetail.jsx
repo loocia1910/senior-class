@@ -122,15 +122,6 @@ const ClassDetail = () => {
         setIsModalOpen(false);
     };
 
-
-    const fetchClassDetail = async () => {
-        try {
-            await dispatch(getClassDetailThunk({ classId: params.classId })).unwrap();
-        }  catch(err) {
-            throw err;
-        }
-    }
-
     // 스크롤 위치 따른 메뉴바 active css로 변경
     useEffect(() => {
         window.addEventListener('scroll', updateScroll)
@@ -138,8 +129,17 @@ const ClassDetail = () => {
     
     // 클래스 아이디에 따른 데이터 가져오기 요청
     useEffect(() => {
+        
+        const fetchClassDetail = async () => {
+            try {
+                await dispatch(getClassDetailThunk({ classId })).unwrap();
+            }  catch(err) {
+                throw err;
+            }
+        }
+
         fetchClassDetail();
-    }, [dispatch])
+    }, [dispatch, classId])
 
 
     const { name, price, discount, category, type, img_url, contents, teacherInfo, region, User} = useSelector(state => state.class.classDetail)

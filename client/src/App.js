@@ -24,39 +24,39 @@ import WrongResult from './pages/wrongResult/WrongResult';
 const App = () => {
   const dispatch = useDispatch();
 
-  const getOnlineClass = async () => {
-    try {
-      await dispatch(getTypeClassThunk({ type: 'online' })).unwrap();
-    } catch (err) {
-      throw err;
-    }
-  }
-
-  const getOfflineClass = async () => {
-    try {
-      await dispatch(getTypeClassThunk({ type: 'offline' })).unwrap();
-    } catch (err) {
-      throw err;
-    }
-  }
-
-  const getlatestClass = async () => {
-    try {
-      await dispatch(getTypeClassThunk({ type: 'free' })).unwrap();
-    } catch (err) {
-      throw err;
-    }
-  }
-
-  const getFreeClass = async () => {
-    try {
-      await dispatch(getTypeClassThunk({ type: 'latest' })).unwrap();
-    } catch (err) {
-      throw err;
-    }
-  }
-
   useEffect(() => {
+    const getOnlineClass = async () => {
+      try {
+        await dispatch(getTypeClassThunk({ type: 'online' })).unwrap();
+      } catch (err) {
+        throw err;
+      }
+    }
+  
+    const getOfflineClass = async () => {
+      try {
+        await dispatch(getTypeClassThunk({ type: 'offline' })).unwrap();
+      } catch (err) {
+        throw err;
+      }
+    }
+  
+    const getlatestClass = async () => {
+      try {
+        await dispatch(getTypeClassThunk({ type: 'free' })).unwrap();
+      } catch (err) {
+        throw err;
+      }
+    }
+  
+    const getFreeClass = async () => {
+      try {
+        await dispatch(getTypeClassThunk({ type: 'latest' })).unwrap();
+      } catch (err) {
+        throw err;
+      }
+    }
+    
     // 온라인, 오프라인, 최신, 무료 클래스 받아오기
     getOnlineClass();
     getOfflineClass();
