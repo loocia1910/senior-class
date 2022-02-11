@@ -34,7 +34,6 @@ module.exports = {
             return res.status(200).send({ myLikes });
 
         } catch (err) {
-            console.log(err);
             throw err;
         }
     },
@@ -67,12 +66,10 @@ module.exports = {
                 }],
                 where: { userId }
             });
-            console.log('마이라이크가 지워졌나?', myLikes)
 
             return res.status(200).send({ myLikes });
 
         } catch (err) {
-            console.log(err);
             throw err;
         }
     },

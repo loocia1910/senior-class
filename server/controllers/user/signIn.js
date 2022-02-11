@@ -21,7 +21,6 @@ module.exports = {
         **/
         try {
             const { login_id, password } = req.body.loginData;
-            console.log('req.body.loginData---??', req.body.loginData)
     
             const db_user = await User.findOne({ where: { login_id } });
     
@@ -46,7 +45,6 @@ module.exports = {
             });
 
         } catch (err) {
-            console.log(err);
             throw err;
         }
 

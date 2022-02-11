@@ -11,7 +11,6 @@ module.exports = {
         * 3. hash와 유저 정보를 DB에 저장
         **/
         try {
-          console.log('req.body--------', req.body)
           const { login_id, password, nickname, name, birth, gender } = req.body.userState;
           const { yy, mm, dd } = birth;
 
@@ -23,7 +22,7 @@ module.exports = {
           // 회원가입 승인
           // 비밀번호 bcrypt로 해쉬화 하기 
           bcrypt.hash(password, 10, async (err, hash) => {
-              if (err) return console.log('signup bcrypt hash 생성 오류 :', err);
+              if (err) throw err;
               
               // DB에 hash된 비밀번호를 포함 새로운 유저 정보 저장
               await User.create({
@@ -37,13 +36,15 @@ module.exports = {
               .then((respose) => {
                 return res.status(201).send({login_id, name});
               })
-              .catch(err => console.log(err));
+              .catch(err => {
+                throw err;
+              });
             
           });
 
 
         } catch (err) {
-          console.log(err);
+          throw err;
         }
     },
 }

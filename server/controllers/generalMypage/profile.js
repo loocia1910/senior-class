@@ -14,7 +14,7 @@ module.exports = {
             form.parse(req, function(err, fields, files) {
                 const { login_id } = fields;
                 AWS.config.update({ region : 'ap-northeast-2' });
-                console.log('files-----', files)
+                // console.log('files-----', files)
                 
                 const s3 = new AWS.S3();
                 const params = {
@@ -26,7 +26,6 @@ module.exports = {
 
                 s3.upload(params, async (err, data) => {
                     if(err) {
-                        console.log(err);
                         return;
                     }
                     else {

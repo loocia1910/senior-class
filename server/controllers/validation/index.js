@@ -16,12 +16,11 @@ module.exports = {
             return res.sendStatus(200);
 
          } catch (err) {
-             console.log(err)
+             throw err;
          }
     },
     validateNickname: async (req, res) => {
       try {
-        console.log('닉네임???',req.body)
         const { nickname } = req.body
         
         if(!nickname) res.sendStatus(400);
@@ -35,7 +34,7 @@ module.exports = {
         // 존재하지 않는 닉네임인 경우(입력한 닉네임을 사용해도 되는 경우)
         return res.sendStatus(200);
       } catch (err) {
-        console.log(err);
+        throw err;
       }
 
     }

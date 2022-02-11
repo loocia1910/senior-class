@@ -18,7 +18,6 @@ module.exports = {
         **/
         try {
             const refreshToken = req.cookies.refreshToken;
-            console.log('/req.cookies===', req.cookies)
 
             if(!refreshToken) {
                 return res.status(401).send('The refresh token does not exist.');
@@ -44,7 +43,6 @@ module.exports = {
             sendRefreshToken(res, newRefreshToken);
             sendAccessToken(res, newAccessToken, db_user.dataValues)
         } catch (err) {
-            console.log(err);
             throw err;
         }
 

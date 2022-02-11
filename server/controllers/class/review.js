@@ -7,7 +7,6 @@ module.exports = {
     getAllReview: async (req, res) => {
         try {
             const { classId } = req.params;
-            console.log('서버클래스 아이디', classId)
             const classReviews = await Review.findAll({ 
                 include: [{
                     model: User,
@@ -32,7 +31,6 @@ module.exports = {
                 }],
                 where: { userId }
             });
-            console.log('서버에 myReview---', myReview);
             res.status(200).send({ myReview });
         } catch (err) {
             throw err;

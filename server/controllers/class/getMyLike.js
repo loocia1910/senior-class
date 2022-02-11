@@ -27,12 +27,10 @@ module.exports = {
                 where: { userId }
             })
 
-            console.log('getmylikes myLikes', myLikes )
 
             return res.status(200).send({ myLikes });
 
         } catch (err) {
-            console.log(err);
             throw err;
         }
     },

@@ -11,7 +11,6 @@ module.exports = {
             
             return res.sendStatus(205);
         } catch (err) {
-            console.log(err);
             throw err;
         }
     },

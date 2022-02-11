@@ -12,7 +12,6 @@ module.exports = {
       return res.status(201).send({ accessToken , userInfo });
     },
     sendRefreshToken: async (res, refreshToken) => {
-      console.log('refreshToken??????????', refreshToken)
       res.cookie('refreshToken', refreshToken, {
         sameSite: 'None', // 전송되는 쿠키에 대한 제한을 제거하기 위해 None 값을 도입
         secure: true,
@@ -22,13 +21,11 @@ module.exports = {
     },
     isAuthorized: async (req) => {
       const authorization = await req.headers['authorization'];
-      console.log('tokenFunction/authorization????', authorization);
 
       // accessToken이 해더에 없는 경우
       if(!authorization) return null;
 
       const accessToken = authorization.split(' ')[1];
-      console.log('tokenFunction/accessToken????', accessToken);
 
       try {
           return verify(accessToken, process.env.ACCESS_SECRET);

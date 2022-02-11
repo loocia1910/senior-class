@@ -8,7 +8,6 @@ module.exports = {
         // DB에서 로그인 아이디를 찾기
         // 일치 유저 삭제
         const userData = await isAuthorized(req);
-        console.log('userDatadefaultValuedefaultValue', userData)
         if(!userData) return res.status(401).send('The accessToken is invaild.');
         
         // 해당 유저를 삭제
