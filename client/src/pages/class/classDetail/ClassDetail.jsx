@@ -76,10 +76,8 @@ const ClassDetail = () => {
     const dispatch = useDispatch();
     const params = useParams();
     const { classId } = params; 
-    console.log('클래스 아이디', classId)
 
     const onHeartClicked = async () => {
-        console.log('하트클릭')
 
       setIsHeartClicked(!isHeartClicked)
       if(!is_login) {
@@ -92,7 +90,6 @@ const ClassDetail = () => {
         try {
           await dispatch(addlikesThunk({ user_id, classId }).unwrap())
         } catch (err) {
-          console.log(err);
           throw err;
         }
       }
@@ -102,7 +99,6 @@ const ClassDetail = () => {
         try {
           await dispatch(deleteLikesThunk({ user_id, classId }).unwrap())
         } catch (err) {
-          console.log(err);
           throw err;
         }
       }

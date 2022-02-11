@@ -21,7 +21,6 @@ const ClassCard = ({ classId, teacherName, cName, price, discount, img, region})
   const [ isHeartClicked, setIsHeartClicked ] = useState(isMyLikes);
   
   const heartClicked = async () => {
-    console.log('하트 클릭')
     // 로그인이 안 되어 있으면 로그인 요청
     try {
       if(!isLogin) {
@@ -39,7 +38,6 @@ const ClassCard = ({ classId, teacherName, cName, price, discount, img, region})
           await dispatch(deleteLikesThunk({ userId, classId })).unwrap();
       }
     } catch (err) {
-      console.log(err)
       throw err;
     }
   

@@ -9,7 +9,6 @@ const ClassLikeList = () => {
     
     useEffect(() => {
         setMyLikes(myLikes);
-        console.log('마이라이크', _myLikes)
     },[ myLikes,_myLikes])
 
     

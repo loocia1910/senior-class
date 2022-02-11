@@ -10,12 +10,9 @@ const Section2 = () => {
   const [ marginLeft, setMaginLeft ] = useState(0);
   const handlePrevNav = () => {
     setMaginLeft(marginLeft+boxWidth);
-    console.log('marginLeft===Prev', marginLeft)
   }
   const handleNextNav = () => {
     setMaginLeft(marginLeft-boxWidth);
-    console.log('marginLeft===Next', marginLeft)
-    console.log('isEndRight', isEndRight)
   }
   const isEndLeft = marginLeft === 0 
   const isEndRight = marginLeft + (-boxWidth) === -(slidesWidth)

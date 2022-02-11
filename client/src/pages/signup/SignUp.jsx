@@ -93,7 +93,7 @@ const SignUp = () => {
                 setLoginIdMsg('이미 사용 중인 아이디입니다.');
                 return;
               } 
-             console.log(err);
+             throw err;
         }
     }
     
@@ -167,7 +167,7 @@ const SignUp = () => {
               setNicknameMsg('이미 사용 중인 닉네임입니다.');
               return;
             } 
-             console.log(err);
+            throw err;
         }
     }
 
@@ -242,7 +242,6 @@ const SignUp = () => {
 
          await dispatch(signUpThunk({userState, navigate})).unwrap();
         } catch (err) {
-          console.log(err);
           throw err;
         }
     }

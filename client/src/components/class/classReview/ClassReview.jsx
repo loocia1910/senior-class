@@ -50,7 +50,6 @@ const ClassReviewWrap = ({ classId }) => {
 
 export const ClassReview = ({login_id, profile, contents, createdAt}) => {
     let created = createdAt.split('T')[0];
-    console.log('생성일', created)
     // 클래스 아이디를 props로 받아와 해당 클래스의 리뷰를 받아온다.
     return (
         <div className={styles.container}>

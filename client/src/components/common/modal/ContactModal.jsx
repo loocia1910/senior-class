@@ -30,11 +30,9 @@ const ContactModal = ({ isOpenHandler, isOpen }) => {
         setIsLoading(true);
         emailjs.sendForm( service_id, template_id, form.current, user_id)
         .then((res) => { 
-            console.log(res.status, res.text);
             setIsSent(true);
             setIsLoading(false);
         }, (err) => {
-            console.log(err.text);
             setIsSent(false);
         })
 

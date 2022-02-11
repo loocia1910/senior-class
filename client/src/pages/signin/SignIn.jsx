@@ -31,7 +31,6 @@ export default function SignIn(){
 
             await dispatch(signInThunk({ loginData, navigate })).unwrap();
         } catch (err) {
-            console.log(err);
             setAuthMsg('아이디 또는 비밀번호를 확인해주세요.');
             throw err;
         }

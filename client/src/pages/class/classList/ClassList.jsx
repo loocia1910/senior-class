@@ -90,7 +90,7 @@ export const ClassList = () => {
 
       if(!category) return;
       if(type === 'offline') return;
-      console.log('category??', category)
+      // console.log('category??', category)
       
       if(category === '미술') {
          categoryClass('art');
@@ -141,7 +141,7 @@ export const ClassList = () => {
         // category가 있는 경우
         await filterClass(categoryList, tagId);
       }
-      console.log('filterClassList', filterClassList)
+      // console.log('filterClassList', filterClassList)
     };
 
 

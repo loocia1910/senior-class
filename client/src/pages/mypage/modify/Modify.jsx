@@ -114,7 +114,7 @@ const Modify = () => {
                 setNicknameMsg('이미 사용 중인 닉네임입니다.');
                 return;
             } 
-                console.log(err);
+            throw err;
         }
     }
 
@@ -209,7 +209,7 @@ const Modify = () => {
         // 저장된 url을 리턴한다
         // user slice에서 응답으로 받은 url을 새로 저장
         try {
-            console.log('profileImg', profileImg);
+            // console.log('profileImg', profileImg);
             const formData = new FormData();
             formData.append('profile', profileImg);
             formData.append('login_id', login_id);

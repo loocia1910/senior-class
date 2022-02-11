@@ -33,7 +33,6 @@ const ModifyBefore = () => {
             await dispatch(authModifyThunk({ navigate, loginInfo })).unwrap();
 
         } catch (err) {
-            console.log(err);
             setIsErr(true);
             throw err;
         }

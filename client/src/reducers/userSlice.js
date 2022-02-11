@@ -112,7 +112,6 @@ const userSlice = createSlice({
       })
       .addCase(getMyReviewThunk.fulfilled, (state, action) => {
         const { myReview } = action.payload;
-        console.log('유저 슬라이스 myReview', myReview)
         state.myReview = myReview;
         return state;
       })

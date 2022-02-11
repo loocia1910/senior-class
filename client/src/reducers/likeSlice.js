@@ -21,7 +21,6 @@ const likeSlice = createSlice({
     builder
       .addCase(getMyLikesThunk.fulfilled, (state, action) => {
         const myLikes = action.payload
-        console.log('like sliece/ mylikes ========', myLikes)
         state = myLikes;
         return state;
       })

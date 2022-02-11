@@ -7,7 +7,6 @@ import styles from './SignUpOk.module.css'
 const SignUpOk = () => {
     let userInfo = useSelector((state) => state.user);
     const { login_id, name } = userInfo;
-    console.log('리덕스 가입된 유저 정보', userInfo)
 
     return (
         <div className={styles.wrapper}>

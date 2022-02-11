@@ -36,11 +36,9 @@ export default function TeacherApply(){
         e.preventDefault();
         emailjs.sendForm( service_id, template_id, form.current, user_id)
         .then((res) => { 
-            console.log('res====', res)
             setModalMsg('강사지원이 성공적으로 완료되었습니다.');
             window.location.reload(); 
         }, (err) => {
-            console.log('err----', err.text);
             setModalMsg('강사지원 요청에 실패하였습니다.');
             window.location.reload(); 
         })
