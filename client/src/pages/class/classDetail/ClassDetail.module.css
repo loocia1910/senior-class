@@ -74,11 +74,14 @@
     padding: 1rem 0 3rem;
 }
 
+/* 리뷰 */
 
 /* 환불 정책 */
 .refund_policy_text {
     background-color: #efefef;
     padding: 1.6rem; 
+    margin-bottom: 6rem; 
+
 }
 
 /* 결제 박스 */
@@ -130,4 +133,8 @@
 .priceFree {
     color: rgb(2, 2, 192);
     font-weight: 500;
+}
+
+.row {
+    margin-bottom: 2.5rem;
 }

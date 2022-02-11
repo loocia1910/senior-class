@@ -28,7 +28,7 @@ export const getClassDetailThunk = createAsyncThunk(
 
 
 export const getClassReviewThunk = createAsyncThunk(
-    'user/myreview',
+    'class/review',
     async ({ classId }, { dispatch, rejectWithValue }) => {
         try { 
             const res = await customAxios.get(`/class/review/${classId}`);

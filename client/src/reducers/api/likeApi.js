@@ -33,6 +33,7 @@ export const deleteLikesThunk = createAsyncThunk(
     async ({ userId, classId }, { dispatch, rejectWithValue }) => {
         try {
             const res = await customAxios.post('/class/unlike', { userId, classId } );
+
             return res.data.myLikes;
 
         } catch (err) {

@@ -47,7 +47,7 @@ const Section1 = () => {
                     setBgIdx(swiper.activeIndex)
                   }}
                   autoplay={{
-                    delay: 4000,
+                    delay: 3000,
                     disableOnInteraction: false, // 인터렉션이 있어도 움직임,
                   }}
                   effect={"fade"}

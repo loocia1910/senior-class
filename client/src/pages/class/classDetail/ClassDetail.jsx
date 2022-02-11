@@ -78,17 +78,16 @@ const ClassDetail = () => {
     const { classId } = params; 
 
     const onHeartClicked = async () => {
-
-      setIsHeartClicked(!isHeartClicked)
+        setIsHeartClicked(!isHeartClicked);
       if(!is_login) {
           navigate('/signin');
           return;
       }
-
+    
       // 로그인 된 상태에서 찜 등록 요청
       if( is_login && !isHeartClicked) {
         try {
-          await dispatch(addlikesThunk({ user_id, classId }).unwrap())
+          await dispatch(addlikesThunk({ userId: user_id, classId })).unwrap();
         } catch (err) {
           throw err;
         }
@@ -97,12 +96,13 @@ const ClassDetail = () => {
       // 로그인 된 상태에서 찜 삭제 요청
       if( is_login && isHeartClicked) {
         try {
-          await dispatch(deleteLikesThunk({ user_id, classId }).unwrap())
+          await dispatch(deleteLikesThunk({ userId: user_id, classId })).unwrap();
         } catch (err) {
           throw err;
         }
       }
     
+
     }
 
 
@@ -118,6 +118,12 @@ const ClassDetail = () => {
         setIsModalOpen(false);
     };
 
+
+    const classdetail = useSelector(state => state.class.classDetail);
+    const { name, price, discount, category, type, img_url, contents, teacherInfo, region, User } = !!classdetail && classdetail;
+    const teacherName = !!User && User.name;
+    const discountAmount = !!price && !!discount && price*(discount/100);
+
     // 스크롤 위치 따른 메뉴바 active css로 변경
     useEffect(() => {
         window.addEventListener('scroll', updateScroll)
@@ -128,7 +134,7 @@ const ClassDetail = () => {
         
         const fetchClassDetail = async () => {
             try {
-                await dispatch(getClassDetailThunk({ classId })).unwrap();
+               await dispatch(getClassDetailThunk({ classId })).unwrap();
             }  catch(err) {
                 throw err;
             }
@@ -137,113 +143,116 @@ const ClassDetail = () => {
         fetchClassDetail();
     }, [dispatch, classId])
 
+    useEffect(() => {
+        // console.log('useEffect classdetail--', classdetail)
+    }, [classdetail])
 
-    const { name, price, discount, category, type, img_url, contents, teacherInfo, region, User} = useSelector(state => state.class.classDetail)
-    const teacherName = User.name;
-    const discountAmount = price*(discount/100);
-    
-
+    if(classdetail) {
     return (
-        <div className={styles.container}>
-            <div className={styles.wrapper}>
-                <section className={styles.contents}>
-                    {/* 메인 배너 */}
-                    <div className={styles.mainbanner}>
-                        <p className={styles.category}>{ type === '0'? '온라인 클래스' : '오프라인 클래스'} &gt; {categorys[category]}</p>
-                        <div>
-                            {region ? <RegionLabel region={region} />: null}
-                            <span>{teacherName}</span>
-                        </div>
-                        <h2 className={styles.title}>{name}</h2>
-                        <div className={styles.banner}>
-                            <img src={img_url} alt={name} />
-                        </div>
-                    </div>
-                    {/* nav */}
-                    <nav className={styles.nav}>
-                        <ul>
-                            <li onClick={onClickInfo} className={infoActive ? `${styles.active} ${styles.navMenu}` : `${styles.navMenu}`}>클래스 소개</li>
-                            <li onClick={onClickTeacher} className={teacherActive ? `${styles.active} ${styles.navMenu}` : `${styles.navMenu}`}>강사 소개</li>
-                            <li onClick={onClickReview} className={reviewActive ? `${styles.active} ${styles.navMenu}` : `${styles.navMenu}`}>수강 후기</li>
-                            <li onClick={onClickRefund} className={refundActive ? `${styles.active} ${styles.navMenu}` : `${styles.navMenu}`}>환불 정책</li>
-                        </ul>
-                    </nav>
-                    {/* 클래스 소개 */}
-                    <div id='info' className={styles.info}>
-                        <div ref={infoRef} className={styles.mark}></div>
-                        <h2 className={styles.subTitle}>클래스 소개</h2>
-                        <div>
-                            {contents.split('.').map((content,idx) => 
-                              <p key={idx}>{content=== '' ? null : content + '.'}</p>
-                            )}
-                        </div>
-                    </div>
-                    {/* 강사 소개 */}
-                    <div id='teacher' className={styles.teacher}>
-                        <div ref={teacherRef} className={styles.mark}></div>
-                        <h2 className={styles.subTitle}>강사 소개</h2>
-                        <div>
-                            {teacherInfo.split('.').map((t_info,idx) => 
-                             <p key={idx}>{t_info === '' ? null : t_info + '.'}</p>
-                            )}
-                        </div>
-                    </div>
-                    {/* 수강 후기 */}
-                    <div id='review' className={styles.review}>
-                        <div ref={reviewRef} className={styles.mark}></div>
-                        <h2 className={styles.subTitle}>수강후기</h2>
-                        <ClassReviewWrap 
-                          classId={classId}
-                        />
-                    </div>
-                    {/* 환불 정책 */}
-                    <div id='refund' className={styles.refund_policy}>
-                        <div ref={refundRef} className={styles.mark}></div>
-                        <div >
-                            <h2 className={styles.subTitle}>환불 정책</h2>
-                            <div className={styles.refund_policy_text}>
-                                <p>온라인 수업의 경우 구입 후 환불은 불가합니다.</p>
-                                <p>단, 오프라인 수업의 경우 담당 강사에 따라 환불 규정이 다를 수 있으므로, 해당 강사에게 환불 문의 하시기 바랍니다.</p>
+
+                <div className={styles.container}>
+                  <div className={styles.wrapper}>
+                    <section className={styles.contents}>
+                        {/* 메인 배너 */}
+                        <div className={styles.mainbanner}>
+                            <p className={styles.category}>{ type === '0'? '온라인 클래스' : '오프라인 클래스'} &gt; {categorys[category]}</p>
+                            <div>
+                                {region ? <RegionLabel region={region} />: null}
+                                <span>{teacherName}</span>
+                            </div>
+                            <h2 className={styles.title}>{name}</h2>
+                            <div className={styles.banner}>
+                                <img src={img_url} alt={name} />
                             </div>
                         </div>
-                    </div>                  
-                </section>
-                {/* 결제 */}
-                <section className={styles.payment}>
-                    {region ? <RegionLabel region={region}/> : null}
-                    <span>{teacherName}</span>
-                    <h3 >{name}</h3>
-                    <div className={styles.priceBox}>
-                        {price === 0 ? null: <p className={styles.weight_light}>3개월 할부</p>}
-                        {price === 0 ? null: <span className={styles.discount}>{discount}% &nbsp;&nbsp;</span>}
-                        <span className={price === 0 ? `${styles.priceFree}`:`${styles.price}`}>{ price === 0 ? '무료' : `월 ${price}원`}</span>
-                        {price === 0 ? null: <p className={styles.weight_light}>월 할인액 -{discountAmount}원</p>}
-                    </div>
-                    <div>
-                        <button
-                          className={`${styles.btn} ${styles.wishBtn}`}
-                          onClick={onHeartClicked}
-                        >
-                          { isHeartClicked ? '찜 취소' : '찜하기' }
-                        </button>
-                    </div>
-                    <div>
-                        <button 
-                          className={`${styles.btn} ${styles.payBtn}`}
-                          onClick={onBuyClicked}
-                        >
-                          클래스 신청하기
-                        </button>
-                    </div>
-                </section>
-                {
-                  isModalOpen ? 
-                  <AlarmModal msg1={modalMsg1} failModal='failModal' handleCloseModal={handleCloseModal}/> :
-                  null
-                }
-            </div>
-        </div>
+                        {/* nav */}
+                        <nav className={styles.nav}>
+                            <ul>
+                                <li onClick={onClickInfo} className={infoActive ? `${styles.active} ${styles.navMenu}` : `${styles.navMenu}`}>클래스 소개</li>
+                                <li onClick={onClickTeacher} className={teacherActive ? `${styles.active} ${styles.navMenu}` : `${styles.navMenu}`}>강사 소개</li>
+                                <li onClick={onClickReview} className={reviewActive ? `${styles.active} ${styles.navMenu}` : `${styles.navMenu}`}>수강 후기</li>
+                                <li onClick={onClickRefund} className={refundActive ? `${styles.active} ${styles.navMenu}` : `${styles.navMenu}`}>환불 정책</li>
+                            </ul>
+                        </nav>
+                        {/* 클래스 소개 */}
+                        <div id='info' className={`${styles.info} ${styles.row}`}>
+                            <div ref={infoRef} className={styles.mark}></div>
+                            <h2 className={styles.subTitle}>클래스 소개</h2>
+                            <div>
+                                {!!contents && contents.split('.').map((content,idx) =>
+                                  <p key={idx}>{content=== '' ? null : content + '.'}</p>
+                                )}
+                            </div>
+                        </div>
+                        {/* 강사 소개 */}
+                        <div id='teacher' className={`${styles.teacher} ${styles.row}`}>
+                            <div ref={teacherRef} className={styles.mark}></div>
+                            <h2 className={styles.subTitle}>강사 소개</h2>
+                            <div>
+                                {!!teacherInfo && teacherInfo.split('.').map((t_info,idx) =>
+                                 <p key={idx}>{t_info === '' ? null : t_info + '.'}</p>
+                                )}
+                            </div>
+                        </div>
+                        {/* 수강 후기 */}
+                        <div id='review' className={`${styles.review} ${styles.row}`}>
+                            <div ref={reviewRef} className={styles.mark}></div>
+                            <h2 className={styles.subTitle}>수강후기</h2>
+                            <ClassReviewWrap
+                              classId={!!classId && classId}
+                            />
+                        </div>
+                        {/* 환불 정책 */}
+                        <div id='refund' className={`${styles.refund_policy} ${styles.row}`}>
+                            <div ref={refundRef} className={styles.mark}></div>
+                            <div >
+                                <h2 className={styles.subTitle}>환불 정책</h2>
+                                <div className={styles.refund_policy_text}>
+                                    <p>온라인 수업의 경우 구입 후 환불은 불가합니다.</p>
+                                    <p>단, 오프라인 수업의 경우 담당 강사에 따라 환불 규정이 다를 수 있으므로, 해당 강사에게 환불 문의 하시기 바랍니다.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    {/* 결제 */}
+                    <section className={styles.payment}>
+                        {region ? <RegionLabel region={region}/> : null}
+                        <span>{teacherName}</span>
+                        <h3 >{name}</h3>
+                        <div className={styles.priceBox}>
+                            {price === 0 ? null: <p className={styles.weight_light}>3개월 할부</p>}
+                            {price === 0 ? null: <span className={styles.discount}>{discount}% &nbsp;&nbsp;</span>}
+                            <span className={price === 0 ? `${styles.priceFree}`:`${styles.price}`}>{ !!price && price === 0 ? '무료' : `월 ${price}원`}</span>
+                            {price === 0 ? null: <p className={styles.weight_light}>월 할인액 -{discountAmount}원</p>}
+                        </div>
+                        <div>
+                            <button
+                              className={`${styles.btn} ${styles.wishBtn}`}
+                              onClick={onHeartClicked}
+                            >
+                              { isHeartClicked ? '찜 취소' : '찜하기' }
+                            </button>
+                        </div>
+                        <div>
+                            <button
+                              className={`${styles.btn} ${styles.payBtn}`}
+                              onClick={onBuyClicked}
+                            >
+                              클래스 신청하기
+                            </button>
+                        </div>
+                    </section>
+                    {
+                      isModalOpen ?
+                      <AlarmModal msg1={modalMsg1} failModal='failModal' handleCloseModal={handleCloseModal}/> :
+                      null
+                    }
+                 </div>
+              </div>
     )
+  } else {
+      return null;
+  }
 }
 
 export default ClassDetail;
