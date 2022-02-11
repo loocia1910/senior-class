@@ -61,9 +61,9 @@ export const ClassList = () => {
 
     // type에 따른 분류
     useEffect(() => {
-      console.log('type', type)
-      console.log('typeList', typeList)
-      console.log('filterClassList', filterClassList);
+      // console.log('type', type)
+      // console.log('typeList', typeList)
+      // console.log('filterClassList', filterClassList);
 
       setFilterClicked(false);
 
@@ -81,15 +81,15 @@ export const ClassList = () => {
         setTypeList(freeClass);
       }
       
-    }, [type])
+    }, [type, filterClassList, freeClass, latestClass, offlineClass, onlineClass, typeList])
 
     
     // category에 따른 분류
     useEffect(() => {
       setFilterClicked(false);
-      console.log('category', category)
-      console.log('categoryList', categoryList)
-      console.log('filterClassList', filterClassList);
+      // console.log('category', category)
+      // console.log('categoryList', categoryList)
+      // console.log('filterClassList', filterClassList);
 
 
       if(!category) return;
@@ -116,7 +116,7 @@ export const ClassList = () => {
         categoryClass('foreign');
       }
 
-    }, [category])
+    }, [category, type])
 
     // region에 따른 분류
     useEffect(() => {
@@ -124,7 +124,7 @@ export const ClassList = () => {
 
       if(type !== 'offline') return;
       regionClass(category);
-    }, [category])
+    }, [category, type])
 
 
     // filter 태그에 따른 분류

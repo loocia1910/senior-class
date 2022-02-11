@@ -19,3 +19,10 @@
 .card:not(:nth-child(2n)) {
     margin-right: 1.2rem;
 }
+
+.noData {
+    width: 880px;
+    text-align: center;
+    padding: 2rem 1rem;
+    background-color: #efefef;
+}

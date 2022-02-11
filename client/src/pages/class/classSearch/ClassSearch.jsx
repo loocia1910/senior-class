@@ -1,12 +1,11 @@
 import { useState, useEffect, useMemo } from 'react';
-import { useParams, useNavigate } from "react-router";
+import { useParams } from "react-router";
 import { useSelector } from 'react-redux';
 import WrongResult from '../../wrongResult/WrongResult';
 import ClassCard from '../../../components/class/classCard/ClassCard';
 import styles from './ClassSearch.module.css';
 
 const ClassSearch = () => {
-  const navigate = useNavigate();
   const param = useParams();
   const { onlineClass, offlineClass, freeClass, latestClass } = useSelector((state) => state.class);
   const allClass = useMemo(() => [ ...onlineClass, ...offlineClass, ...freeClass, ...latestClass ], 
@@ -41,9 +40,8 @@ const ClassSearch = () => {
               :
 
               !!filteredList && filteredList.map((c, idx) => 
-                  <div className={styles.classCard}>
+                  <div  key={idx} className={styles.classCard}>
                     <ClassCard
-                        key={idx}
                         classId={c.id}
                         teacherName={c.User.name}
                         cName={c.name}

@@ -39,7 +39,7 @@ const Header = () => {
     };
     const onKeyEnter = (e) => {
         // 엔터를 쳐도 검색이 된다.
-        if(e.which == 13 || e.keyCode == 13) {
+        if(e.which === 13 || e.keyCode === 13) {
             navigate(`product/search/${searchValue}`);
         }
     };

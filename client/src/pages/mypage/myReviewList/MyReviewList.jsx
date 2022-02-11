@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { ClassReview } from '../../../components/class/classReview/ClassReview';
 import { getMyReviewThunk } from '../../../reducers/api/userApi';
 import styles from './MyReviewList.module.css';
 
@@ -14,7 +13,6 @@ const MyReviewList = () => {
             throw err;
         }
     };
-    console.log('클래스 리뷰 컴포넌트 리뷰', myReview)
 
     useEffect(() => {
         fetchMyReviews();

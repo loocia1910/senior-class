@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { getMyLikesThunk } from '../../../reducers/api/likeApi'; 
+import { useSelector } from 'react-redux';
 import ClassCard from '../../../components/class/classCard/ClassCard';
 import styles from './ClassLikeList.module.css';
 
@@ -20,6 +19,9 @@ const ClassLikeList = () => {
                 <h2>나의 찜</h2>
                 <div className={styles.classCardBox}>
                     {
+                     myLikes.length === 0 ?
+                     <div className={styles.noData}>등록된 클래스 찜이 없습니다.</div>
+                     :
                     !!myLikes && myLikes.map((like, idx) =>
                         <div key={idx} className={styles.card}>
                             <ClassCard
