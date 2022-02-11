@@ -18,7 +18,7 @@ const MyReviewList = () => {
         };
 
         fetchMyReviews();
-    }, [dispatch]);
+    }, [dispatch, user_id]);
 
     useEffect(() => {
     }, [myReview]);
