@@ -16,8 +16,8 @@
 
 <br/>
 <br/>    
-## [Wiki](https://github.com/loocia1910/senior-class/wiki)
-<ol>
+## <a href='https://github.com/loocia1910/senior-class/wiki'>Wiki</a>
+<ul>
   <li>
     <a href='https://github.com/loocia1910/senior-class/wiki#%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%86%8C%EA%B0%9C' >🏡&nbsp; <strong>Home</strong></a>
   </li>
@@ -39,5 +39,5 @@
   <li>
     <a href='https://github.com/loocia1910/senior-class/wiki/Final-App-Screen#app-view' > 🖼 &nbsp;<strong>Final App View</strong></a>
   </li>    
-</ol>
+</ul>
 
