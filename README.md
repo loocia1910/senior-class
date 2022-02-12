@@ -8,15 +8,14 @@
 <br/>
 <br/>
 ## 💡 서비스 목적
-100세 시대인 요즘, 중장년층들의 정년 퇴임 이후의 삶을 위해서 여가 및 교육 클래스를 제공하는 웹 앱을 개발하였습니다.
-수명 연장에 따른 노인 인구 증가에 따라 중장년층이 교육을 받아 일을 할 수 있는 기회를 증가시킵니다.
-중장년층이 정년 퇴임 이후에도 자신을 위해 여가를 보내고, 자신의 자아실현을 위해서 커리어를 쌓을 수 있도록 합니다.
-
+- **중장년층 취업률 증가** &nbsp;: 100세 시대인 요즘 중장년들의 정년 퇴임 이후 제2의 삶을 위한 교육 클래스 제공
+- **독거 노인 외로움 감소** &nbsp;: 오프라인에서 함께하는 여가 및 교육 클래스를 제공
+- **중장년층의 풍요로운 여가** &nbsp;: 예술, 문화, 요리, 커리어, 운동 등의 다양한 여가 클래스를 제공함으로써 중장년층이 풍요로운 여가를 즐길 수 있도록 한다.
 
 
 <br/>
 <br/>    
- <h2><a href='https://github.com/loocia1910/senior-class/wiki' style='text-decoration:none'>Wiki</a></h2>
+ <h2><a href='https://github.com/loocia1910/senior-class/wiki' >Wiki</a></h2>
 <ul>
   <li>
     <a href='https://github.com/loocia1910/senior-class/wiki#%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%86%8C%EA%B0%9C' >🏡&nbsp; <strong>Home</strong></a>
