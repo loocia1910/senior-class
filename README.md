@@ -1,6 +1,9 @@
 # 시니어 클래스
-👉 <strong>배포 url</strong> : https://senior-class.site
 중장년을 위한 여가 및 교육 클래스 플랫폼
+👉 <strong>배포 url</strong> : https://senior-class.site
+![랜딩페이지](https://user-images.githubusercontent.com/81205088/153704930-1920a687-db42-4726-afee-d67dd3a3b0ef.gif)
+
+
 <br/>
 <br/>
 ## 💡 서비스 목적
@@ -11,7 +14,8 @@
 
 <br/>
 <br/>    
-## 🏷 Wiki
+
+## 💡 Wiki
 <ul>
   <li>
     <a href='https://github.com/loocia1910/senior-class/wiki#%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%86%8C%EA%B0%9C' >🏡&nbsp; <strong>Home</strong></a>
