@@ -17,16 +17,27 @@
 <br/>
 <br/>    
 ## [Wiki](https://github.com/loocia1910/senior-class/wiki)
-  🏡 &nbsp; <strong> [Home](https://github.com/loocia1910/senior-class/wiki#%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%86%8C%EA%B0%9C)</strong>   <br><br>
-  ✅ &nbsp; <strong> [Requirements](https://github.com/loocia1910/senior-class/wiki/Requirements#%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD)</strong>   <br>
-<br>
-  🛠  &nbsp; <strong> [Tech Stack](https://github.com/loocia1910/senior-class/wiki/Tech-Stack)</strong>   <br>
-<br>
-  🎨 &nbsp; <strong> [Wireframe](https://github.com/loocia1910/senior-class/wiki/Wireframe#wireframe)</strong>   <br>
-<br>
-  🧱 &nbsp; <strong> [DB Schema](https://github.com/loocia1910/senior-class/wiki/DB-Schema#db-schema)</strong>   <br>
-<br>
-  📝 &nbsp; <strong> [API Documents](https://github.com/loocia1910/senior-class/wiki/API-Documents#api-documents)</strong>   <br>
-<br>
-  🖼 &nbsp; <strong> [Final App View](https://github.com/loocia1910/senior-class/wiki/Final-App-Screen#app-view)</strong>   <br>
+<ol>
+  <li>
+    <a href='https://github.com/loocia1910/senior-class/wiki#%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%86%8C%EA%B0%9C' >🏡&nbsp; <strong>Home</strong></a>
+  </li>
+  <li>
+    <a href='https://github.com/loocia1910/senior-class/wiki/Requirements#%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD' >✅&nbsp; <strong>Requirements</strong></a>
+  </li>
+  <li>
+    <a href='https://github.com/loocia1910/senior-class/wiki/Tech-Stack' >🛠  &nbsp;<strong>Tech Stack</strong></a>
+  </li>
+  <li>
+    <a href='https://github.com/loocia1910/senior-class/wiki/Wireframe#wireframe' >🎨 &nbsp; <strong>Wireframe</strong></a>
+  </li>
+  <li>
+    <a href='https://github.com/loocia1910/senior-class/wiki/DB-Schema#db-schema' >🧱 &nbsp;<strong>DB Schema</strong></a>
+  </li>
+  <li>
+    <a href='https://github.com/loocia1910/senior-class/wiki/API-Documents#api-documents' > 📝 &nbsp;<strong>API Documents</strong></a>
+  </li>  
+  <li>
+    <a href='https://github.com/loocia1910/senior-class/wiki/Final-App-Screen#app-view' > 🖼 &nbsp;<strong>Final App View</strong></a>
+  </li>    
+</ol>
 
