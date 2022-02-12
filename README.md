@@ -16,7 +16,7 @@
 
 <br/>
 <br/>    
- <h2><a href='https://github.com/loocia1910/senior-class/wiki'>Wiki</a></h2>
+ <h2><a href='https://github.com/loocia1910/senior-class/wiki' style='color: red'>Wiki</a></h2>
 <ul>
   <li>
     <a href='https://github.com/loocia1910/senior-class/wiki#%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%86%8C%EA%B0%9C' >🏡&nbsp; <strong>Home</strong></a>
