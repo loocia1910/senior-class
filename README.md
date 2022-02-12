@@ -2,13 +2,15 @@
 중장년을 위한 여가 및 교육 클래스 플랫폼   
 👉 <strong>배포 URL</strong> : https://senior-class.site    
 
-![랜딩페이지](https://user-images.githubusercontent.com/81205088/153705047-1f535585-c07a-43ce-b1ae-17e0708f1d7d.gif)
 
 
+<img src='https://user-images.githubusercontent.com/81205088/153705047-1f535585-c07a-43ce-b1ae-17e0708f1d7d.gif' alt='랜딩페이지'/>
 
 
 <br/>
 <br/>
+
+
 ## 💡 서비스 목적
 - **중장년층 취업률 증가** &nbsp;: 100세 시대인 요즘 중장년들의 정년 퇴임 이후 제2의 삶을 위한 교육 클래스 제공
 - **독거 노인 외로움 감소** &nbsp;: 오프라인에서 함께하는 여가 및 교육 클래스를 제공
