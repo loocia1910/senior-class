@@ -1,9 +1,5 @@
-
-<br/>
-🏋개발 중 입니다...🏋
-2021.12.06~ 2022. 02 (현재 마무리 중입니다. :) )
-
 # 시니어 클래스
+👉 <strong>배포 url</strong> : https://senior-class.site
 중장년을 위한 여가 및 교육 클래스 플랫폼
 <br/>
 <br/>
@@ -15,7 +11,7 @@
 
 <br/>
 <br/>    
- <h2><a href='https://github.com/loocia1910/senior-class/wiki' >Wiki</a></h2>
+## 🏷 Wiki
 <ul>
   <li>
     <a href='https://github.com/loocia1910/senior-class/wiki#%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%86%8C%EA%B0%9C' >🏡&nbsp; <strong>Home</strong></a>
