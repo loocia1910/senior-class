@@ -13,7 +13,20 @@
 중장년층이 정년 퇴임 이후에도 자신을 위해 여가를 보내고, 자신의 자아실현을 위해서 커리어를 쌓을 수 있도록 합니다.
 
 
-x-special/nautilus-clipboard
-copy
-file:///home/loocia/Downloads/%EB%9E%9C%EB%94%A9%ED%8E%98%EC%9D%B4%EC%A7%80.gif
+
+<br/>
+<br/>    
+## [Wiki](https://github.com/loocia1910/senior-class/wiki)
+  🏡 &nbsp; <strong> [Home](https://github.com/loocia1910/senior-class/wiki#%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%86%8C%EA%B0%9C)</strong>   <br><br>
+  ✅ &nbsp; <strong> [Requirements](https://github.com/loocia1910/senior-class/wiki/Requirements#%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD)</strong>   <br>
+<br>
+  🛠  &nbsp; <strong> [Tech Stack](https://github.com/loocia1910/senior-class/wiki/Tech-Stack)</strong>   <br>
+<br>
+  🎨 &nbsp; <strong> [Wireframe](https://github.com/loocia1910/senior-class/wiki/Wireframe#wireframe)</strong>   <br>
+<br>
+  🧱 &nbsp; <strong> [DB Schema](https://github.com/loocia1910/senior-class/wiki/DB-Schema#db-schema)</strong>   <br>
+<br>
+  📝 &nbsp; <strong> [API Documents](https://github.com/loocia1910/senior-class/wiki/API-Documents#api-documents)</strong>   <br>
+<br>
+  🖼 &nbsp; <strong> [Final App View](https://github.com/loocia1910/senior-class/wiki/Final-App-Screen#app-view)</strong>   <br>
 
