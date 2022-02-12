@@ -4,7 +4,9 @@
 
 
 
-<img src='https://user-images.githubusercontent.com/81205088/153705047-1f535585-c07a-43ce-b1ae-17e0708f1d7d.gif' alt='랜딩페이지'/>
+<img src='https://user-images.githubusercontent.com/81205088/153709374-eb6ff8c0-54d8-4ed7-82f1-9dd3673e8068.gif' alt='랜딩페이지'/>
+
+
 
 
 <br/>
