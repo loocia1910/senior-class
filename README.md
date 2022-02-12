@@ -1,8 +1,7 @@
 # 시니어 클래스
 중장년을 위한 여가 및 교육 클래스 플랫폼
-👉 <strong>배포 url</strong> : https://senior-class.site
-![랜딩페이지](https://user-images.githubusercontent.com/81205088/153704930-1920a687-db42-4726-afee-d67dd3a3b0ef.gif)
-
+👉 <strong>배포 url</strong> : https://senior-class.site    
+<img src='https://user-images.githubusercontent.com/81205088/153704930-1920a687-db42-4726-afee-d67dd3a3b0ef.gif' alt='랜딩페이지'/>
 
 <br/>
 <br/>
