@@ -72,7 +72,7 @@ function  prevORNext (val) {
     showSlides()
     pause();
     
-    // 4초 후 슬라이드 다시 실행
+    // 4초 후 자동 슬라이드 다시 실행
     myTimer = setInterval(() => plusSlides(slideIndex), 4000);
 }
 
