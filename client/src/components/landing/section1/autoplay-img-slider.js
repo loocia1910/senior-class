@@ -56,3 +56,23 @@ function  resume () {
     clearInterval(myTimer);
     myTimer = setInterval(() => plusSlides(slideIndex), 4000)
 }
+
+// **슬라이드 이전/다음 
+function  prevORNext (val) {
+
+    pause();
+
+    slideIndex = slideIndex + val;
+    if(slideIndex <= 0 ) {
+        slideIndex = 3;
+    } else if (slideIndex > slides.length) {
+        slideIndex = 1;
+    }
+
+    showSlides()
+    pause();
+    
+    // 4초 후 슬라이드 다시 실행
+    myTimer = setInterval(() => plusSlides(slideIndex), 4000);
+}
+
